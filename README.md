@@ -1,4 +1,8 @@
 # Template Angular2
+## Prerequisites [VSCode Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) 
+
+**Getting Started**: [Remote development in containers](https://code.visualstudio.com/docs/remote/containers-tutorial)
+
 ## Start a new Project
 
 ```
