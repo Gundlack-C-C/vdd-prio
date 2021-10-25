@@ -1,7 +1,13 @@
 <div class="content" role="main">
-  <div class="d-flex m-4">
-    <app-csv></app-csv>
+  <div class="flex-container d-flex flex-row">
+    <div class="flex-grow-1 d-flex m-4 justify-content-center">
+      <app-csv></app-csv>
+    </div>
+    <div class="flex-grow-1  d-flex m-4 justify-content-center">
+      <app-prio [data]="data" (prioChanged)="onPrioChanged($event)"></app-prio>
+    </div>
   </div>
+
   <div class="row flex-container flex-row justify-content-center">
     <div class="d-flex card mr-2">
       <div class="card-header bg-success text-white">

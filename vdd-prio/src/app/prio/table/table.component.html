@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+      <tr>
+        <th *ngFor="let col of heading" scope="col">
+          {{col}}
+        </th>
+      </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let row of rows; index as irow ">
+      <ng-template ngFor let-col [ngForOf]="row" let-icol="index">
+        <td scope="row" *ngIf="icol > 0; else colFirst">
+          <input type="number" min="0" [value]="col | number" class="form-control" (change)="valueChanged($event, irow, icol)">
+        </td>
+        <ng-template #colFirst>
+          <th scope="row">
+            {{col}}
+          </th>
+        </ng-template>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

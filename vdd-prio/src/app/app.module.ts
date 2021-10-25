@@ -9,6 +9,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CSVModule } from './csv/csv.module';
+import { PrioModule } from './prio/prio.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CSVModule } from './csv/csv.module';
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    CSVModule
+    CSVModule,
+    PrioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
