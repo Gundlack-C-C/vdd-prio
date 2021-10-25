@@ -7,10 +7,18 @@
       </tr>
   </thead>
   <tbody>
+
     <tr *ngFor="let row of rows">
-      <td *ngFor="let col of row; let i = index" scope="row">
-        {{col}}
-      </td>
+      <ng-template ngFor let-col [ngForOf]="row" let-i="index">
+        <td scope="row" *ngIf="i > 0; else colFirst">
+          {{col}}
+        </td>
+        <ng-template #colFirst>
+          <th scope="row">
+            {{col}}
+          </th>
+        </ng-template>
+      </ng-template>
     </tr>
   </tbody>
 </table>
