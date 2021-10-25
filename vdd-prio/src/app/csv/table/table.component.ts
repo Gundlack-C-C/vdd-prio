@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableComponent implements OnInit {
   @Input() data: {
     heading: string[] | undefined,
-    data: string[][]
+    rows: string[][]
   } | undefined
 
   get heading(): string[] {
@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
   }
 
   get rows(): string[][] {
-    return this.data ? this.data.data : []
+    return this.data ? this.data.rows : []
   }
 
   constructor() { }

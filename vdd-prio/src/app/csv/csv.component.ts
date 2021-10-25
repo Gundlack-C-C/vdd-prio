@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CSVService } from './csv.service';
 
 @Component({
   selector: 'app-csv',
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./csv.component.css']
 })
 export class CSVComponent implements OnInit {
-  fileName: string | undefined = undefined;
-  data: string | undefined = undefined;
-  dataJSON: {heading: string[], data: string[][]} | undefined = undefined;
-  delimiter: string = ";";
-  heading: boolean = true;
-  constructor() { }
+
+  get dataJSON(): any | undefined {
+    return this.csv.data;
+  }
+
+  constructor(private csv: CSVService) { }
 
   ngOnInit() {
   }
@@ -23,22 +24,11 @@ export class CSVComponent implements OnInit {
       console.log(file.name);
       console.log(file.size);
       console.log(file.type);
-      this.fileName = file.name;
 
       let reader: FileReader = new FileReader();
       reader.readAsText(file);
       reader.onload = (e) => {
-        let csv: string = reader.result as string;
-
-        this.data = csv.split("\r").join("");
-        var rows = this.data.split("\n").map((line: string) => {
-          return line.split(this.delimiter)
-        });
-
-        this.dataJSON = {
-          heading: this.heading ? rows[0] : [],
-          data: rows.slice(this.heading ? 1 : 0, rows.length -1)
-        }
+        this.csv.DATA = reader.result as string;
       }
     }
   }
