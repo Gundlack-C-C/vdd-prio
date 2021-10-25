@@ -4,12 +4,16 @@
   </div>
   <div class="card-body">
     <div *ngIf="data; else NoData">
-      <app-table-prio [data]="data" (dataChangedEvent)="onPrioChanged($event)"></app-table-prio>
+      <div>
+        <app-rel-prio [data]="data" [row]="1" [col]="1" (prioChanged)="onPrioChanged($event)"></app-rel-prio>
+      </div>
+      <div>
+        <app-table-prio [data]="data" (dataChangedEvent)="onPrioChanged($event)"></app-table-prio>
+      </div>
     </div>
     <ng-template #NoData>
       No Data Available!
     </ng-template>
-
   </div>
 
 </div>
