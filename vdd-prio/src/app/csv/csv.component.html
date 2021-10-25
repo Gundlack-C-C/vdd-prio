@@ -5,8 +5,11 @@
   </div>
 
   <div class="card-body">
-    <div>
-      {{ dataJSON | json  }}
+    <div *ngIf="dataJSON; else NoData">
+      <app-table [data]="dataJSON"></app-table>
     </div>
+    <ng-template #NoData>
+      Please Select CSV File!
+    </ng-template>
   </div>
 </div>

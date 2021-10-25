@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CSVComponent implements OnInit {
   fileName: string | undefined = undefined;
   data: string | undefined = undefined;
-  dataJSON: {"heading": string[], "rows": string[][]} | undefined = undefined;
+  dataJSON: {heading: string[], data: string[][]} | undefined = undefined;
   delimiter: string = ";";
   heading: boolean = true;
   constructor() { }
@@ -36,8 +36,8 @@ export class CSVComponent implements OnInit {
         });
 
         this.dataJSON = {
-          "heading": this.heading ? rows[0] : [],
-          "rows": rows.slice(this.heading ? 1 : 0, rows.length -1)
+          heading: this.heading ? rows[0] : [],
+          data: rows.slice(this.heading ? 1 : 0, rows.length -1)
         }
       }
     }
