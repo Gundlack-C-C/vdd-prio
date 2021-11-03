@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/vdd-prio",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
