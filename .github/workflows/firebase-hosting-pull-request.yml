@@ -7,14 +7,26 @@ jobs:
   build_and_preview:
     if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./vdd-prio
     steps:
       - uses: actions/checkout@v2
-      - name: install and build
-        run: |
-          cd vdd-prio
-          npm ci && npm run build-prod
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: c-hive/gha-npm-cache@v1
+        with:
+          directory: vdd-prio
+      - name: Setup Dependencies
+        run: npm ci && npm run build-prod
+      
+      - name: Deploy Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_VDD_PRIO }}"
+          channelId: live
           projectId: vdd-prio
+          entryPoint: vdd-prio
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
+
