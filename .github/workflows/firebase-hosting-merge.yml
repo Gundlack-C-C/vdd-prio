@@ -12,7 +12,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./Momentum
+        working-directory: ./vdd-prio
     steps:
       - uses: actions/checkout@v2
       - name: Setup Dependencies
