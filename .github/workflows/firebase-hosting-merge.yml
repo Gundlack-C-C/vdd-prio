@@ -16,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-npm-cache@v1
+        with:
+          directory: vdd-prio
       - name: Setup Dependencies
         run: npm ci && npm run build-prod
       
