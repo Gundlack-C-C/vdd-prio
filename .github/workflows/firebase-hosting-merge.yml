@@ -15,8 +15,10 @@ jobs:
         working-directory: ./vdd-prio
     steps:
       - uses: actions/checkout@v2
+      - uses: c-hive/gha-npm-cache@v1
       - name: Setup Dependencies
         run: npm ci && npm run build-prod
+      
       - name: Deploy Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
