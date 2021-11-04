@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+
+
+export class POLL {
+  id: string = "";
+  name: string = "";
+  members: string[] = [];
+  items: string[] = [];
+  description: string = ""
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +40,12 @@ export class PollService {
       console.error(`Somethig went wrong - ${reason}`)
       alert(reason)
     })
+  }
+
+  get_poll(key: string): any {
+    return this.polls.filter((item: {id: string}) => {
+      return item.id == key
+    })[0]
   }
 
 }

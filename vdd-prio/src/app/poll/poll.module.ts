@@ -5,6 +5,7 @@ import { PollService } from './poll.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { PollSectionComponent } from './poll-section/poll-section.component';
+import { PollDetailComponent } from './poll-detail/poll-detail.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PollSectionComponent } from './poll-section/poll-section.component';
   ],
   declarations: [
     PollComponent,
-    PollSectionComponent
+    PollSectionComponent,
+    PollDetailComponent
   ],
   providers: [
     PollService
