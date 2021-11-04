@@ -10,6 +10,10 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CSVModule } from './csv/csv.module';
 import { PrioModule } from './prio/prio.module';
+import { PollModule } from './poll/poll.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,9 +23,12 @@ import { PrioModule } from './prio/prio.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     FontAwesomeModule,
     CSVModule,
-    PrioModule
+    PrioModule,
+    PollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

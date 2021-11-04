@@ -8,9 +8,7 @@ import { CSVService } from './csv/csv.service';
 })
 export class AppComponent {
   title = 'vdd-prio';
-  constructor(private csv: CSVService) {
-
-  }
+  constructor(private csv: CSVService) {}
 
   get data(): any {
     return this.csv.data;
