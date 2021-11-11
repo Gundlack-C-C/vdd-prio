@@ -5,7 +5,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><span class="badge badge-secondary">{{POLL_COUNT}}</span></span>
         </div>
-        <input type="text" class="form-control" placeholder="Poll Name" (keyup.enter)="on_new_poll(new_poll_name)">
+        <input type="text" class="form-control" placeholder="Poll Name" [(ngModel)]="new_poll_name" (keyup.enter)="on_new_poll(new_poll_name)">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" (click)="on_new_poll(new_poll_name)" >New</button>
         </div>

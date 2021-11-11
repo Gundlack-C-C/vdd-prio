@@ -17,6 +17,7 @@ export class PollSectionComponent implements OnInit {
   on_new_poll(name: string) {
     this.poll_service.new_poll(name).then((res: {id: string}) => {
         this.selected_poll_key=res.id;
+        this.new_poll_name = "";
     })
   }
 
