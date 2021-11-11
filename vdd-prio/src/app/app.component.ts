@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CSVService } from './csv/csv.service';
+import { PollService } from './poll/poll.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,7 @@ import { CSVService } from './csv/csv.service';
 })
 export class AppComponent {
   title = 'vdd-prio';
-  constructor(private csv: CSVService) {}
+  constructor(private poll_service: PollService) {
 
-  get data(): any {
-    return this.csv.data;
-  }
-
-  onPrioChanged(data: any) {
-    this.csv.data= data;
   }
 }

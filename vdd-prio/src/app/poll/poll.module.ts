@@ -13,6 +13,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { PollDetailViewComponent } from './poll-detail-view/poll-detail-view.component';
 
 @NgModule({
   imports: [
@@ -25,13 +26,15 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
   declarations: [
     PollComponent,
     PollSectionComponent,
-    PollDetailComponent
+    PollDetailComponent,
+    PollDetailViewComponent
   ],
   providers: [
     PollService
   ],
   exports: [
-    PollComponent
+    PollComponent,
+    PollDetailViewComponent
   ]
 })
 export class PollModule {

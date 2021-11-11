@@ -14,11 +14,15 @@ import { PollModule } from './poll/poll.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
+import { HomeComponent } from './Home/Home.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
-  ],
+    PageNotFoundComponent,
+      HomeComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -69,10 +69,10 @@
                 <div class="card-header">
                   <div class="font-weight-bold">Members</div>
                 </div>
-                <div class="card-body p-0">
-                  <!--<ul *ngIf="poll.members?.length; else empty" class="list-group">
-                    <li *ngFor="let item of poll.members" class="list-group-item">&nbsp;{{item}}</li>
-                  </ul>-->
+                <div class="card-body">
+                  <ul *ngIf="poll?.members?.length; else empty" class="list-group">
+                    <li *ngFor="let item of poll?.members" class="list-group-item">&nbsp;{{item}}</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -83,4 +83,4 @@
   </ng-template>
 </div>
 
-<ng-template #empty>Empty</ng-template>
+<ng-template #empty><div>EMPTY</div></ng-template>
