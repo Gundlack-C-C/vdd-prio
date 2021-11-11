@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { PollComponent } from './poll.component';
-import { PollService } from './poll.service';
+import { PollResolver, PollService } from './poll.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { PollSectionComponent } from './poll-section/poll-section.component';
@@ -30,7 +30,7 @@ import { PollDetailViewComponent } from './poll-detail-view/poll-detail-view.com
     PollDetailViewComponent
   ],
   providers: [
-    PollService
+    PollService, PollResolver
   ],
   exports: [
     PollComponent,

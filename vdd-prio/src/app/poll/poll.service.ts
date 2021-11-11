@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { merge } from 'rxjs';
+import { Resolve } from '@angular/router';
+import { Subject } from 'rxjs';
 
 
 export class POLL {
@@ -17,10 +18,11 @@ export class POLL {
 })
 export class PollService {
   polls: any[] = []
-
+  isReady: Subject<any> = new Subject()
   constructor(private store: AngularFirestore) {
     this.store.collectionGroup('polls').valueChanges({idField: 'id'}).subscribe(polls => {
       this.polls = polls
+      this.isReady.next()
     });
   }
 
@@ -55,5 +57,23 @@ export class PollService {
       alert(reason)
     });
   }
-
 }
+
+@Injectable()
+export class PollResolver implements Resolve<any> {
+  constructor(private poll_service: PollService) {}
+
+  resolve(): Promise<any> | boolean {
+    let service = this.poll_service;
+    let p = new Promise( function(resolve, reject) {
+      service.isReady.subscribe({
+        next: () => {
+          console.log("ready")
+          resolve(true)
+        }
+      })
+    });
+    return p
+  }
+}
+
