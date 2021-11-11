@@ -7,8 +7,8 @@ import { PollService } from '../poll.service';
   styleUrls: ['./poll-section.component.css']
 })
 export class PollSectionComponent implements OnInit {
-  new_poll_name=''
-  selected_poll_key=''
+  new_poll_name: string =''
+  selected_poll_key: string =''
   constructor(private poll_service: PollService) { }
 
   ngOnInit() {
