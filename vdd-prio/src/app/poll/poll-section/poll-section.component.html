@@ -18,7 +18,7 @@
         </div>
         <input type="button" class="form-control" placeholder="Poll Name" [value]="item.value">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" (click)="on_delete_poll(item.key)">Delete</button>
+          <button class="btn btn-outline-secondary" type="button" (click)="on_delete_poll(item.key)">Delete<fa-icon [icon]="['far', 'trash-alt']" class="ml-2"></fa-icon></button>
         </div>
       </div>
     </a>

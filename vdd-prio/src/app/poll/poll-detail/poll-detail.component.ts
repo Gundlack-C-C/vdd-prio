@@ -36,9 +36,18 @@ export class PollDetailComponent implements OnChanges {
   }
 
   onNewItem(value: string) {
-    this.poll?.items.push(value)
-    this.new_item = ""
-    this.changed = true
+    this.poll?.items.push(value);
+    this.new_item = "";
+    this.changed = true;
+  }
+
+  onDeleteItem(index: number) {
+    if(this.poll != null) {
+      this.poll.items = this.poll.items.filter((obj,i)=>{
+        return i != index;
+      })
+      this.changed = true;
+    }
   }
 
   onPollChanged(event: any, field: string, index: number = 0) {

@@ -9,13 +9,18 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PollSectionComponent } from './poll-section/poll-section.component';
 import { PollDetailComponent } from './poll-detail/poll-detail.component';
 
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     BrowserModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FontAwesomeModule
   ],
   declarations: [
     PollComponent,
@@ -29,4 +34,9 @@ import { PollDetailComponent } from './poll-detail/poll-detail.component';
     PollComponent
   ]
 })
-export class PollModule { }
+export class PollModule {
+  constructor(library: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    library.addIconPacks(fas, far, fab);
+  }
+}

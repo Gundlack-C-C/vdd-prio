@@ -32,8 +32,8 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary">
                     <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">NEW</span>
+                      <div class="input-group-prepend" (click)="onNewItem(new_item)">
+                        <span class="input-group-text">NEW<fa-icon [icon]="['far', 'plus-square']" class="ml-2"></fa-icon></span>
                       </div>
                       <input class="form-control" [(ngModel)]="new_item" (keyup.enter)="onNewItem(new_item)">
                     </div>
@@ -44,6 +44,9 @@
                         <span class="input-group-text">{{i}}</span>
                       </div>
                       <input class="form-control" [value]="item" (keyup.enter)="onPollChanged($event, 'item', i)">
+                      <div class="input-group-append" (click)="onDeleteItem(i)">
+                        <span class="input-group-text">Delete<fa-icon [icon]="['far', 'trash-alt']" class="ml-2"></fa-icon></span>
+                      </div>
                     </div>
                   </li>
                 </ul>
