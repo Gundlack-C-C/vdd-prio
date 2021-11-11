@@ -7,78 +7,78 @@
     </div>
 
     <div class="container-fluid p-0 mt-2">
-      <div class="card">
-        <div class="card-header">
-            <div class="row">
-              <div class="col-4">
-                <div><label class="font-weight-bold pr-2">Name:&nbsp;</label></div>
-                <input type="text" [value]="poll?.name" class="form-control" (keyup)="onPollChanged($event, 'name')">
-              </div>
-              <div class="col-8">
-                <div><label class="font-weight-bold">Description</label></div>
-                <textarea rows="3" [value]="poll?.description" class="form-control" (keyup)="onPollChanged($event, 'description')"></textarea>
-              </div>
-            </div>
-        </div>
-        <div class="card-body p-2">
-          <div class="d-flex flex-row">
-            <div class="flex-grow-70 mr-2">
-              <div class="card">
-                <div class="card-header">
-                  <div class="font-weight-bold">Items</div>
+        <div class="card">
+          <div class="card-header">
+              <div class="row">
+                <div class="col-4">
+                  <div><label class="font-weight-bold pr-2">Name:&nbsp;</label></div>
+                  <input type="text" [value]="poll?.name" class="form-control" (keyup)="onPollChanged($event, 'name')">
+                </div>
+                <div class="col-8">
+                  <div><label class="font-weight-bold">Description</label></div>
+                  <textarea rows="3" [value]="poll?.description" class="form-control" (keyup)="onPollChanged($event, 'description')"></textarea>
                 </div>
               </div>
-              <div class="card-body p-0">
-                <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
-                    <div class="input-group">
-                      <div class="input-group-prepend" (click)="onNewItem(new_item)">
-                        <span class="input-group-text">NEW<fa-icon [icon]="['far', 'plus-square']" class="ml-2"></fa-icon></span>
-                      </div>
-                      <input class="form-control" [(ngModel)]="new_item" (keyup.enter)="onNewItem(new_item)">
-                    </div>
-                  </li>
-                  <li *ngFor="let item of poll?.items; index as i" class="list-group-item">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">{{i}}</span>
-                      </div>
-                      <input class="form-control" [value]="item" (keyup.enter)="onPollChanged($event, 'item', i)">
-                      <div class="input-group-append" (click)="onDeleteItem(i)">
-                        <span class="input-group-text">Delete<fa-icon [icon]="['far', 'trash-alt']" class="ml-2"></fa-icon></span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
-          <div class="d-flex flex-row mt-2">
-            <div class="flex-grow-70 mr-2">
-              <div class="card">
-                <div class="card-header">
-                  <div class="font-weight-bold">Priority</div>
+          <div class="card-body p-2">
+            <div class="d-flex flex-row">
+              <div class="flex-grow-70 mr-2">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="font-weight-bold">Items</div>
+                  </div>
                 </div>
-                <div class="card-body">
-                  EMPTY
-                </div>
-              </div>
-            </div>
-            <div class="flex-grow-30">
-              <div class="card">
-                <div class="card-header">
-                  <div class="font-weight-bold">Members</div>
-                </div>
-                <div class="card-body">
-                  <ul *ngIf="poll?.members?.length; else empty" class="list-group">
-                    <li *ngFor="let item of poll?.members" class="list-group-item">&nbsp;{{item}}</li>
+                <div class="card-body p-0">
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">
+                      <div class="input-group">
+                        <div class="input-group-prepend" (click)="onNewItem(new_item)">
+                          <span class="input-group-text">NEW<fa-icon [icon]="['far', 'plus-square']" class="ml-2"></fa-icon></span>
+                        </div>
+                        <input class="form-control" [(ngModel)]="new_item" (keyup.enter)="onNewItem(new_item)">
+                      </div>
+                    </li>
+                    <li *ngFor="let item of poll?.items; index as i" class="list-group-item">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">{{i}}</span>
+                        </div>
+                        <input class="form-control" [value]="item" (keyup.enter)="onPollChanged($event, 'item', i)">
+                        <div class="input-group-append" (click)="onDeleteItem(i)">
+                          <span class="input-group-text">Delete<fa-icon [icon]="['far', 'trash-alt']" class="ml-2"></fa-icon></span>
+                        </div>
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
+            <div class="d-flex flex-row mt-2">
+              <div class="flex-grow-70 mr-2">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="font-weight-bold">Priority</div>
+                  </div>
+                  <div class="card-body">
+                    EMPTY
+                  </div>
+                </div>
+              </div>
+              <div class="flex-grow-30">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="font-weight-bold">Members</div>
+                  </div>
+                  <div class="card-body">
+                    <ul *ngIf="poll?.members?.length; else empty" class="list-group">
+                      <li *ngFor="let item of poll?.members" class="list-group-item">&nbsp;{{item}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </ng-template>
 </div>
