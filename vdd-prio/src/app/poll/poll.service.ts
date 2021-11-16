@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Resolve } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Prio } from '../prio/prio-edit-form/prio-edit-form.component';
 
 
 export class POLL {
@@ -9,7 +10,8 @@ export class POLL {
   name: string = "";
   members: string[] = [];
   items: string[] = [];
-  description: string = ""
+  description: string = "";
+  priority: Prio[] = []
 }
 
 
@@ -29,9 +31,10 @@ export class PollService {
   new_poll(name: string):  Promise<any>{
     return this.store.collection('polls').add({
       "name": name,
+      "description": "",
       "members": [],
       "items": [],
-      "description": []
+      "priority": []
     }).catch((reason: any) => {
       console.error(`Somethig went wrong - ${reason}`)
       alert(reason)

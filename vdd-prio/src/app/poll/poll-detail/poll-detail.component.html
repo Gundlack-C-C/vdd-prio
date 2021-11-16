@@ -22,7 +22,7 @@
           </div>
           <div class="card-body p-2">
             <div class="d-flex flex-row">
-              <div class="flex-grow-70 mr-2">
+              <div class="flex-grow-60 mr-2">
                 <div class="card">
                   <div class="card-header">
                     <div class="font-weight-bold">Items</div>
@@ -52,9 +52,39 @@
                   </ul>
                 </div>
               </div>
+              <div class="flex-grow-30">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="font-weight-bold">Priority</div>
+                  </div>
+                  <div class="card-body p-0">
+                    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-0">
+                      <ngb-panel >
+                        <ng-template ngbPanelTitle>
+                          <span>NEW<fa-icon [icon]="['far', 'plus-square']" class="ml-2" ></fa-icon></span>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                          <app-prio-edit-form (prioNewEvent)="onPrioNew($event)"></app-prio-edit-form>
+                        </ng-template>
+                      </ngb-panel>
+                      <ngb-panel *ngFor="let item of poll?.priority; index as i">
+                        <ng-template ngbPanelTitle>
+                          <div class="container-fluid p-0 text-left">
+                            <div>{{item.name}}</div>
+                            <div *ngIf="item.description.length"><sup>{{item.description}}</sup></div>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                          <app-prio-edit-form [item]="{index: i, value: item}" (prioNewEvent)="onPrioNew($event)" (prioChangedEvent)="onPriocbhanged($event)"></app-prio-edit-form>
+                        </ng-template>
+                      </ngb-panel>
+                    </ngb-accordion>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="d-flex flex-row mt-2">
-              <div class="flex-grow-70 mr-2">
+              <div class="flex-grow-40 mr-2">
                 <div class="card">
                   <div class="card-header">
                     <div class="font-weight-bold">Priority</div>

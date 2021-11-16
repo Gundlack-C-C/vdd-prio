@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '',  component: HomeComponent },
   { path: 'polls',  component: PollSectionComponent },
   { path: 'poll/:key',  component: PollDetailViewComponent, resolve: {data: PollResolver} },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', redirectTo:'polls' },
 ];
 
 @NgModule({

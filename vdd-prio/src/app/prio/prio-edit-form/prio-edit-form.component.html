@@ -1,0 +1,31 @@
+<div>
+  <form [formGroup]="prioForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-1">
+      <label for="PrioName">Name</label>
+      <input type="text" class="form-control" id="PrioName" formControlName="name" aria-describedby="PrioName" placeholder="Catchy Priority Name ...">
+      <small id="PrioNameHelp" class="form-text text-muted">What priority should be rated?</small>
+    </div>
+    <div class="form-group mb-1">
+      <label for="prioDescription">Describe</label>
+      <textarea class="form-control" id="prioDescription" formControlName="description" aria-describedby="prioDescription" placeholder="Describe your Priority in 30 words ..." col="3">
+
+      </textarea>
+      <small id="prioDescriptionHelp" class="form-text text-muted">Try to describe a SMART target!</small>
+    </div>
+    <div class="form-group mb-1">
+      <label for="prioType">Type</label>
+      <select class="form-control" id="prioType" formControlName="type" [value]="'prio-0'">
+        <option value="prio-0">Rating - 7</option>
+        <option value="prio-1" disabled>Pairwise Compare</option>
+        <option value="prio-2" disabled>Constant Sum</option>
+        <option value="prio-3" disabled>Fibanocci</option>
+        <option value="prio-4" disabled>Fibanocci - Inverse</option>
+      </select>
+      <small id="prioTypeHelp" class="form-text text-muted">Try to describe a SMART target!</small>
+    </div>
+    <button class="btn btn-info form-control" type="submit">
+      <span *ngIf="item == null">Erstellen</span>
+      <span *ngIf="item != null">Speichern</span>
+    </button>
+  </form>
+</div>

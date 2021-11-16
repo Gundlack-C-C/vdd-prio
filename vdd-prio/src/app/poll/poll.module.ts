@@ -14,6 +14,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { PollDetailViewComponent } from './poll-detail-view/poll-detail-view.component';
+import { NgbAccordion, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PrioModule } from '../prio/prio.module';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ import { PollDetailViewComponent } from './poll-detail-view/poll-detail-view.com
     FormsModule,
     BrowserModule,
     AngularFirestoreModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule,
+    PrioModule
   ],
   declarations: [
     PollComponent,

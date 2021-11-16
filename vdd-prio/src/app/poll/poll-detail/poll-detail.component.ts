@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Prio } from 'src/app/prio/prio-edit-form/prio-edit-form.component';
 import { PollService, POLL} from '../poll.service';
 
 
@@ -32,6 +33,18 @@ export class PollDetailComponent implements OnChanges {
       this.POLL = this.poll_service.get_poll(this.key)
     } else {
       this.POLL = null
+    }
+  }
+
+  onPrioNew(item: Prio) {
+    this.poll?.priority.push(item);
+    this.changed = true;
+  }
+
+  onPriocbhanged(item: {index: number, value: Prio}) {
+    if(this.poll?.priority) {
+      this.poll.priority[item.index] = item.value
+      this.changed = true;
     }
   }
 
