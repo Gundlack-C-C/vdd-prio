@@ -51,6 +51,6 @@
       <span class="font-italic text-muted">Please rate your Agility first!</span>
   </div>
   <div *ngIf="prio.length > 0" class="alert alert-secondary">
-    {{prio | json}}
+    <div echarts [options]="options" class="demo-chart"></div>
   </div>
 </div>
