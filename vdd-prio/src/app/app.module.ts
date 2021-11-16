@@ -16,12 +16,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
 import { HomeComponent } from './Home/Home.component';
+import { AgileManifestComponent } from './agile-manifest/agile-manifest.component';
+import { AgileManifestModule } from './agile-manifest/agile-manifest.module';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     PageNotFoundComponent,
-      HomeComponent
+    HomeComponent
    ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { HomeComponent } from './Home/Home.component';
     FontAwesomeModule,
     CSVModule,
     PrioModule,
-    PollModule
+    PollModule,
+    AgileManifestModule
   ],
   providers: [],
   bootstrap: [AppComponent]

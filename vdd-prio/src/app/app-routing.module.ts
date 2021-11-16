@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AgileManifestComponent } from './agile-manifest/agile-manifest.component';
 import { HomeComponent } from './Home/Home.component';
 import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
 import { PollDetailViewComponent } from './poll/poll-detail-view/poll-detail-view.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: '',  component: HomeComponent },
   { path: 'polls',  component: PollSectionComponent },
   { path: 'poll/:key',  component: PollDetailViewComponent, resolve: {data: PollResolver} },
+  { path: 'agile-manifest', component: AgileManifestComponent},
   { path: '**', redirectTo:'polls' },
 ];
 

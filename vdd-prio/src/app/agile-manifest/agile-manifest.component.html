@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <h1>Agile Manifest</h1>
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-1">
+
+    <ngb-panel >
+      <ng-template ngbPanelTitle>
+        <div class="container-fluid text-left p-0">
+          <div>Die Bezeichnung agil wurde im Februar 2001 bei einem Treffen in Utah auf Vorschlag von Mike Beedle ausgewählt, als Ersatz für das bis dahin gebräuchliche leichtgewichtig (engl. lightweight). Bei diesem Treffen wurde auch das Agile Manifest (siehe unten) formuliert.</div>
+          <span class="small font-italic"><a href="https://de.wikipedia.org/wiki/Agile_Softwareentwicklung" target="empty">Wikipedia: Agile Softwareentwicklung</a></span>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div class="embed-responsive embed-responsive-16by9 p-0">
+          <iframe class="embed-responsive-item" src="https://agilemanifesto.org/iso/de/manifesto.html" allowfullscreen></iframe>
+        </div>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel>
+      <ng-template ngbPanelTitle>
+        <div class="container-fluid text-left p-0">
+          <div>How Agile ist your environment?</div>
+          <sub>How Agile are you?</sub>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <form>
+        <div class="text-center small p-2">Do you feel more like living on the right or left side?</div>
+         <div *ngFor="let item of items; index as i" class="row align-items-center pr-2 pl-2">
+            <div class="col-3">
+              <div class="card text-center">
+                {{item.B}}
+              </div>
+            </div>
+            <div class="col-6">
+              <input type="range" class="form-range form-control" id="agile1">
+            </div>
+            <div class="col-3">
+              <div class="card text-center">
+                {{item.A}}
+              </div>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>
