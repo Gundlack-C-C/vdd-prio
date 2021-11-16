@@ -14,6 +14,7 @@ export class AgileManifestComponent implements OnInit {
     {A: "Zusammenarbeit mit dem Kunden", B: "Vertragsverhandlung"},
     {A: "Reagieren auf Veränderung", B: "Befolgen eines Plans"}
   ]
+
   agileForm = this.formBuilder.group({
     'agile-0': 50,
     'agile-1': 50,
@@ -22,14 +23,15 @@ export class AgileManifestComponent implements OnInit {
 
   });
 
+  prio: number[] = [];
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
 
   onSubmit(): void {
-    const prio = this.agileForm.value
+    this.prio =  Object.values(this.agileForm.value)
   }
-
 
 }

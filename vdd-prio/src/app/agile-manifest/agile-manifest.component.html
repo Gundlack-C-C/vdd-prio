@@ -47,4 +47,10 @@
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
+  <div *ngIf="prio.length == 0" class="alert alert-secondary">
+      <span class="font-italic text-muted">Please rate your Agility first!</span>
+  </div>
+  <div *ngIf="prio.length > 0" class="alert alert-secondary">
+    {{prio | json}}
+  </div>
 </div>
