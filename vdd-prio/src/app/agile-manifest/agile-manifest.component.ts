@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-agile-manifest',
@@ -8,25 +7,20 @@ import { FormBuilder } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class AgileManifestComponent implements OnInit {
+
   items = [
-    {A: "Individuen und Interaktionen", B: "Prozesse und Werkzeuge"},
-    {A: "Funktionierende Software", B: "umfassende Dokumentation"},
-    {A: "Zusammenarbeit mit dem Kunden", B: "Vertragsverhandlung"},
-    {A: "Reagieren auf Veränderung", B: "Befolgen eines Plans"}
+    {A: "Individuen und Interaktionen", B: "Prozesse und Werkzeuge", Value: 50},
+    {A: "Funktionierende Software", B: "umfassende Dokumentation" , Value: 50},
+    {A: "Zusammenarbeit mit dem Kunden", B: "Vertragsverhandlung" , Value: 50},
+    {A: "Reagieren auf Veränderung", B: "Befolgen eines Plans" , Value: 50}
   ]
 
-  agileForm = this.formBuilder.group({
-    'agile-0': 50,
-    'agile-1': 50,
-    'agile-2': 50,
-    'agile-3': 50
-  });
 
   prio: number[] = [];
 
   options =  {}
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.updatePlot()
@@ -58,8 +52,8 @@ export class AgileManifestComponent implements OnInit {
 
   }
 
-  onSubmit(): void {
-    this.prio =  Object.values(this.agileForm.value)
+  onPrioChanged(prio: number[]): void {
+    this.prio =  prio
     this.updatePlot();
   }
 
