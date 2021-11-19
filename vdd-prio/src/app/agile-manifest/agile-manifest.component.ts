@@ -64,6 +64,17 @@ export class AgileManifestComponent implements OnInit {
   onPrioChanged(prio: number[]): void {
     this.prio =  prio
     this.updatePlot();
+    window.setTimeout(()=> {
+      this.scrollToChart();
+    }, 500)
+  }
+
+  scrollToChart() {
+    var element = document.getElementById("chart");
+    if(element){
+      element.scrollIntoView({block: "end", behavior: "smooth"});
+    }
+
   }
 
 }

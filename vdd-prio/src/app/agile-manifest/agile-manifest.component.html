@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <h1>Agile Manifest</h1>
+<div class="container-fluid p-0">
+  <div class="p-2 text-center"><h1>Agile Manifest</h1></div>
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-1">
 
     <ngb-panel >
@@ -27,10 +27,10 @@
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
-  <div *ngIf="prio.length == 0" class="alert alert-secondary">
+  <div *ngIf="prio.length == 0" class="alert alert-secondary mb-0">
       <span class="font-italic text-muted">Please rate your Agility first!</span>
   </div>
-  <div *ngIf="prio.length > 0" class="alert alert-secondary">
+  <div *ngIf="prio.length > 0" class="alert alert-secondary vh-100 mb-0" id="chart">
     <div echarts [options]="options" class="demo-chart"></div>
   </div>
 </div>
