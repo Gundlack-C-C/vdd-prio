@@ -21,30 +21,48 @@
 </form>
 
 <form class="d-md-none" [formGroup]="agileForm" (ngSubmit)="onSubmit()">
-  Mobile
-  <div *ngFor="let item of items; index as i" class="row align-items-center pr-2 pl-2 mt-2 card m-2 p-2">
-    <div class="col-12">
-      <div class="card text-center">
-        {{item.B}}
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="d-flex flex-row">
-        <div *ngIf="item.Description.length > 0" class="d-flex align-self-center d-block pr-3 pl-3 small">
-          <markdown  class="variable-binding" [data]="item.Description"></markdown>
-        </div>
-        <div class="align-self-end mt-1 mb-1">
-          <input type="range" orient="vertical" class="form-range" [id]="'agile-'+i" [formControlName]="'agile-'+i" [ngModel]="prio[i]">
+  <div class="vh-100 d-flex flex-column pt-4 pb-4">
+    <div class="container-fluid text-center">
+      <h3>How Agile Are you?</h3>
+      <div class="d-flex flex-column align-items-center">
+        <div class="align-self-center">
+          <ngb-pagination [collectionSize]="items.length" [(page)]="page" [pageSize]="1" class="align-self-center">
+            <ng-template ngbPaginationPrevious>Prev</ng-template>
+            <ng-template ngbPaginationNext>Next</ng-template>
+            <ng-template ngbPaginationEllipsis>...</ng-template>
+            <ng-template ngbPaginationNumber let-p>{{ getPageSymbol(p) }}</ng-template>
+          </ngb-pagination>
         </div>
       </div>
     </div>
-    <div class="col-12">
-      <div class="card text-center">
-        {{item.A}}
+    <div class="d-flex flex-grow-1">
+      <div *ngFor="let item of items; index as i" class="flex-grow-1" [class.d-none]="i!=page-1" [class.d-flex]="i==page-1">
+        <div class="row align-items-center mt-2 card m-2 p-2 flex-column">
+          <div class="container-fluid">
+            <div class="card text-center pt-3 pb-4">
+              {{item.B}}
+            </div>
+          </div>
+          <div class="container-fluid d-flex flex-row flex-grow-1 ">
+            <div class="d-flex">
+              <div *ngIf="item.Description.length > 0" class="d-flex align-items-center text-center d-block pr-3 pl-3 small">
+                <markdown  class="variable-binding" [data]="item.Description"></markdown>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <input type="range" orient="vertical" class="form-range flex-grow-1" [id]="'agile-'+i" [formControlName]="'agile-'+i" [ngModel]="prio[i]">
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="card text-center pt-3 pb-4">
+              {{item.A}}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="p-2">
-    <button class="form-control btn btn-sm btn-primary" type="submit">Save</button>
+    <div class="d-flex p-2">
+      <button class="form-control btn btn-sm" type="submit" [disabled]="page!=items.length" [class.btn-primary]="page==items.length" [class.btn-secondary]="page!=items.length">Save</button>
+    </div>
   </div>
 </form>

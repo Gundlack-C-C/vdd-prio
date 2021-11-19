@@ -10,7 +10,7 @@ export class AgileManifestComponent implements OnInit {
 
   items = [
     {A: "Individuen und Interaktionen", B: "Prozesse und Werkzeuge", Value: 50, Description: ""},
-    {A: "Funktionierende Software", B: "umfassende Dokumentation" , Value: 50, Description: ""},
+    {A: "Funktionierende Software", B: "Umfassende Dokumentation" , Value: 50, Description: ""},
     {A: "Zusammenarbeit mit dem Kunden", B: "Vertragsverhandlung" , Value: 50, Description: ""},
     {A: "Reagieren auf Veränderung", B: "Befolgen eines Plans" , Value: 50, Description: ""}
   ]

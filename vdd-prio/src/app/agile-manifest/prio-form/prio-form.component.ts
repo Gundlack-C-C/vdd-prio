@@ -13,10 +13,14 @@ export class PrioFormComponent implements OnInit {
   @Output() onPrioChanged = new EventEmitter<number[]>();
 
   prio: number[] = [];
-
+  page = 1;
   agileForm = this.formBuilder.group({});
 
   constructor(private formBuilder: FormBuilder) { }
+
+  getPageSymbol(current: number) {
+    return ['A', 'B', 'C', 'D', 'E', 'F', 'G'][current - 1];
+  }
 
   ngOnInit() {
     console.log("items")
