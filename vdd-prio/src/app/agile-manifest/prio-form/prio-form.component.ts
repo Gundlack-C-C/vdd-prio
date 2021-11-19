@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-prio-form',
   templateUrl: './prio-form.component.html',
-  styleUrls: ['./prio-form.component.css']
+  styleUrls: ['./prio-form.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PrioFormComponent implements OnInit {
-  @Input() items: {A: string, B: string, Value: number}[] = []
+  @Input() items: {A: string, B: string, Value: number, Description: string}[] = []
   @Output() onPrioChanged = new EventEmitter<number[]>();
 
   prio: number[] = [];

@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PrioFormComponent } from './prio-form/prio-form.component'
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PrioFormComponent } from './prio-form/prio-form.component'
     NgbModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    MarkdownModule.forRoot()
   ],
   declarations: [
     AgileManifestComponent,

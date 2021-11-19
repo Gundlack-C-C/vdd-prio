@@ -9,10 +9,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class AgileManifestComponent implements OnInit {
 
   items = [
-    {A: "Individuen und Interaktionen", B: "Prozesse und Werkzeuge", Value: 50},
-    {A: "Funktionierende Software", B: "umfassende Dokumentation" , Value: 50},
-    {A: "Zusammenarbeit mit dem Kunden", B: "Vertragsverhandlung" , Value: 50},
-    {A: "Reagieren auf Veränderung", B: "Befolgen eines Plans" , Value: 50}
+    {A: "Individuen und Interaktionen", B: "Prozesse und Werkzeuge", Value: 50, Description: ""},
+    {A: "Funktionierende Software", B: "umfassende Dokumentation" , Value: 50, Description: ""},
+    {A: "Zusammenarbeit mit dem Kunden", B: "Vertragsverhandlung" , Value: 50, Description: ""},
+    {A: "Reagieren auf Veränderung", B: "Befolgen eines Plans" , Value: 50, Description: ""}
   ]
 
 
@@ -20,7 +20,16 @@ export class AgileManifestComponent implements OnInit {
 
   options =  {}
 
-  constructor() { }
+  constructor() {
+    let root ="<small>Wir erschließen bessere Wege, Software zu entwickeln, \
+    indem wir es selbst tun und anderen dabei helfen. \
+    Durch diese Tätigkeit haben wir diese Werte zu schätzen gelernt:</small>"
+
+    this.items[0].Description = `${root} <hr> <div align="center">**Individuen und Interaktionen**<br>mehr als<br>**Prozesse und Werkzeuge**</div>`
+    this.items[1].Description = `${root} <hr> <div align="center">**Funktionierende Software**<br>mehr als<br>**Umfassende Dokumentation**</div>`
+    this.items[2].Description = `${root} <hr> <div align="center">**Zusammenarbeit mit dem Kunden**<br>mehr als<br>**Vertragsverhandlungen**</div>`
+    this.items[3].Description = `${root} <hr> <div align="center">**Reagieren auf Veränderungen**<br>mehr als<br>**Befolgen eines Plans**</div>`
+  }
 
   ngOnInit(): void {
     this.updatePlot()
