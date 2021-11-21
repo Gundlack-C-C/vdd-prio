@@ -1,0 +1,17 @@
+<div>
+  <div>
+    Sehr geehrter Mitarbeiter,
+    wir legen großen Wert auf ihre mentale Gesundheit. Mit FlowCollect® bieten wir Ihnen die Möglichkeit ihre mentalen Belastungen anonym zu kommunizieren, sodass wir den Bedarf an psychologischer Beratung und Coachings in unserem Unternehmen erkennen und dafür ein entsprechendes Budget zur Verfügung stellen können. Über FlowCollect® erhalten Sie dann einen kostenlosen Zugang zu einem Therapeuten oder Coach ihrer Wahl. So können Sie ihren individuellen Konflikt mit professioneller Unterstützung bewältigen und gleichzeitig etwas für ihr mentales Wohlbefinden tun. 100% Anonym.
+  </div>
+  <div *ngFor="let item of items" class="card p-2">
+    <div>
+      <h5>{{item.label}}</h5>
+    </div>
+    <div *ngif="item.description.length">
+      {{item.description}}
+    </div>
+    <div>
+      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum"></app-prio-const-sum>
+    </div>
+  </div>
+</div>
