@@ -6,6 +6,7 @@ import { RelPrioComponent } from './rel-prio/rel-prio.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrioEditFormComponent } from './prio-edit-form/prio-edit-form.component';
+import { PrioConstSumComponent } from './prio-const-sum/prio-const-sum.component';
 
 @NgModule({
   imports: [
@@ -18,11 +19,13 @@ import { PrioEditFormComponent } from './prio-edit-form/prio-edit-form.component
     PrioComponent,
     RelPrioComponent,
     TableComponent,
-    PrioEditFormComponent
+    PrioEditFormComponent,
+    PrioConstSumComponent
   ],
   exports: [
     PrioComponent,
-    PrioEditFormComponent
+    PrioEditFormComponent,
+    PrioConstSumComponent
   ]
 })
 export class PrioModule { }
