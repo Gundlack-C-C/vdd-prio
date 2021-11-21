@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
 import { HomeComponent } from './Home/Home.component';
 import { AgileManifestModule } from './agile-manifest/agile-manifest.module';
+import { FlowcollectModule } from './flowcollect/flowcollect.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AgileManifestModule } from './agile-manifest/agile-manifest.module';
     CSVModule,
     PrioModule,
     PollModule,
-    AgileManifestModule
+    AgileManifestModule,
+    FlowcollectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
