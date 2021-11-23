@@ -8,6 +8,7 @@ import { MentalFeedbackComponent } from './mental-feedback/mental-feedback.compo
 import { PrioModule } from '../prio/prio.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GraphicsModule } from '../graphics/graphics.module';
+import { MentalDashboardComponent } from './mental-dashboard/mental-dashboard.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { GraphicsModule } from '../graphics/graphics.module';
   declarations: [
     FlowcollectComponent,
     MentalFeedbackComponent,
-    MentalFeedbackFormComponent
+    MentalFeedbackFormComponent,
+    MentalDashboardComponent
   ]
 })
 export class FlowcollectModule { }

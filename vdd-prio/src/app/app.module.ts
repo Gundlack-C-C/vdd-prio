@@ -20,11 +20,6 @@ import { AgileManifestModule } from './agile-manifest/agile-manifest.module';
 import { FlowcollectModule } from './flowcollect/flowcollect.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    HomeComponent
-   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,6 +32,11 @@ import { FlowcollectModule } from './flowcollect/flowcollect.module';
     PollModule,
     AgileManifestModule,
     FlowcollectModule
+  ],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    HomeComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
