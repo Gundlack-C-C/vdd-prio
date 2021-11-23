@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild, SimpleChanges } from '@angular/core';
 import * as echarts from 'echarts';
 
 @Component({
@@ -6,7 +6,7 @@ import * as echarts from 'echarts';
   templateUrl: './prio-series.component.html',
   styleUrls: ['./prio-series.component.css']
 })
-export class PrioSeriesComponent implements AfterViewInit, OnInit  {
+export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
   options = {}
   @Input() prio: {label: string, value: number[]}[] = [
     {label: 'Milk Tea', value: [56.5, 82.1, 88.7, 70.1, 53.4, 85.1]},
@@ -22,7 +22,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit  {
 
   mayEChart: any;
 
-  date =  'Jan';
+  @Input() date: string =  'Jan';
 
   data: any[] = []
 
@@ -39,8 +39,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit  {
       row.push(item.label)
       row.push(...item.value)
       this.data.push(row)
-    })
-    console.log(this.data)
+    });
   }
 
   ngAfterViewInit() {
@@ -72,6 +71,12 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit  {
 
   onTimelineChanged() {
     this.renderChart();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.date) {
+      this.renderChart()
+    }
   }
 
   renderChart() {

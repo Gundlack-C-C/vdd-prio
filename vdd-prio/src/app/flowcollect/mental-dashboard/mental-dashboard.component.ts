@@ -27,6 +27,7 @@ export class MentalDashboardComponent implements OnInit {
   ]
 
   T: string[] = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
+  date: string = 'Jan'
   constructor() { }
 
   ngOnInit() {
