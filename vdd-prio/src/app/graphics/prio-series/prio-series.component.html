@@ -1,3 +1,6 @@
 <div class="container-fluid">
+  <select class="col-2 form-control" [(ngModel)]="date" (change)="onTimelineChanged()">
+    <option *ngFor="let item of T">{{item}}</option>
+  </select>
   <div #myChart class="row vh-100"></div>
 </div>
