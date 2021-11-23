@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as echarts from 'echarts';
 
-var myChart: any;
-
 @Component({
   selector: 'app-prio-series',
   templateUrl: './prio-series.component.html',
@@ -21,6 +19,8 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit  {
 
   @ViewChild("myChart")
   myChart!: ElementRef;
+
+  mayEChart: any;
 
   date =  'Jan';
 
@@ -45,15 +45,16 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit  {
 
   ngAfterViewInit() {
     var dom = this.myChart?.nativeElement
-    myChart = echarts.init(dom)
+    this.mayEChart = echarts.init(dom)
 
     this.renderChart();
 
-    myChart.on('updateAxisPointer', function (event: any) {
+    const mayEChart =  this.mayEChart
+    this.mayEChart.on('updateAxisPointer', function (event: any) {
       const xAxisInfo = event.axesInfo[0];
       if (xAxisInfo) {
         const dimension = xAxisInfo.value + 1;
-        myChart.setOption({
+        mayEChart.setOption({
           series: {
             id: 'pie',
             label: {
@@ -120,7 +121,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit  {
       series: series
     };
 
-    myChart.setOption(this.options);
+    this.mayEChart.setOption(this.options);
   }
 
 }
