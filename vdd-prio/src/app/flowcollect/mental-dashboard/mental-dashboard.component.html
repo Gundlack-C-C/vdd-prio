@@ -1,20 +1,29 @@
-<div>
-    <h5>Mental Dashboard</h5>
-    <div class="card">
-      <div class="card-header">
-        <div>Mittelwert der Einflussfaktoren für Mitarbeiter Stress.</div>
+<div class="container-fluid">
+    <div class="col-12">
+      <h5>Mental Dashboard</h5>
+    </div>
+    <div class="row pr-4 pl-4">
+      <div class="col-xs-12 col-6 p-0 pr-2">
+        <div class="card container-fluid p-0">
+          <div class="card-header">
+            <div>Mittelwert der Einflussfaktoren für Mitarbeiter Stress.</div>
+          </div>
+          <div class="card-body">
+            <app-prio-series [prio]="prio_A" [T]="T"></app-prio-series>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <app-prio-series [prio]="prio_A" [T]="T"></app-prio-series>
+      <div class="col-xs-12 col-6 p-0 pl-2">
+        <div class="card container-fluid p-0">
+          <div class="card-header">
+            <div>Mittelwert der Verursacher von Mitarbeiter Stress.</div>
+          </div>
+          <div class="card-body">
+            <app-prio-series [prio]="prio_B" [T]="T"></app-prio-series>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-header">
-        <h5>Mental Dashboard</h5>
-        <div>Mittelwert der Verursacher von Mitarbeiter Stress.</div>
-      </div>
-      <div class="card-body">
-        <app-prio-series [prio]="prio_B" [T]="T"></app-prio-series>
-      </div>
-    </div>
+
+
 </div>
