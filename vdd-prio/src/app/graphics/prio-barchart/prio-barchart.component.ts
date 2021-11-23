@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Prio } from 'src/app/prio/prio-edit-form/prio-edit-form.component';
 
 @Component({
   selector: 'app-prio-barchart',
