@@ -10,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 export class PrioConstSumComponent implements OnInit {
   @Input() maxSum: number = 100
   @Input() items: {label: string, description: string, value: number}[] = []
-  @Output() onPrioChanged = new EventEmitter<number[][]>();
+  @Output() onPrioChanged = new EventEmitter<number[]>();
 
 
   prioForm = this.formBuilder.group({});
