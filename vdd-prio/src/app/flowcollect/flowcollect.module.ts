@@ -6,6 +6,8 @@ import { MentalFeedbackFormComponent } from './mental-feedback/mental-feedback-f
 import { BrowserModule } from '@angular/platform-browser';
 import { MentalFeedbackComponent } from './mental-feedback/mental-feedback.component';
 import { PrioModule } from '../prio/prio.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GraphicsModule } from '../graphics/graphics.module';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { PrioModule } from '../prio/prio.module';
     FormsModule,
     BrowserModule,
     ReactiveFormsModule,
-    PrioModule
+    PrioModule,
+    GraphicsModule,
+    NgbModule
   ],
   declarations: [
     FlowcollectComponent,

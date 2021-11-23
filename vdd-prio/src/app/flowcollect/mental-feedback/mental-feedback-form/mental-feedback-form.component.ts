@@ -7,7 +7,7 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './mental-feedback-form.component.html',
   styleUrls: ['./mental-feedback-form.component.css']
 })
-export class MentalFeedbackFormComponent implements OnInit {
+export class MentalFeedbackFormComponent {
   @Output() onPrioChanged = new EventEmitter<number[][]>();
 
   items = [
@@ -32,15 +32,39 @@ export class MentalFeedbackFormComponent implements OnInit {
   ]
   feedbackForm = this.formBuilder.group({});
 
+  page: number = 0;
+  pages: string[] = [
+    "Start",
+    "A",
+    "B",
+    "Fertig"
+  ]
+
+  prio: number[][] = [[],[]]
+
   constructor(private formBuilder: FormBuilder) {
 
   }
 
-  ngOnInit() {
+  getPrioGraphData(i: number): {label: string; value: number}[] {
+    return this.items[i].items.map((item) => {
+      return {label: item.label, value: item.value}
+    })
   }
 
-  onSubmit() {
-    let prio = this.feedbackForm.value;
+
+  getPageSymbol(index: number) {
+    return this.pages[index-1];
+  }
+
+  handlePrioChanged(prio: number[], index:number) {
+    this.page = index+3;
+
+    prio.forEach((p: number, i: number) => {
+      this.items[index].items[i].value = p
+    })
+
+    this.prio[index] = prio
   }
 
 }
