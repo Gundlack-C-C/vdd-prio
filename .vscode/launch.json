@@ -17,6 +17,13 @@
             "name": "Flowcollect",
             "url": "http://localhost:4200/flowcollect",
             "webRoot": "${workspaceFolder}/vdd-prio"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Flowcollect-Business-Admin",
+            "url": "http://localhost:4200/flowcollect-business-admin",
+            "webRoot": "${workspaceFolder}/vdd-prio"
         }
     ]
 }

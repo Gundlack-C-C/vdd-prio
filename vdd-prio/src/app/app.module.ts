@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
 import { HomeComponent } from './Home/Home.component';
 import { AgileManifestModule } from './agile-manifest/agile-manifest.module';
 import { FlowcollectModule } from './flowcollect/flowcollect.module';
+import { BusinessAdminModule } from './business-admin/business-admin.module';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { FlowcollectModule } from './flowcollect/flowcollect.module';
     PrioModule,
     PollModule,
     AgileManifestModule,
-    FlowcollectModule
+    FlowcollectModule,
+    BusinessAdminModule
   ],
   declarations: [
     AppComponent,

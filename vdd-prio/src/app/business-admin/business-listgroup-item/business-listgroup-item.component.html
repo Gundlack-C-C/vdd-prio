@@ -1,0 +1,10 @@
+<div class="list-group-item">
+  <div *ngIf="item && item.name.length; then ViewItem else NewItem;"></div>
+  <ng-template #ViewItem>
+    <div><h5>{{item?.name}}</h5></div>
+    <div><small>{{item?.description}}</small></div>
+  </ng-template>
+  <ng-template #NewItem>
+    <div class="text-muted"><h5>*&nbsp;NEW</h5></div>
+  </ng-template>
+</div>

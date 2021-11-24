@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgileManifestComponent } from './agile-manifest/agile-manifest.component';
+import { BusinessAdminComponent } from './business-admin/business-admin.component';
 import { FlowcollectComponent } from './flowcollect/flowcollect.component';
 import { MentalDashboardComponent } from './flowcollect/mental-dashboard/mental-dashboard.component';
 import { GraphicsDemoComponent } from './graphics/graphics-demo/graphics-demo.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'graphics', component: GraphicsDemoComponent},
   { path: 'flowcollect', component: FlowcollectComponent},
   { path: 'flowcollect-dashboard', component: MentalDashboardComponent},
+  { path: 'flowcollect-business-admin', component: BusinessAdminComponent},
   { path: '**', redirectTo:'polls' },
 ];
 
