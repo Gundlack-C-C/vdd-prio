@@ -1,0 +1,11 @@
+<div class="d-flex flex-row">
+  <div class="d-flex flex-grow-1 btn-group p-0 pr-2" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+    <button class="btn btn-light btn-outline-dark" ngbDropdownToggle> {{selected.name ? selected.name : "* NEW"}}</button>
+    <div class="dropdown-menu container-fluid" ngbDropdownMenu>
+      <button ngbDropdownItem *ngFor="let item of items" (click)="SELECTED = item;">{{item.name ? item.name : "* NEW"}}</button>
+    </div>
+  </div>
+  <div class="d-flex ml-2">
+    <button type="button" class="btn btn-outline-dark" (click)="onNew.next()">Neue Abteilung</button>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { BusinessEditFormComponent } from './business-edit-form/business-edit-form.component';
+import { SectionAdminModule } from '../section-admin/section-admin.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { BusinessEditFormComponent } from './business-edit-form/business-edit-fo
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SectionAdminModule
   ],
   declarations: [
     BusinessAdminComponent,

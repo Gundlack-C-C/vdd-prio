@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group form-row">
+    <div class="col-2"><b>ID:</b></div>
+    <div class="col-10">{{item?.id}}</div>
+  </div>
+  <div class="form-group form-row">
+    <div class="col-2"><b>Name</b></div>
+    <div class="col-10"><input class="form-control" type="text" [value]="item?.name" [formControlName]="'name'" placeholder="Geben Sie dem Bereich einen Namen."></div>
+  </div>
+  <div class="form-group form-row pt-2">
+    <div class="col-2"><b>Description</b></div>
+    <div class="col-10"><textarea class="form-control" type="text" [value]="item?.description" rows="5" [formControlName]="'description'" placeholder="Beschreiben Sie den Bereich kurz."></textarea></div>
+  </div>
+  <div class="form-row">
+    <button class="offset-2 col-3 form-control btn btn-sm btn-info" type="submit">Save</button>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<div>
+  <div *ngIf="items.length row">
+    <hr>
+    <div class="col-12 pb-2">
+      <h5>Abteilungen/Unternehmensbereiche</h5>
+      <app-section-dropdown [items]="items" (onNew)="onNewSection()" (onSelected)="onSelected($event)"></app-section-dropdown>
+    </div>
+    <hr>
+    <div class="col-12">
+      <app-section-edit-form *ngIf="selected" [item]="selected"></app-section-edit-form>
+    </div>
+  </div>
+
+</div>

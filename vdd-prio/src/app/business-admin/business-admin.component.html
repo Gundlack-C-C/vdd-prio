@@ -23,7 +23,6 @@
           <div class="alert alert-info">Aktuell gibt es keine Kundenkontakte.</div>
         </div>
       </ng-template>
-
     </div>
 
   </div>
@@ -43,7 +42,12 @@
         </ng-template>
       </div>
       <div *ngIf="selected" class="card-body">
-        <app-business-edit-form [item]="selected" (onSaved)="onSaved($event)"></app-business-edit-form>
+        <div>
+          <app-business-edit-form [item]="selected" (onSaved)="onSaved($event)"></app-business-edit-form>
+        </div>
+        <div>
+          <app-section-admin [businessID]="selected.id"></app-section-admin>
+        </div>
       </div>
     </div>
   </div>

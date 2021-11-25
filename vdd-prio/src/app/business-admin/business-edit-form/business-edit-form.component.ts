@@ -9,7 +9,7 @@ import { Business, BusinessAdminService } from '../BusinessAdmin.service';
   styleUrls: ['./business-edit-form.component.css']
 })
 export class BusinessEditFormComponent implements OnChanges {
-  @Input() item: Business | null = null
+  @Input() item: Business = new Business()
   @Output() onSaved = new EventEmitter<Business>()
   @Output() onSaving = new EventEmitter<any>()
 
@@ -31,12 +31,13 @@ export class BusinessEditFormComponent implements OnChanges {
 
   onSubmit() {
     let val = this.form.value;
-    if(this.item) {
-      val.id = this.item.id
-    }
-    this.onSaving.next(val)
-    this.business_service.updateBusiness(val).then(() => {
-      this.onSaved.next(val)
+
+    this.item.description = val.description
+    this.item.name = val.name;
+
+    this.onSaving.next(this.item)
+    this.business_service.updateBusiness(this.item).then(() => {
+      this.onSaved.next(this.item)
     });
   }
 
