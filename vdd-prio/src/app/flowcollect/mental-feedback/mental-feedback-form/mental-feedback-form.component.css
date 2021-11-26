@@ -13,6 +13,11 @@ ul.pagination > line {
   border-color: #fff !important;
 }
 
+ul.pagination {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 app-mental-feedback-form .btn {
   color: #fff;
   background-color: #17a2b8;
@@ -28,4 +33,51 @@ app-mental-feedback-form .btn:visited {
   border-color: #6c757d;
   background-image: none !important;
   border: 0 !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #f8f9fa;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #6c757d;
+    margin-top: -1px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    margin-top: -4px;
+    width: 16px;
+    -webkit-appearance: none;
+    height: 16px;
+    cursor: pointer;
+    background: #f8f9fa;
+    box-shadow: -0980px 0 0 1000px #6c757d;
+    border-radius: 50%;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover {
+    background: #6c757d;
+    box-shadow: -0980px 0 0 1000px #17a2b8;
+    border-color: #f8f9fa;
+    border-style: solid;
+    border-width: 2px;
+  }
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #6c757d;
+}
+input[type="range"]::-moz-range-track {
+  background-color: #f8f9fa;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #6c757d;
+}
+input[type="range"]::-ms-fill-upper {
+  background-color: #f8f9fa;
 }

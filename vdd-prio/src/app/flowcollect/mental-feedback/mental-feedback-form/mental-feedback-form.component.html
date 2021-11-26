@@ -1,7 +1,7 @@
 <div class="card">
-  <div class="card-header bg-dark">
+  <div class="card-header bg-dark p-md-2 p-1">
     <div class="align-self-center">
-      <ngb-pagination [collectionSize]="4" [(page)]="page" [pageSize]="1" class="align-self-center">
+      <ngb-pagination [collectionSize]="4" [(page)]="page" [pageSize]="1" class="align-self-center pb-0 mb-0">
         <ng-template ngbPaginationNumber let-p>{{ getPageSymbol(p) }}</ng-template>
       </ngb-pagination>
     </div>
