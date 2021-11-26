@@ -3,15 +3,29 @@ ul.pagination > li:not(.active) > a {
   color: #343a40 !important;
 }
 
-ul.pagination > li.active {
-}
-
 ul.pagination > li.active > a {
-  background-color: #17a2b8 !important;
   color: #fff !important;
-  border-color: #17a2b8 !important;
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
 }
 
 ul.pagination > line {
   border-color: #fff !important;
+}
+
+app-mental-feedback-form .btn {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+app-mental-feedback-form .btn:hover,
+app-mental-feedback-form .btn:active,
+app-mental-feedback-form .btn:focus,
+app-mental-feedback-form .btn:visited {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  background-image: none !important;
+  border: 0 !important;
 }
