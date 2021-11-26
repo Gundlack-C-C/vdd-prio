@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="card-body" *ngIf="page==1">
-    <markdown  class="variable-binding" [data]="description"></markdown>
+    <markdown class="variable-binding" [data]="description"></markdown>
     <button class="btn btn-info" (click)="page=2">Start</button>
   </div>
   <div *ngFor="let item of items; index as i" class="card-body p-2" [class.d-none]="i + 2 !== page">
@@ -15,19 +15,20 @@
       <h4 class="mb-1">{{item.label}}</h4>
     </div>
     <div>
-      <markdown  class="variable-binding" [data]="item.description"></markdown>
+      <markdown class="variable-binding" [data]="item.description"></markdown>
     </div>
     <div>
-      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioChanged)="handlePrioChanged($event, i)"></app-prio-const-sum>
+      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioChanged)="handlePrioChanged($event, i)">
+      </app-prio-const-sum>
     </div>
   </div>
-  <div class="card-body" *ngIf="page==4">
+  <div class="card-body p-2" *ngIf="page==4">
     <div *ngIf="prio.length < 2" cass="card-body">
       <div class="alert alert-warning">
         Bitte schließe alle Formulare ab!<br>Erst dann können wir dir deine Auswertung zeigen.
       </div>
     </div>
-    <div *ngIf="prio.length == 2" cass="card-body">
+    <div *ngIf="prio.length == 2" cass="card-body p-2">
       <div class="alert alert-info">
         <div class="mb-4">
           Dein Unternehmen unterstützt Dich!<br><br>
@@ -38,7 +39,8 @@
           <div class="input-group mt-2">
             <input type="text" class="form-control" [value]="coachingCode" #codeInput>
             <div class="input-group-append">
-              <button class="btn btn-outline-info" (click)="copyCode()">COPY<fa-icon [icon]="['fas', 'copy']" class="ml-2"></fa-icon></button>
+              <button class="btn btn-outline-info" (click)="copyCode()">COPY<fa-icon [icon]="['fas', 'copy']"
+                  class="ml-2"></fa-icon></button>
             </div>
           </div>
         </div>
