@@ -9,6 +9,9 @@ import { PrioModule } from '../prio/prio.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GraphicsModule } from '../graphics/graphics.module';
 import { MentalDashboardComponent } from './mental-dashboard/mental-dashboard.component';
+import { MentalFeedbackAppComponent } from './mental-feedback-app/mental-feedback-app.component';
+import { SectionAdminModule } from '../section-admin/section-admin.module';
+import { SectionModule } from '../section/section.module';
 
 @NgModule({
   imports: [
@@ -18,13 +21,18 @@ import { MentalDashboardComponent } from './mental-dashboard/mental-dashboard.co
     ReactiveFormsModule,
     PrioModule,
     GraphicsModule,
-    NgbModule
+    NgbModule,
+    SectionModule
   ],
   declarations: [
     FlowcollectComponent,
     MentalFeedbackComponent,
     MentalFeedbackFormComponent,
-    MentalDashboardComponent
+    MentalDashboardComponent,
+    MentalFeedbackAppComponent
+  ],
+  exports: [
+    MentalFeedbackAppComponent
   ]
 })
 export class FlowcollectModule { }

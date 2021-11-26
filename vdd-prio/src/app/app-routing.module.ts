@@ -4,6 +4,7 @@ import { AgileManifestComponent } from './agile-manifest/agile-manifest.componen
 import { BusinessAdminComponent } from './business-admin/business-admin.component';
 import { FlowcollectComponent } from './flowcollect/flowcollect.component';
 import { MentalDashboardComponent } from './flowcollect/mental-dashboard/mental-dashboard.component';
+import { MentalFeedbackAppComponent } from './flowcollect/mental-feedback-app/mental-feedback-app.component';
 import { GraphicsDemoComponent } from './graphics/graphics-demo/graphics-demo.component';
 import { HomeComponent } from './Home/Home.component';
 import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'agile-manifest', component: AgileManifestComponent},
   { path: 'graphics', component: GraphicsDemoComponent},
   { path: 'flowcollect', component: FlowcollectComponent},
+  { path: 'flowcollect-app', component: MentalFeedbackAppComponent},
+  { path: 'flowcollect-app/:sectionID', component: MentalFeedbackAppComponent},
   { path: 'flowcollect-dashboard', component: MentalDashboardComponent},
   { path: 'flowcollect-business-admin', component: BusinessAdminComponent},
   { path: '**', redirectTo:'polls' },
