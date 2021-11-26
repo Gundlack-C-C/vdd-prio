@@ -12,7 +12,10 @@
   </div>
   <div *ngFor="let item of items; index as i" class="card-body p-2" [class.d-none]="i + 2 !== page">
     <div>
-      <markdown  class="variable-binding" [data]="item.label"></markdown>
+      <h5>{{item.label}}</h5>
+    </div>
+    <div>
+      <markdown  class="variable-binding" [data]="item.description"></markdown>
     </div>
     <div>
       <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioChanged)="handlePrioChanged($event, i)"></app-prio-const-sum>
@@ -29,9 +32,6 @@
         <div class="card-header">
           <div>
             <h5>{{item.label}}</h5>
-          </div>
-          <div *ngif="item.description.length">
-            {{item.description}}
           </div>
         </div>
         <div class="card-body">

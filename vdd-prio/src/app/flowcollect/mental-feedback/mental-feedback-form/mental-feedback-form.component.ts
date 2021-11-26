@@ -12,7 +12,7 @@ export class MentalFeedbackFormComponent {
   @Output() onPrioChanged = new EventEmitter<number[][]>();
 
   items = [
-    {label: "### Welche **Faktoren** beeinflussen Deine mentale Gesundheit derzeit?", description: "", constSum: 100, items: [
+    {label: "Faktoren", description: "Welche <ins>**Faktoren**</ins> beeinflussen Deine mentale Gesundheit derzeit?", constSum: 100, items: [
       {label: "Meine Tätigkeit", description: "", value: 0},
       {label: "Beruflicher Stress", description: "", value: 0},
       {label: "Überforderung", description: "", value: 0},
@@ -21,7 +21,7 @@ export class MentalFeedbackFormComponent {
       {label: "Antriebslosigkeit", description: "", value: 0},
       {label: "Sinnhaftigkeit der Aufgabe", description: "", value: 0},
     ]},
-    {label: "### Wer oder was ist **Verursacher** Deiner Angst?", description: "Da Ängste häufig mehrere Auslöser haben kannst du per Schieberegler die zutreffenden Akteure für dein Symptom entsprechend einordnen, indem du den Schieberegler je nach Relevanz in Bezug zu deiner Angst einstellst.", constSum: 300, items: [
+    {label: "Verursacher", description: "Wer oder was ist <ins>**Verursacher**</ins> Deiner Angst?<br><small>Da Ängste häufig mehrere Auslöser haben kannst du per Schieberegler die zutreffenden Akteure für dein Symptom entsprechend einordnen.<br>Stelle hierfür den Schieberegler je nach Relevanz in Bezug zu deiner Angst.</small>", constSum: 300, items: [
       {label: "Vorgesetzter", description: "", value: 0},
       {label: "Kollege", description: "", value: 0},
       {label: "Team", description: "", value: 0},
