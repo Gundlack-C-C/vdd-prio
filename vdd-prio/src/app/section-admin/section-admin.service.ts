@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference, QuerySnapshot } from '@angular/fire/firestore';
 import { Observable, Subject, Subscriber, Subscription } from 'rxjs';
+import { UUID } from 'angular2-uuid';
 
 export class Budget {
   angebotsId: string = "";
@@ -16,6 +17,7 @@ export class Budget {
       validTill: this.validTill,
       ammountTotal: this.ammountTotal,
       ammount: this.ammount
+
     }
   }
 }
@@ -26,9 +28,15 @@ export class Section {
   businessID: string = "";
   id: string = "";
   budget: string[] = [];
+  pollID: string =""
 
   constructor(businessID: string) {
     this.businessID = businessID;
+    this.pollID = UUID.UUID()
+  }
+
+  get pollURL(): string {
+    return window.location.host + this.pollID
   }
 
   fromObj(value: Section) {
@@ -37,12 +45,17 @@ export class Section {
     this.businessID = value.businessID;
     this.id = value.id;
     this.budget = value.budget;
+    this.businessID = value.businessID;
+    this.pollID = value.pollID;
+    return this;
   }
+
   toObj() {
     return {
       name: this.name,
       description: this.description,
-      businessID: this.businessID
+      businessID: this.businessID,
+      pollID: this.pollID
     }
   }
 }
@@ -54,7 +67,7 @@ export class SectionAdminService {
   private sectionCollection: AngularFirestoreCollection<Section> | null = null;
   items: Observable<Section[]> | null = null;
   listener: Subscription | null = null
-  private _sections: Section[] = []
+  private _sections: any[] = []
   _businessID: string = ""
 
 
@@ -77,7 +90,9 @@ export class SectionAdminService {
 
         this.listener?.unsubscribe();
         this.listener = this.items.subscribe((items: Section[])=>{
-          this._sections = items;
+          this._sections = items.map((val)=> {
+            return new Section("").fromObj(val)
+          });
           clearTimeout(check)
           resolve(this._sections)
         })

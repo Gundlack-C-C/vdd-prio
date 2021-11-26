@@ -6,9 +6,18 @@
       <app-section-dropdown [items]="items" (onNew)="onNewSection()" (onSelected)="onSelected($event)"></app-section-dropdown>
     </div>
     <hr>
-    <div class="col-12">
-      <app-section-edit-form *ngIf="selected" [item]="selected"></app-section-edit-form>
+    <div class="col-12" *ngIf="selected">
+      <app-section-edit-form [item]="selected"></app-section-edit-form>
+    </div>
+    <hr>
+    <div class="col-12 pb-4" *ngIf="selected">
+      <div><b>Ihre Mitarbeiter Umfrage:</b></div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Link</div>
+        </div>
+        <input type="text" class="form-control" [value]="selected.pollURL">
+      </div>
     </div>
   </div>
-
 </div>

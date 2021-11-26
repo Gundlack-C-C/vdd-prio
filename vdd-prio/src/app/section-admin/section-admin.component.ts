@@ -21,7 +21,6 @@ export class SectionAdminComponent implements OnChanges {
             this.items = items;
           })
         })
-
     }
   }
 
