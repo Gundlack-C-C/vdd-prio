@@ -38,6 +38,8 @@ export class BusinessAdminService {
       this.store.collection('business').add(value.toObj()).then((bizDoc)=> {
 
         let section = new Section(bizDoc.id);
+        section.name = "Gesamtes Unternehmen";
+        section.description = "(Standard Einstellung) Bereich der sich über das gesamte Unternehmen erstreckt."
 
         value.id = bizDoc.id;
         this.section_serice.createSection(section).then((doc) => {
