@@ -9,7 +9,7 @@ ul.pagination > li.active {
 ul.pagination > li.active > a {
   background-color: #17a2b8 !important;
   color: #fff !important;
-  border-color: #6c757d !important;
+  border-color: #17a2b8 !important;
 }
 
 ul.pagination > line {

@@ -32,8 +32,14 @@ export class MentalFeedbackFormComponent {
     ]}
   ]
 
-  description = "Sehr geehrter Mitarbeiter, \
-  wir legen großen Wert auf ihre mentale Gesundheit. Mit FlowCollect® bieten wir Ihnen die Möglichkeit ihre mentalen Belastungen anonym zu kommunizieren, sodass wir den Bedarf an psychologischer Beratung und Coachings in unserem Unternehmen erkennen und dafür ein entsprechendes Budget zur Verfügung stellen können. Über FlowCollect® erhalten Sie dann einen kostenlosen Zugang zu einem Therapeuten oder Coach ihrer Wahl. So können Sie ihren individuellen Konflikt mit professioneller Unterstützung bewältigen und gleichzeitig etwas für ihr mentales Wohlbefinden tun. 100% Anonym."
+  description = "Sehr geehrter Mitarbeiter,<br><br>\
+  Wir legen großen Wert auf <b>Ihre mentale Gesundheit.</b><br><br>\
+  Mit FlowCollect® bieten wir Ihnen die Möglichkeit Ihre mentalen Belastungen anonym zu kommunizieren.<br><br>\
+  Bei Bedarf stellen wir Ihnen individuelle psychologische <b>Beratung und Coachings</b> zur Verfügung.\
+  Unser Unternehmen stellt Ihnen dafür ein entsprechendes Budget zur Verfügung.<br><br> \
+  Über FlowCollect® erhalten Sie einen kostenlosen Zugang zu einem Therapeuten oder Coach ihrer Wahl. \
+  So können Sie mit professioneller Unterstützung etwas für ihr mentales Wohlbefinden tun und ihren individuellen Konflikt bewältigen.<br>\
+  <b>100% Anonym.</b>"
   feedbackForm = this.formBuilder.group({});
 
   page: number = 0;

@@ -12,6 +12,7 @@ import { MentalDashboardComponent } from './mental-dashboard/mental-dashboard.co
 import { MentalFeedbackAppComponent } from './mental-feedback-app/mental-feedback-app.component';
 import { SectionAdminModule } from '../section-admin/section-admin.module';
 import { SectionModule } from '../section/section.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { SectionModule } from '../section/section.module';
     PrioModule,
     GraphicsModule,
     NgbModule,
-    SectionModule
+    SectionModule,
+    MarkdownModule.forChild()
   ],
   declarations: [
     FlowcollectComponent,
