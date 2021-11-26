@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Input, Output, EventEmitter} from '@angular/core'
 import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-mental-feedback-form',
   templateUrl: './mental-feedback-form.component.html',
-  styleUrls: ['./mental-feedback-form.component.css']
+  styleUrls: ['./mental-feedback-form.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MentalFeedbackFormComponent {
   @Output() onPrioChanged = new EventEmitter<number[][]>();
@@ -30,6 +31,9 @@ export class MentalFeedbackFormComponent {
       {label: "Karriereplanung", description: "", value: 0},
     ]}
   ]
+
+  description = "Sehr geehrter Mitarbeiter, \
+  wir legen großen Wert auf ihre mentale Gesundheit. Mit FlowCollect® bieten wir Ihnen die Möglichkeit ihre mentalen Belastungen anonym zu kommunizieren, sodass wir den Bedarf an psychologischer Beratung und Coachings in unserem Unternehmen erkennen und dafür ein entsprechendes Budget zur Verfügung stellen können. Über FlowCollect® erhalten Sie dann einen kostenlosen Zugang zu einem Therapeuten oder Coach ihrer Wahl. So können Sie ihren individuellen Konflikt mit professioneller Unterstützung bewältigen und gleichzeitig etwas für ihr mentales Wohlbefinden tun. 100% Anonym."
   feedbackForm = this.formBuilder.group({});
 
   page: number = 0;
