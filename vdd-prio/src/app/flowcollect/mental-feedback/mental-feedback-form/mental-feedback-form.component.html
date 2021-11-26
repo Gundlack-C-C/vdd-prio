@@ -28,6 +28,22 @@
       </div>
     </div>
     <div *ngIf="prio.length == 2" cass="card-body">
+      <div class="alert alert-info">
+        <div class="mb-4">
+          Dein Unternehmen unterstützt Dich!<br>
+          Dir stehen kostenlose, anonyme Coachings und psychologische Betreuung zur Verfügung.
+        </div>
+        <div class="mb-2">
+          Verwende hierfür einfach deinen persönlichen Buchungscode
+          <div class="input-group mt-2">
+            <input type="text" class="form-control" [value]="coachingCode" #codeInput>
+            <div class="input-group-append">
+              <button class="btn btn-outline-info" (click)="copyCode()">COPY<fa-icon [icon]="['fas', 'copy']" class="ml-2"></fa-icon></button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-lg" (click)="openCoaching()">... und buche jetzt dein Erstgespräch</button>
+      </div>
       <div *ngFor="let item of items; index as i" class="card">
         <div class="card-header">
           <div>
