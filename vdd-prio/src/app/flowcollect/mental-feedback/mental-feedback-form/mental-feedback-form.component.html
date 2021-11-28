@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header bg-dark p-md-2 p-1">
     <div class="align-self-center">
-      <ngb-pagination [collectionSize]="4" [(page)]="page" [pageSize]="1" class="align-self-center pb-0 mb-0">
+      <ngb-pagination [collectionSize]="4" [(page)]="page" [pageSize]="1" (pageChange)="this.handlePageChanged($event)" class="align-self-center pb-0 mb-0">
         <ng-template ngbPaginationNumber let-p>{{ getPageSymbol(p) }}</ng-template>
       </ngb-pagination>
     </div>
@@ -18,17 +18,17 @@
       <markdown class="variable-binding" [data]="item.description"></markdown>
     </div>
     <div>
-      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioSubmit)="handlePrioSubmit($event, i)">
+      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioChanged)="handlePrioChanged(getPageSymbol(i+2))" (onPrioSubmit)="handlePrioSubmit($event, i)">
       </app-prio-const-sum>
     </div>
   </div>
   <div class="card-body p-2" *ngIf="page==4">
-    <div *ngIf="prio.length < 2" cass="card-body">
+    <div *ngIf="!PRIO_COMPLETED" cass="card-body">
       <div class="alert alert-warning">
         Bitte schließe alle Formulare ab!<br>Erst dann können wir dir deine Auswertung zeigen.
       </div>
     </div>
-    <div *ngIf="prio.length == 2" cass="card-body p-2">
+    <div *ngIf="PRIO_COMPLETED" cass="card-body p-2">
       <div class="alert alert-info">
         <div class="mb-4">
           Dein Unternehmen unterstützt Dich!<br><br>

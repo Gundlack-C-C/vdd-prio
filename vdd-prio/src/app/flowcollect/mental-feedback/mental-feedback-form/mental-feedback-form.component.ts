@@ -49,6 +49,11 @@ export class MentalFeedbackFormComponent {
   <b>100% Anonym.</b>"
   feedbackForm = this.formBuilder.group({});
 
+  prio_changed: {[key: string]: boolean} = {
+    "A": false,
+    "B": false
+  }
+
   page: number = 0;
   pages: string[] = [
     "Start",
@@ -57,8 +62,19 @@ export class MentalFeedbackFormComponent {
     "Fertig"
   ]
 
-  prio: number[][] = [[], []]
+  get PRIO_COMPLETED(): boolean {
+    return this.prio_changed['A'] && this.prio_changed['B'];
+  }
 
+  get PRIO(): number[][] {
+    return this.items.map((section) => {
+      return section.items.map((item) => {
+        return item.value;
+      })
+    });
+  }
+
+  pollRef = null;
   constructor(private formBuilder: FormBuilder) {}
 
   getPrioGraphData(i: number): { label: string; value: number }[] {
@@ -71,14 +87,23 @@ export class MentalFeedbackFormComponent {
     return this.pages[index - 1];
   }
 
+  handlePrioChanged(section: string) {
+    this.prio_changed[section] = true;
+  }
+
   handlePrioSubmit(prio: number[], index: number) {
     this.page = index + 3;
 
-    this.prio[index] = prio
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    })
+    });
+  }
+
+  handlePageChanged(page: number) {
+    if(page==4) {
+      this.onPrioChanged.next(this.PRIO);
+    }
   }
 
   copyCode() {
