@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DocumentReference } from '@angular/fire/firestore';
+import { POLL } from '../feedback.service'
 import { FeedbackService } from '../feedback.service';
 
 @Component({
@@ -9,7 +9,6 @@ import { FeedbackService } from '../feedback.service';
 })
 export class MentalFeedbackComponent implements OnInit {
   @Input() sectionID!: string | null;
-  docRef!: DocumentReference<any>;
   constructor(private feedback_service: FeedbackService) { }
 
   ngOnInit() {
@@ -17,26 +16,11 @@ export class MentalFeedbackComponent implements OnInit {
 
   onSaveFeedback(val: number[][]) {
     if(this.sectionID) {
-
-
-      if(this.docRef) {
-        let doc = {
-          value: {0: val[0], 1: val[1]}
-        };
-        this.docRef.update(doc).catch((reason)=>{
-          console.error(`Ouch! Something went wrong! ${reason}`);
-        });
-      } else {
-        let doc = {
-          value: {0: val[0], 1: val[1]},
-          type: 'mental',
-          sessionID: this.sectionID,
-          createdAt: null
-        };
-        this.feedback_service.saveFeedback(doc).then((docRef: any) => {
-          this.docRef = docRef;
-        })
-      }
+      var poll = new POLL();
+      poll.values = val;
+      poll.type= 'mental';
+      poll.sessionID = this.sectionID;
+      this.feedback_service.saveFeedback(poll)
     }
   }
 
