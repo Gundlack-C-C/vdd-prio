@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
+import firebase from "firebase/app";
 
 class Poll {
   values: number[][] = [];
@@ -19,8 +20,9 @@ export class FeedbackService {
     this.pollRef = this.store.collection('polls');
   }
 
-  saveFeedback(val: {value: Object, type: string, sessionID: string}): Promise<void | DocumentReference<any>> {
-  return this.pollRef.add(val).catch((reason) => {
+  saveFeedback(val: {value: Object, type: string, sessionID: string, createdAt: firebase.firestore.FieldValue | null}): Promise<void | DocumentReference<any>> {
+    val.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+    return this.pollRef.add(val).catch((reason) => {
       console.error(reason);
       alert(`Ouch! Something went wrong saving your feedback!`)
     });
