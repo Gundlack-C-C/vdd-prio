@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Input, Output, EventEmitter } from '@angular/core'
+import { Output, EventEmitter } from '@angular/core'
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mental-feedback-form',
@@ -60,9 +59,7 @@ export class MentalFeedbackFormComponent {
 
   prio: number[][] = [[], []]
 
-  constructor(private router: Router,  private formBuilder: FormBuilder) {
-
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   getPrioGraphData(i: number): { label: string; value: number }[] {
     return this.items[i].items.map((item) => {
@@ -70,19 +67,18 @@ export class MentalFeedbackFormComponent {
     })
   }
 
-
   getPageSymbol(index: number) {
     return this.pages[index - 1];
   }
 
-  handlePrioChanged(prio: number[], index: number) {
+  handlePrioSubmit(prio: number[], index: number) {
     this.page = index + 3;
 
-    prio.forEach((p: number, i: number) => {
-      this.items[index].items[i].value = p
-    })
-
     this.prio[index] = prio
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   copyCode() {

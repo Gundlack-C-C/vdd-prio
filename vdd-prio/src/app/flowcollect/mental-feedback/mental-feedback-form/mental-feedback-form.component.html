@@ -18,7 +18,7 @@
       <markdown class="variable-binding" [data]="item.description"></markdown>
     </div>
     <div>
-      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioChanged)="handlePrioChanged($event, i)">
+      <app-prio-const-sum [items]="item.items" [maxSum]="item.constSum" (onPrioSubmit)="handlePrioSubmit($event, i)">
       </app-prio-const-sum>
     </div>
   </div>
