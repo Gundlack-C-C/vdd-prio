@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./mental-feedback-app.component.css']
 })
 export class MentalFeedbackAppComponent implements OnInit {
-  private sectionID: string | null = null
+  sectionID: string | null = null
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe((params) => {
       console.log(params)

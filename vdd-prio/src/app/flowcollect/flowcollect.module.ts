@@ -16,6 +16,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { FeedbackService } from './feedback.service';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
     MentalDashboardComponent,
     MentalFeedbackAppComponent
   ],
+  providers: [FeedbackService],
   exports: [
     MentalFeedbackAppComponent
   ]
