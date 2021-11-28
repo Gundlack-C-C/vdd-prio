@@ -1,27 +1,25 @@
-<form [formGroup]="prioForm" (ngSubmit)="onSubmit()">
-  <div class="small p-2">Zuordnen {{maxSum-SUM}} Punkte</div>
-  <div *ngFor="let item of items; index as i" class="row align-items-center pr-2 pl-2 mt-2">
-    <div class="col-12">
-      <label class="font-weight-bold">{{item.label}}</label>
-    </div>
-    <div class="col-12">
-      <input type="range" class="form-range form-control" [id]="'prio-'+i" [formControlName]="'prio-'+i" [(ngModel)]="item.value">
-    </div>
-    <div class="col-12">
-      <div class="form-row p-0">
-        <div class="col-3 text-left">
-          0
-        </div>
-        <div class="col-6 text-center">
-          {{item.value}}
-        </div>
-        <div class="col-3 text-right">
-          100
-        </div>
+<!--<div class="small p-2">Zuordnen {{maxSum-SUM}} Punkte</div>-->
+<div *ngFor="let item of items; index as i" class="row align-items-center pr-2 pl-2 mt-2">
+  <div class="col-12">
+    <label class="font-weight-bold">{{item.label}}</label>
+  </div>
+  <div class="col-12">
+    <input type="range" class="form-range form-control" [id]="'prio-'+i" [value]="item.value" [(ngModel)]="item.value" (change)="onValueChanged(i, item)" >
+  </div>
+  <div class="col-12">
+    <div class="form-row p-0">
+      <div class="col-3 text-left">
+        0
+      </div>
+      <div class="col-6 text-center">
+        {{item.value}}
+      </div>
+      <div class="col-3 text-right">
+        100
       </div>
     </div>
   </div>
-  <div class="p-2">
-    <button class="form-control btn btn-sm btn-primary" type="submit">Save</button>
-  </div>
-</form>
+</div>
+<div class="p-2">
+  <button class="form-control btn btn-sm btn-primary" (click)="onSubmit()">Save</button>
+</div>
