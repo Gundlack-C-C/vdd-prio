@@ -1,0 +1,18 @@
+<div class="d-flex vh-100">
+  <div class="container align-self-center">
+    <div class="card p-4" [ngSwitch]="_view">
+      <ng-template [ngSwitchCase]="'forgot-password'">
+        <app-ForgotPassword></app-ForgotPassword>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'verify-email'">
+        <app-VerifyEmail></app-VerifyEmail>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'sign-up'">
+        <app-SignUp></app-SignUp>
+      </ng-template>
+      <ng-template [ngSwitchDefault]>
+        <app-SignIn></app-SignIn>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,8 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FeedbackService } from './feedback.service';
 import { BusinessAppComponent } from './business-app/business-app.component';
+import { BusinessLandingpageComponent } from './business-landingpage/business-landingpage.component';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { BusinessAppComponent } from './business-app/business-app.component';
     GraphicsModule,
     NgbModule,
     SectionModule,
+    AuthModule,
     MarkdownModule.forChild(),
     FontAwesomeModule
   ],
@@ -38,14 +41,17 @@ import { BusinessAppComponent } from './business-app/business-app.component';
     MentalFeedbackFormComponent,
     MentalDashboardComponent,
     MentalFeedbackAppComponent,
-    BusinessAppComponent
+    BusinessAppComponent,
+    BusinessLandingpageComponent
   ],
   providers: [FeedbackService],
   exports: [
     MentalFeedbackAppComponent,
-    BusinessAppComponent
+    BusinessAppComponent,
+    BusinessLandingpageComponent
   ]
 })
+
 export class FlowcollectModule {
   constructor(library: FaIconLibrary) {
     // Add an icon to the library for convenient access in other components

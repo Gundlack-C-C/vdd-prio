@@ -20,6 +20,7 @@ import { AgileManifestModule } from './agile-manifest/agile-manifest.module';
 import { FlowcollectModule } from './flowcollect/flowcollect.module';
 import { BusinessAdminModule } from './business-admin/business-admin.module';
 import { SectionAdminModule } from './section-admin/section-admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { SectionAdminModule } from './section-admin/section-admin.module';
     AgileManifestModule,
     FlowcollectModule,
     BusinessAdminModule,
-    SectionAdminModule
+    SectionAdminModule,
+    AuthModule
   ],
   declarations: [
     AppComponent,

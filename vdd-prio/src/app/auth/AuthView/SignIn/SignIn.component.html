@@ -1,0 +1,31 @@
+
+<div>
+  <div class="authBlock p-2">
+    <b>Anmelden</b>
+    <div class="formGroup pb-1">
+      <input type="text" class="form-control" placeholder="Email-Adresse" #userName required>
+    </div>
+
+    <div class="formGroup pb-1">
+      <input type="password" class="form-control" placeholder="Passwort" #userPassword required (keyup.enter)="ngAuthService.SignIn(userName.value, userPassword.value)">
+    </div>
+
+    <div class="formGroup mb-2">
+      <input type="button" class="btn btn-primary btn-block" value="Anmelden"
+        (click)="ngAuthService.SignIn(userName.value, userPassword.value)">
+    </div>
+    <div class="forgotPassword text-right" role="button">
+      <small class="text-muted"><span (click)="forgetPasswortClick()">Passwort Vergessen?</span></small>
+    </div>
+  </div>
+
+  <div class="registerBlock p-2">
+    <b>Noch kein Konto?<br>
+    Dann erstelle eins:</b>
+    <div class="formGroup mb-2">
+      <div role="button" class="btn btn-sm btn-outline-secondary" (click)="signUpClick()" >
+        Anmelden
+      </div>
+    </div>
+  </div>
+</div>

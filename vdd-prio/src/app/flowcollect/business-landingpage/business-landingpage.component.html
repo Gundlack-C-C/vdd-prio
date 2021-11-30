@@ -1,0 +1,30 @@
+<div id="landing-page" class="d-flex flex-grow-1 h-100">
+  <div class="flex-grow-1 row">
+    <div class="col-12 col-md-8">
+      <div id="landing-msg" class="container pt-md-5 pt-2">
+        <h2>Flowcollect</h2>
+        <h3>Digital Health</h3>
+        <h4 class="text-secondary">Mentale Gesundheit</h4>
+        <h4 class="text-secondary">Für jeden Mitarbeiter</h4>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 bg-light">
+      <div class="pt-md-5">
+        <div  [ngSwitch]="_view">
+          <ng-template [ngSwitchCase]="'forgot-password'">
+            <app-ForgotPassword></app-ForgotPassword>
+          </ng-template>
+          <ng-template [ngSwitchCase]="'verify-email'">
+            <app-VerifyEmail></app-VerifyEmail>
+          </ng-template>
+          <ng-template [ngSwitchCase]="'sign-up'">
+            <app-SignUp></app-SignUp>
+          </ng-template>
+          <ng-template [ngSwitchDefault]>
+            <app-SignIn></app-SignIn>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

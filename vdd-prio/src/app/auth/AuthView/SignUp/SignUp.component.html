@@ -1,0 +1,16 @@
+<div class="authBlock p-2">
+  <b>Neues Konto anlegen</b>
+
+  <div class="formGroup pb-1">
+    <input type="email" class="form-control" placeholder="Email-Adresse" #userEmail required>
+  </div>
+
+  <div class="formGroup pb-1">
+    <input type="password" class="form-control" placeholder="Passwort" #userPwd required>
+  </div>
+
+  <div class="formGroup mb-2">
+    <input type="button" class="btn btn-block btn-primary" value="Registrieren"
+      (click)="ngAuthService.SignUp(userEmail.value, userPwd.value)">
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div [class.text-secondary]="!loggedin" [class.text-dark]="loggedin">
+  <h4 role="button" [ngbTooltip]="profile" container="body" [autoClose]="'outside'" triggers="click">
+    <fa-icon [icon]="['fas', 'user-circle']"></fa-icon>
+  </h4>
+</div>
+
+<ng-template #profile>
+  <div *ngIf="loggedin">
+    <div>Hallo,&nbsp;<b>{{name}}</b>!</div>
+    <button class="col-12 btn btn-sm btn-secondary" (click)="logout()">Logout</button>
+  </div>
+  <div *ngIf="!loggedin">
+    <div>Du bist nicht <b>angemeldet</b>.</div>
+  </div>
+</ng-template>
