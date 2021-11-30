@@ -28,6 +28,13 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
+            "name": "Flowcollect-App-Business",
+            "url": "http://localhost:4200/flowcollect-app-unternehmer",
+            "webRoot": "${workspaceFolder}/vdd-prio"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
             "name": "Flowcollect-Business-Admin",
             "url": "http://localhost:4200/flowcollect-business-admin",
             "webRoot": "${workspaceFolder}/vdd-prio"

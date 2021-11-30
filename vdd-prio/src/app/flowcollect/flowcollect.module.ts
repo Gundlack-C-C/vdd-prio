@@ -17,6 +17,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FeedbackService } from './feedback.service';
+import { BusinessAppComponent } from './business-app/business-app.component';
 
 @NgModule({
   imports: [
@@ -36,11 +37,13 @@ import { FeedbackService } from './feedback.service';
     MentalFeedbackComponent,
     MentalFeedbackFormComponent,
     MentalDashboardComponent,
-    MentalFeedbackAppComponent
+    MentalFeedbackAppComponent,
+    BusinessAppComponent
   ],
   providers: [FeedbackService],
   exports: [
-    MentalFeedbackAppComponent
+    MentalFeedbackAppComponent,
+    BusinessAppComponent
   ]
 })
 export class FlowcollectModule {

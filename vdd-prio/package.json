@@ -27,6 +27,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@types/d3": "7.1.0",
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^4.5.0",
     "echarts": "5.2.2",
@@ -37,7 +38,8 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "uuid": "^8.3.2",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "d3": "7.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.11",

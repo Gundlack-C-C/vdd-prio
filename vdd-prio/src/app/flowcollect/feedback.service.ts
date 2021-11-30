@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
 import firebase from "firebase/app";
+import { Observable } from 'rxjs';
 
 export class POLL {
   values: number[][] = [];
   type: string = "";
-  sessionID: string = ""
+  pollID: string = ""
+}
+
+export class POLLSTAT {
+  T: number[] = [];
+  values: number[][][] = [];
+  type: string = "";
+  pollID: string = "";
 }
 
 @Injectable({
@@ -19,6 +27,11 @@ export class FeedbackService {
     this.pollRef = this.store.collection('polls');
   }
 
+  getPolls(id: string): Observable<any> {
+    let polls =  this.store.collection<any>('polls', ref => ref.where('pollID', '==', id));
+    return polls.valueChanges();
+  }
+
   saveFeedback(val: POLL): Promise<void | DocumentReference<any>> {
     if(this.docRef) {
       return this.updateFeedback(val);
@@ -29,7 +42,7 @@ export class FeedbackService {
         1: val.values[0],
         2: val.values[1]
       },
-      sessionID: val.sessionID,
+      pollID: val.pollID,
       type: val.type,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }

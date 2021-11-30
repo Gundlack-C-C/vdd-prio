@@ -19,7 +19,7 @@ export class MentalFeedbackComponent implements OnInit {
       var poll = new POLL();
       poll.values = val;
       poll.type= 'mental';
-      poll.sessionID = this.sectionID;
+      poll.pollID = this.sectionID;
       this.feedback_service.saveFeedback(poll)
     }
   }
