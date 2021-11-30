@@ -1,8 +1,37 @@
 <div>
-  business-app works!
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="/assets/img/logo_big.png" alt="">
+    </a>
+    <div class="text-right">
+      <div><b>Unternehmensansicht</b></div>
+      <div class="small">Alle Informationen über Ihr Unternehmen</div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="card bg-dark text-light offset-6 col-6 mt-2 p-2">
+      <h5>Umfragen</h5>
+      <div class="d-flex">
+        <div *ngFor="let item of polls; index as i" class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              {{item}}
+            </div>
+          </div>
+          <input  class="form-control" type="text" [value]="HostURL + PollURL + '/' + item" [id]="'pollurl-input-' + i">
+          <div class="input-group-append">
+            <button class="btn btn-info" (click)="copyURL('pollurl-input-' + i)">COPY<fa-icon [icon]="['fas', 'copy']"
+              class="ml-2"></fa-icon></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <hr>
-  {{sections | json}}
-  <hr>
-  {{data | json}}
-  <app-mental-dashboard *ngIf="loaded" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
+  <div class="container-fluid mb-4">
+    <div class="card bg-info text-light p-2">
+      <h2>Unternehmens Dashboard</h2>
+    </div>
+    <app-mental-dashboard *ngIf="loaded" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
+  </div>
 </div>

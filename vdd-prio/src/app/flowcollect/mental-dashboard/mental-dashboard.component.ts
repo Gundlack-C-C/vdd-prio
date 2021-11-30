@@ -46,7 +46,6 @@ export class MentalDashboardComponent implements OnChanges {
       this.ursachen.forEach((item, i) => {
         this.prio_B[i].value = item;
       })
-      console.log(changes)
     }
   }
 

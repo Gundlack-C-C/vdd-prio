@@ -72,13 +72,18 @@ export class BusinessAppComponent implements OnInit {
 
       this.dates = Array.from(d3.group(this.data, d => d.T).keys())
       this.loaded = true;
-
     });
   }
 
   ngOnInit() {
   }
 
+  get PollURL() {
+    return "/flowcollect-app"
+  }
+  get HostURL() {
+    return window.location.host;
+  }
   get Sympthome() {
     return this.sections["0"]
   }
@@ -89,5 +94,15 @@ export class BusinessAppComponent implements OnInit {
 
   get Dates() {
     return this.dates;
+  }
+
+  copyURL(id: string) {
+    var domElement = document.getElementById(id);
+    if(domElement && domElement instanceof HTMLInputElement) {
+      domElement.select()
+      document.execCommand('copy')
+      domElement.setSelectionRange(0,0)
+    }
+
   }
 }
