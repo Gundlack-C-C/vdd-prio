@@ -4,6 +4,5 @@
   {{sections | json}}
   <hr>
   {{data | json}}
-
-
+  <app-mental-dashboard *ngIf="loaded" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
 </div>

@@ -25,13 +25,21 @@ function getDictionaryArray(items: any[]) {
   return data;
 }
 
-function getSectionStatistics(items: {key: string, val: number, T: string, section: string}[]) {
+function getSectionStatistics(items: {key: string, val: number, T: string, section: string}[], d3_format=false) {
   let section_group = d3.group(items, d => d.section)
   let statistics: {[section: string]: any[]} = {};
   section_group.forEach((item, section)=>{
-    let stats: any[][] = [['key'].concat(...d3.group(item, d=> d.T).keys())]
+    let stats: any[][] = [];
+
+    if(d3_format)
+      stats.push(['key'].concat(...d3.group(item, d=> d.T).keys()))
+
     d3.group(item, d => d.key, d=>d.T).forEach((item_key, key) => {
-      let key_stats = [key];
+      let key_stats = [];
+
+      if(d3_format)
+        key_stats.push(key);
+
       item_key.forEach((item_T, T) => {
         let med = d3.median(item_T, d=>d.val)
         key_stats.push(med ? med.toString() : "0")
@@ -53,6 +61,8 @@ export class BusinessAppComponent implements OnInit {
   polls: string[] = ['test'];
   sections: {[section: string]: any[]} = {}
   data: {key: string, val: number, T: string, section: string}[] = []
+  dates: any[] = [];
+  loaded = false
   constructor(private feedback_servcie: FeedbackService) {
     this.feedback_servcie.getPolls('test').subscribe((items: any[]) => {
 
@@ -60,10 +70,24 @@ export class BusinessAppComponent implements OnInit {
 
       this.sections = getSectionStatistics(this.data);
 
+      this.dates = Array.from(d3.group(this.data, d => d.T).keys())
+      this.loaded = true;
+
     });
   }
 
   ngOnInit() {
   }
 
+  get Sympthome() {
+    return this.sections["0"]
+  }
+
+  get Ursachen() {
+    return this.sections["1"]
+  }
+
+  get Dates() {
+    return this.dates;
+  }
 }

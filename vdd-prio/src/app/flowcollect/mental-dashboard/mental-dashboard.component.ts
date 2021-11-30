@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-mental-dashboard',
   templateUrl: './mental-dashboard.component.html',
   styleUrls: ['./mental-dashboard.component.css']
 })
-export class MentalDashboardComponent implements OnInit {
+export class MentalDashboardComponent implements OnChanges {
+  @Input() sympthome: any[] = []
+  @Input() ursachen: any[] = []
+  @Input() dates: any[] = []
 
   prio_A: {label: string, value: number[]}[] = [
     {label: 'Meine Tätigkeit', value: [56.5, 82.1, 88.7, 70.1, 53.4, 85.1]},
@@ -16,6 +19,7 @@ export class MentalDashboardComponent implements OnInit {
     {label: 'Antriebslosigkeit', value: [25.2, 37.1, 41.2, 18, 33.9, 49.1]},
     {label: 'Sinnhaftigkeit der Aufgabe', value: [25.2, 37.1, 41.2, 18, 33.9, 49.1]}
   ]
+
   prio_B: {label: string, value: number[]}[] = [
     {label: 'Vorgesetzter', value: [56.5, 82.1, 88.7, 70.1, 53.4, 85.1]},
     {label: 'Kollege', value: [51.1, 51.4, 55.1, 53.3, 73.8, 68.7]},
@@ -30,7 +34,20 @@ export class MentalDashboardComponent implements OnInit {
   date: string = 'Jan'
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.sympthome || changes.ursachen || changes.dates){
+      this.T = this.dates;
+      this.date = this.dates[0];
+
+      this.sympthome.forEach((item, i) => {
+        this.prio_A[i].value = item;
+      })
+
+      this.ursachen.forEach((item, i) => {
+        this.prio_B[i].value = item;
+      })
+      console.log(changes)
+    }
   }
 
 }
