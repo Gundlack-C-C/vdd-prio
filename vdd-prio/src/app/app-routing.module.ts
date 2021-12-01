@@ -6,11 +6,9 @@ import { AuthViewComponent } from './auth/AuthView/AuthView.component';
 import { BusinessAdminComponent } from './business-admin/business-admin.component';
 import { BusinessAppComponent } from './flowcollect/business-app/business-app.component';
 import { BusinessLandingpageComponent } from './flowcollect/business-landingpage/business-landingpage.component';
-import { FlowcollectComponent } from './flowcollect/flowcollect.component';
 import { MentalDashboardComponent } from './flowcollect/mental-dashboard/mental-dashboard.component';
 import { MentalFeedbackAppComponent } from './flowcollect/mental-feedback-app/mental-feedback-app.component';
 import { GraphicsDemoComponent } from './graphics/graphics-demo/graphics-demo.component';
-import { HomeComponent } from './Home/Home.component';
 import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
 import { PollDetailViewComponent } from './poll/poll-detail-view/poll-detail-view.component';
 import { PollSectionComponent } from './poll/poll-section/poll-section.component';
@@ -27,11 +25,6 @@ const routes: Routes = [
   { path: 'flowcollect-app/:sectionID', component: MentalFeedbackAppComponent},
   {
     path: 'flowcollect-app-unternehmer',
-    component: BusinessAppComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'flowcollect-app-unternehmer/:businessID',
     component: BusinessAppComponent,
     canActivate: [AuthGuard]
   },
