@@ -14,9 +14,9 @@ export class AuthNavItemComponent implements OnInit {
   }
 
   get name(): string {
-    return this.ngAuthService.userState.email
+    return this.ngAuthService.Name;
   }
-  
+
   get loggedin() : boolean {
     return this.ngAuthService.isLoggedIn
   }

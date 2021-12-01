@@ -16,7 +16,7 @@ export class SectionAdminComponent implements OnChanges {
 
   ngOnChanges(change: SimpleChanges) {
     if(change.businessID) {
-        this.section_service.getSections(this.businessID).then((items)=>{
+        this.section_service.getSectionsFromBiz(this.businessID).then((items)=>{
           this.section_service.items?.subscribe((items)=>{
             this.items = items;
           })

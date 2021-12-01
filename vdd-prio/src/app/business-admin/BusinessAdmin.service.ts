@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Subject } from 'rxjs';
+import { AngularFirestore} from '@angular/fire/firestore';
+
+import { Resolve } from '@angular/router'
+import { Observable, Subject } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Section, SectionAdminService } from '../section-admin/section-admin.service';
 
 export class Business {
@@ -8,12 +11,13 @@ export class Business {
   description: string = "";
   id: string = "";
   sections: string[] = [];
-
+  uid: string = "";
   toObj() {
     return {
       name: this.name,
       description: this.description,
-      sections: this.sections
+      sections: this.sections,
+      uid: this.uid
     }
   }
 }
@@ -32,7 +36,36 @@ export class BusinessAdminService {
     });
   }
 
-  createBusiness(value: Business): Promise<string> {
+  getBusiness(uid: string, create_if_none = true): Promise<Observable<any>> {
+    let bizRef =  this.store.collection<any>('business', ref => ref.where('uid', '==', uid));
+    return new Promise(async (resolve, reject) => {
+      const docExisting = await this.isBusinessExisting(uid)
+      if(docExisting) {
+        resolve(bizRef.valueChanges({idField: 'id'}));
+      } else {
+        let biz = new Business();
+        biz.uid = uid;
+        await this.createBusiness(biz).then((item: Business) => {
+          resolve(bizRef.valueChanges({idField: 'id'}));
+        });
+      }
+    })
+  }
+
+  isBusinessExisting(uid: string): Promise<boolean> {
+    let bizRef =  this.store.collection<any>('business', ref => ref.where('uid', '==', uid));
+    return new Promise<boolean>(async (resolve,reject) => {
+      bizRef.get().toPromise().then((items: any)=>{
+        if(items.empty) {
+          resolve(false);
+        } else {
+          resolve(true);
+        }
+      });
+    })
+  }
+
+  createBusiness(value: Business): Promise<Business> {
     return new Promise((resolve, reject) => {
 
       this.store.collection('business').add(value.toObj()).then((bizDoc)=> {
@@ -44,7 +77,9 @@ export class BusinessAdminService {
         value.id = bizDoc.id;
         this.section_serice.createSection(section).then((doc) => {
           value.sections.push(doc.id);
-          this.updateBusiness(value).then(() => resolve(bizDoc.id)).catch(reject)
+          this.updateBusiness(value).then((item: Business) => {
+            resolve(item)
+          }).catch(reject)
         }).catch(reject);
       }).catch(reject);
     });
@@ -53,10 +88,12 @@ export class BusinessAdminService {
 
   updateBusiness(value: Business): Promise<any> {
     if(value.id) {
-      return this.store.collection('business').doc(value.id).set(value.toObj()).catch((reason: any) => {
+      let req = this.store.collection('business').doc(value.id).set(value.toObj())
+      req.catch((reason: any) => {
         console.error(`Somethig went wrong - ${reason}`)
         alert(reason)
       });
+      return req;
     } else {
       return this.createBusiness(value);
     }

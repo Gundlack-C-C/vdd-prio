@@ -20,6 +20,7 @@ import { FeedbackService } from './feedback.service';
 import { BusinessAppComponent } from './business-app/business-app.component';
 import { BusinessLandingpageComponent } from './business-landingpage/business-landingpage.component';
 import { AuthModule } from '../auth/auth.module';
+import { BusinessAdminModule } from '../business-admin/business-admin.module';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { AuthModule } from '../auth/auth.module';
     GraphicsModule,
     NgbModule,
     SectionModule,
+    BusinessAdminModule,
     AuthModule,
     MarkdownModule.forChild(),
     FontAwesomeModule

@@ -76,7 +76,20 @@ export class SectionAdminService {
   constructor(private store: AngularFirestore) {
   }
 
-  getSections(businessID: string): Promise<Section[]> {
+  getSection(sectionID: string): Promise<Section | null> {
+    return new Promise(async (resolve, reject) => {
+      this.store.collection<Section>('sections').doc(sectionID).get().toPromise().then((res: any)=>{
+        if(res.exists) {
+          resolve(res.data());
+        } else {
+          reject(`Section does not exist! ${sectionID}`)
+        }
+
+      }).catch((reason)=> reject(reason));
+    })
+  }
+
+  getSectionsFromBiz(businessID: string): Promise<Section[]> {
     return new Promise((resolve, reject) => {
       if(businessID !== this._businessID) {
         this._businessID = businessID;

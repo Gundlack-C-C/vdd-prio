@@ -19,7 +19,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-    userState: any;
+    userState!: firebase.User | null;
     authChanged = new Subject<User.UserInfo | null>()
     constructor(
       public afs: AngularFirestore,
@@ -27,7 +27,7 @@ export class AuthService {
       public router: Router,
       public ngZone: NgZone
     ) {
-      this.afAuth.authState.subscribe(user => {
+      this.afAuth.authState.subscribe((user: firebase.User | null) => {
         if (user) {
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(this.userState));
@@ -40,6 +40,13 @@ export class AuthService {
 
         this.authChanged.next(user);
       });
+    }
+    get Name(): string {
+      if(this.userState && this.userState.email) {
+        return this.userState.email;
+      } else {
+        return "UNKOWN";
+      }
     }
 
     SignIn(email: string, password: string) {
@@ -91,7 +98,10 @@ export class AuthService {
         return false
 
       const user_obj = JSON.parse(user);
-      return (user_obj !== null && user_obj['emailVerified'] !== false) ? true : false;
+      const isLoggedIn = (user_obj !== null && user_obj['emailVerified'] !== false) ? true : false;
+      if(!this.userState && isLoggedIn)
+        this.userState = user_obj;
+      return isLoggedIn;
     }
 
     AuthLogin(provider: firebase.auth.AuthProvider) {
