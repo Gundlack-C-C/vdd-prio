@@ -3,8 +3,8 @@ nav img {
 }
 
 .btn-fixed-width {
-  min-width: 100px !important;
-  max-width: 100px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
   text-overflow: ellipsis !important;
   display: block;
   overflow: hidden;
