@@ -39,16 +39,20 @@ export class BusinessAppComponent {
         bizRef.subscribe((business: Business[]) => {
           this.business = business[0];
           this.status = 1;
-          this.loadSections(this.business.sections[0]).then((section: Section) => {
-            this.business_sections.push(section);
-            this.polls.push(section.pollID);
+
+          Promise.all(this.business.sections.map((sectionID: string)=> {
+            return this.loadSection(sectionID)
+          })).then((sections: Section[]) => {
+            this.business_sections = sections;
+            this.polls = sections.map((section:Section) => section.pollID);
+            this.polls.push("test");
           });
         });
       });
     }
   }
 
-  loadSections(sectionID: string): Promise<any> {
+  loadSection(sectionID: string): Promise<any> {
     return this.section_service.getSection(sectionID);
   }
 

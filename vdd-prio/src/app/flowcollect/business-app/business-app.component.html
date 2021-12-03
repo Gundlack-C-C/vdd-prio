@@ -16,12 +16,10 @@
   <div class="container-fluid">
     <div class="card bg-dark text-light offset-6 col-6 mt-2 p-2">
       <h5>Umfragen</h5>
-      <div *ngFor="let item of polls; index as i" class="d-flex">
+      <div *ngFor="let item of polls; index as i" class="d-flex mb-2">
         <div  class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text">
-              {{item}}
-            </div>
+            <button class=" btn btn-secondary btn-fixed-width">{{item}}</button>
           </div>
           <input  class="form-control" type="text" [value]="HostURL + PollURL + '/' + item" [id]="'pollurl-input-' + i">
           <div class="input-group-append">
