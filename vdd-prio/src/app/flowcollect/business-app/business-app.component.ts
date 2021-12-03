@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Business, BusinessAdminService } from 'src/app/business-admin/BusinessAdmin.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Section, SectionAdminService } from 'src/app/section-admin/section-admin.service';
@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-business-app',
   templateUrl: './business-app.component.html',
-  styleUrls: ['./business-app.component.css']
+  styleUrls: ['./business-app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BusinessAppComponent {
   polls: string[] = ['test'];

@@ -2,7 +2,11 @@ nav img {
   height: 50px;
 }
 
-
-btn.btn-fixed-width {
-  
+.btn-fixed-width {
+  min-width: 100px !important;
+  max-width: 100px !important;
+  text-overflow: ellipsis !important;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
 }
