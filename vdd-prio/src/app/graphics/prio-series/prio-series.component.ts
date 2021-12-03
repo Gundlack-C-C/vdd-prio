@@ -16,6 +16,9 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
   ]
 
   @Input() T: string[] = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
+  @Input() displayOptions = {
+    showDateSelect: false
+  }
 
   @ViewChild("myChart")
   myChart!: ElementRef;
