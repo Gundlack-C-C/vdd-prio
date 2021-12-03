@@ -21,6 +21,7 @@ import { BusinessAppComponent } from './business-app/business-app.component';
 import { BusinessLandingpageComponent } from './business-landingpage/business-landingpage.component';
 import { AuthModule } from '../auth/auth.module';
 import { BusinessAdminModule } from '../business-admin/business-admin.module';
+import { MentalDashboardViewComponent } from './mental-dashboard-view/mental-dashboard-view.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { BusinessAdminModule } from '../business-admin/business-admin.module';
     MentalFeedbackComponent,
     MentalFeedbackFormComponent,
     MentalDashboardComponent,
+    MentalDashboardViewComponent,
     MentalFeedbackAppComponent,
     BusinessAppComponent,
     BusinessLandingpageComponent

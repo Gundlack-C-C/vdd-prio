@@ -16,8 +16,8 @@
   <div class="container-fluid">
     <div class="card bg-dark text-light offset-6 col-6 mt-2 p-2">
       <h5>Umfragen</h5>
-      <div class="d-flex">
-        <div *ngFor="let item of polls; index as i" class="input-group">
+      <div *ngFor="let item of polls; index as i" class="d-flex">
+        <div  class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">
               {{item}}
@@ -35,8 +35,15 @@
   <hr>
   <div class="container-fluid mb-4">
     <div class="card bg-info text-light p-2">
-      <h2>Unternehmens Dashboard</h2>
+      <div class="card-header">
+        <h2>Unternehmens Dashboard</h2>
+      </div>
+      <div class="card-body p-0">
+        <app-mental-dashboard-view [pollID]="pollSelected"></app-mental-dashboard-view>
+      </div>
+      <div class="card-footer">
+        <small><b>Poll:</b>&nbsp;{{pollSelected}}</small>
+      </div>
     </div>
-    <app-mental-dashboard *ngIf="loaded" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
   </div>
 </div>

@@ -1,40 +1,35 @@
-<div class="container-fluid">
-    <div class="col-12">
+<div>
+    <div class="container-fluid p-0">
       <div class="d-flex flex-row pb-4 pt-4">
-        <div class=" flex-grow-60 mr-auto">
-          <!--You can put something here-->
-        </div>
-        <div class="d-flex flex-grow-40">
+        <div class="d-flex flex-grow-1">
           <select class="form-control" [(ngModel)]="date">
             <option *ngFor="let item of T">{{item}}</option>
           </select>
         </div>
       </div>
     </div>
-    <div class="row pr-4 pl-4">
-      <div class="col-xs-12 col-6 p-0 pr-2">
-        <div class="card container-fluid p-0">
+    <div class="row m-0">
+      <div class="col-12 col-md-6 p-0 pr-2">
+        <div class="card">
           <div class="card-header bg-dark text-light">
             <h5>Sympthome</h5>
             <div class="small">Sympthome für Mitarbeiter Stress (<b class="font-italic">Mittelwert</b>).</div>
           </div>
-          <div class="card-body">
+          <div class="card-body p-2">
             <app-prio-series [prio]="prio_A" [T]="T" [date]="date"></app-prio-series>
           </div>
         </div>
       </div>
-      <div class="col-xs-12 col-6 p-0 pl-2">
-        <div class="card container-fluid p-0">
+      <div class="col-12 col-md-6 p-0 pl-2">
+        <div class="card">
           <div class="card-header bg-dark text-light">
             <h5>Ursachen</h5>
             <div class="small">Quellen von Mitarbeiter Stress (<b class="font-italic">Mittelwert</b>).</div>
           </div>
-          <div class="card-body">
+          <div class="card-body p-2">
             <app-prio-series [prio]="prio_B" [T]="T" [date]="date"></app-prio-series>
           </div>
         </div>
       </div>
     </div>
-
-
 </div>
