@@ -21,6 +21,9 @@ export class MentalDashboardViewComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if(changes.pollID) {
       this.loading = true;
+      this.data = [];
+      this.sections = {"0": [], "1": []};
+      this.dates = [];
       this.loadPoll(this.pollID).finally(()=> {
         this.loading = false
       });
@@ -30,19 +33,23 @@ export class MentalDashboardViewComponent implements OnChanges {
   loadPoll(pollID: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.feedback_servcie.getPolls(pollID).subscribe((items: any[]) => {
+        if(items.length) {
+          this.data = getDictionaryArray(items);
 
-        this.data = getDictionaryArray(items);
+          this.sections = getSectionStatistics(this.data);
 
-        this.sections = getSectionStatistics(this.data);
-
-        this.dates = Array.from(d3.group(this.data, d => d.T).keys())
-
+          this.dates = Array.from(d3.group(this.data, d => d.T).keys())
+        }
         resolve(true)
       });
     });
   }
 
-  get Sympthome() {
+  get isDataAvailable() {
+    return this.data.length > 0;
+  }
+
+  get Symptome() {
     return this.sections["0"]
   }
 
@@ -54,4 +61,21 @@ export class MentalDashboardViewComponent implements OnChanges {
     return this.dates;
   }
 
+
+  get PollURL() {
+    return window.location.host + "/flowcollect-app/" + this.pollID;
+  }
+
+  openPoll() {
+    window.open(this.PollURL, '_blank');
+  }
+
+  copyURL(id: string) {
+    var domElement = document.getElementById(id);
+    if(domElement && domElement instanceof HTMLInputElement) {
+      domElement.select()
+      document.execCommand('copy')
+      domElement.setSelectionRange(0,0)
+    }
+  }
 }

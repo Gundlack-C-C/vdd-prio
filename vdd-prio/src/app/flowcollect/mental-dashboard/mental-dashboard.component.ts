@@ -6,7 +6,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   styleUrls: ['./mental-dashboard.component.css']
 })
 export class MentalDashboardComponent implements OnChanges {
-  @Input() sympthome: any[] = []
+  @Input() symptome: any[] = []
   @Input() ursachen: any[] = []
   @Input() dates: any[] = []
 
@@ -39,7 +39,7 @@ export class MentalDashboardComponent implements OnChanges {
       this.T = this.dates;
       this.date = this.dates[0];
 
-      this.sympthome.forEach((item, i) => {
+      this.symptome.forEach((item, i) => {
         this.prio_A[i].value = item;
       })
 

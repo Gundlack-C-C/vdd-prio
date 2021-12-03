@@ -1,4 +1,25 @@
-<app-mental-dashboard *ngIf="!loading; else loadingData" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
+<div *ngIf="!loading; else loadingData">
+  <div class="alert mt-3 mb-0" [class.alert-warning]="!isDataAvailable" [class.alert-secondary]="isDataAvailable">
+    <div class="col-12 col-lg-6 col-md-8 p-0">
+      <div  class="input-group mb-2">
+        <div class="input-group-prepend">
+          <button class=" btn btn-secondary btn-fixed-width" [title]="pollID" (click)="openPoll()">{{pollID}}</button>
+        </div>
+        <input  class="form-control" type="text" [value]="PollURL" [id]="'pollurl-input-' + pollID">
+        <div class="input-group-append">
+          <button class="btn btn-info" (click)="copyURL('pollurl-input-' + pollID)">COPY<fa-icon [icon]="['fas', 'copy']"
+            class="ml-2"></fa-icon></button>
+        </div>
+      </div>
+    </div>
+    <div>
+      Um Mitarbeiter zum mentalen Gesundheitsprogramm einzuladen, verwenden Sie den obenen angegebenen Link.
+    </div>
+    <h3 *ngIf="!isDataAvailable">Keine Daten vorhanden</h3>
+  </div>
+  <app-mental-dashboard *ngIf="isDataAvailable" [symptome]="Symptome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
+</div>
+
 <ng-template #loadingData>
   <div class="alert alert-info p-2">
     Loading Data ...
