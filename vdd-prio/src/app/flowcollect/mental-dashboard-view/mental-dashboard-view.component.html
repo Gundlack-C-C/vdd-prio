@@ -1,0 +1,7 @@
+<app-mental-dashboard *ngIf="!loading; else loadingData" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
+<ng-template #loadingData>
+  <div class="alert alert-info p-2">
+    Loading Data ...
+    {{loading}}
+  </div>
+</ng-template>
