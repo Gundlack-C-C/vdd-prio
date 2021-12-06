@@ -42,7 +42,7 @@ export class PrioBarchartComponent implements OnChanges {
     ];
     let series = [
       {
-        name: 'Direct',
+        name: 'Mittel',
         type: 'bar',
         barWidth: '60%',
         data: this.prio.map((item) => item.value)
