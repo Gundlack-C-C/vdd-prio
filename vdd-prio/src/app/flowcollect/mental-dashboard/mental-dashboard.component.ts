@@ -48,5 +48,7 @@ export class MentalDashboardComponent implements OnChanges {
       })
     }
   }
-
+  handleTimeLineChnaged(index_T: number) {
+    this.date = this.T[index_T];
+  }
 }

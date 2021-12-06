@@ -1,6 +1,6 @@
 <div class="container-fluid p-0">
-  <select *ngIf="displayOptions.showDateSelect" class="form-control m-0 mb-2" [(ngModel)]="date" (change)="onTimelineChanged()">
-    <option *ngFor="let item of T">{{item}}</option>
-  </select>
-  <div #myChart class="col-12 vh-100 p-0"></div>
+  <div class="col-12 text-secondary text-right mb-2">
+    <small><b>{{date}}</b></small>
+  </div>
+  <div #myChart class="col-12 echarts-container"></div>
 </div>

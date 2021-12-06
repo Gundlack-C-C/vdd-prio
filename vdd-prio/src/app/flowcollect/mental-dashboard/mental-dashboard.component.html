@@ -9,25 +9,25 @@
       </div>
     </div>
     <div class="row m-0">
-      <div class="col-12 col-md-6 p-0 pr-2">
+      <div class="col-12 col-md-6 p-0 pr-md-2 mb-md-2">
         <div class="card">
           <div class="card-header bg-dark text-light">
             <h5>Sympthome</h5>
             <div class="small">Sympthome für Mitarbeiter Stress (<b class="font-italic">Mittelwert</b>).</div>
           </div>
           <div class="card-body p-2">
-            <app-prio-series [prio]="prio_A" [T]="T" [date]="date"></app-prio-series>
+            <app-prio-series [prio]="prio_A" [T]="T" [date]="date" (onTimeLineChanged)="handleTimeLineChnaged($event)"></app-prio-series>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-6 p-0 pl-2">
+      <div class="col-12 col-md-6 p-0 pl-md-2">
         <div class="card">
           <div class="card-header bg-dark text-light">
             <h5>Ursachen</h5>
             <div class="small">Quellen von Mitarbeiter Stress (<b class="font-italic">Mittelwert</b>).</div>
           </div>
           <div class="card-body p-2">
-            <app-prio-series [prio]="prio_B" [T]="T" [date]="date"></app-prio-series>
+            <app-prio-series [prio]="prio_B" [T]="T" [date]="date"  (onTimeLineChanged)="handleTimeLineChnaged($event)"></app-prio-series>
           </div>
         </div>
       </div>
