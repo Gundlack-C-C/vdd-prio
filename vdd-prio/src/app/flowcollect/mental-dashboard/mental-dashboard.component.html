@@ -1,12 +1,12 @@
 <div *ngIf="sympthome.length && ursachen.length; else NoDataAvailable">
   <div class="mt-2">
     <h2>Monatsübersicht</h2>
-    <app-mental-monthly [data]="data"></app-mental-monthly>
+    <app-mental-monthly [data]="data" [date]="date"></app-mental-monthly>
   </div>
   <div>
     <h2>Zeitverlauf</h2>
     <p>Zeitliche Verläufe und Entwicklungen</p>
-    <app-mental-timeline [sympthome]="sympthome" [ursachen]="ursachen" [dates]="dates"></app-mental-timeline>
+    <app-mental-timeline [sympthome]="sympthome" [ursachen]="ursachen" [dates]="dates" (onDateChanged)="onDateChanged($event)"></app-mental-timeline>
   </div>
 </div>
 <ng-template #NoDataAvailable>

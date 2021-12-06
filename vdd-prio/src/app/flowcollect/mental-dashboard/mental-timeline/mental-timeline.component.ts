@@ -1,4 +1,5 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, Output, SimpleChanges, EventEmitter } from '@angular/core';
+
 
 const EXAMPLE_A = [
   {label: 'Meine Tätigkeit', value: [56.5, 82.1, 88.7, 70.1, 53.4, 85.1]},
@@ -31,6 +32,7 @@ export class MentalTimelineComponent implements OnChanges {
   @Input() sympthome: any[] = [];
   @Input() ursachen: any[] = [];
   @Input() dates: any[] = [];
+  @Output() onDateChanged = new EventEmitter<string>()
   prio_A: {label: string, value: number[]}[] = EXAMPLE_A;
   prio_B: {label: string, value: number[]}[] = EXAMPLE_B;
   T: string[] = EXAMPLE_T;
@@ -54,6 +56,7 @@ export class MentalTimelineComponent implements OnChanges {
 
   handleTimeLineChnaged(index_T: number) {
     this.date = this.T[index_T];
+    this.onDateChanged.emit(this.date);
   }
 
 }

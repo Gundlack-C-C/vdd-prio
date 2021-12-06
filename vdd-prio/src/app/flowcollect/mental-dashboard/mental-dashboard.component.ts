@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { getMonthOnly } from '../feedback.service';
 
 
 @Component({
@@ -13,5 +13,9 @@ export class MentalDashboardComponent {
   @Input() dates: any[] = [];
   @Input() data: any[] = [];
 
-  constructor() { }
+  date: string = ""
+
+  onDateChanged(date: string) {
+    this.date = getMonthOnly(new Date(date));
+  }
 }

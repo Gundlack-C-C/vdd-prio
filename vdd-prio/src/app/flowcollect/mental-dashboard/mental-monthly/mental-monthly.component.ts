@@ -14,8 +14,9 @@ const label: {[section: string]: string[]} = {
 })
 export class MentalMonthlyComponent implements OnChanges {
   @Input() data: any[] = []
+  @Input() date: string = "";
   dates: string[] = [];
-  date: string = "";
+
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
