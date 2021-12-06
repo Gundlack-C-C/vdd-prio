@@ -14,7 +14,7 @@ export class MentalDashboardViewComponent implements OnChanges {
 
   dates: any[] = [];
   sections: {[section: string]: any[]} = {}
-  data: {key: string, val: number, T: string, section: string}[] = []
+  data: {key: string, val: number, T: string, M: string, section: string}[] = []
 
   constructor(private feedback_servcie: FeedbackService) { }
 
@@ -49,7 +49,7 @@ export class MentalDashboardViewComponent implements OnChanges {
     return this.data.length > 0;
   }
 
-  get Symptome() {
+  get Sympthome() {
     return this.sections["0"]
   }
 

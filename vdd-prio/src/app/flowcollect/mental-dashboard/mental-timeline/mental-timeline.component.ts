@@ -28,7 +28,7 @@ const EXAMPLE_T = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
   styleUrls: ['./mental-timeline.component.css']
 })
 export class MentalTimelineComponent implements OnChanges {
-  @Input() symptome: any[] = [];
+  @Input() sympthome: any[] = [];
   @Input() ursachen: any[] = [];
   @Input() dates: any[] = [];
   prio_A: {label: string, value: number[]}[] = EXAMPLE_A;
@@ -42,7 +42,7 @@ export class MentalTimelineComponent implements OnChanges {
       this.T = this.dates;
       this.date = this.dates[0];
 
-      this.symptome.forEach((item, i) => {
+      this.sympthome.forEach((item, i) => {
         this.prio_A[i].value = item;
       })
 

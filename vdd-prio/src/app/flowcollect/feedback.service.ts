@@ -12,22 +12,30 @@ export function getDateOnly(T: Date) {
   return T;
 }
 
+const monthNames = ["Jannuar", "Februar", "März", "April", "Mai", "Juni",
+  "Julie", "August", "September", "Oktober", "November", "Dezember"
+];
+
+export function getMonthOnly(T: Date) {
+  return `${monthNames[T.getUTCMonth()]}-${T.getUTCFullYear()}`
+}
+
 
 export function getDictionaryArray(items: any[]) {
-  let data: {key: string, val: number, T: string, section: string}[] = []
+  let data: {key: string, val: number, T: string, M: string, section: string}[] = []
   items.forEach((item: {createdAt: any, values: {[key: string]: number[]}}) => {
     let T = getDateOnly(new Date(item.createdAt.toMillis())).toDateString();
-
+    let M = getMonthOnly(new Date(item.createdAt.toMillis()));
     Object.values(item.values).forEach((values, section) => {
         values.forEach((val, i)=>{
-          data.push({key: i.toString(),val: val, T: T, section: section.toString() })
+          data.push({key: i.toString(),val: val, T: T, M: M, section: section.toString() })
         });
     });
   });
   return data;
 }
 
-export function getSectionStatistics(items: {key: string, val: number, T: string, section: string}[], d3_format=false) {
+export function getSectionStatistics(items: {key: string, val: number, T: string, M: string, section: string}[], d3_format=false) {
   let section_group = d3.group(items, d => d.section)
   let statistics: {[section: string]: any[]} = {};
   section_group.forEach((item, section)=>{

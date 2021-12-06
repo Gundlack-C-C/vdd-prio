@@ -1,17 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-prio-barchart',
   templateUrl: './prio-barchart.component.html',
   styleUrls: ['./prio-barchart.component.css']
 })
-export class PrioBarchartComponent implements OnInit {
+export class PrioBarchartComponent implements OnChanges {
   @Input() prio: {label: string, value: number}[] = []
   options = {}
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.prio && this.prio.length) {
+      if(changes.prio.firstChange) {
+        this.renderChart()
+      } else if(!changes.prio.firstChange && JSON.stringify(changes.prio.currentValue) != JSON.stringify(changes.prio.previousValue)) {
+        this.renderChart()
+      }
+    }
+  }
+
+  renderChart() {
     let xAxis = [
       {
         type: 'category',
@@ -55,7 +65,9 @@ export class PrioBarchartComponent implements OnInit {
       xAxis:xAxis,
       yAxis: [
         {
-          type: 'value'
+          type: 'value',
+          min: 0,
+          max: 100
         }
       ],
       series: series

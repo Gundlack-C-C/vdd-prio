@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./mental-dashboard.component.css']
 })
 export class MentalDashboardComponent {
-  @Input() symptome: any[] = [];
+  @Input() sympthome: any[] = [];
   @Input() ursachen: any[] = [];
   @Input() dates: any[] = [];
   @Input() data: any[] = [];
