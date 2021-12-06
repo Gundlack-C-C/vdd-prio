@@ -23,7 +23,6 @@ export class PrioFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("items")
     let group: {[key: string]: number} = {}
     this.items.forEach((item, i) => {
       group['agile-' + i] = item.Value;

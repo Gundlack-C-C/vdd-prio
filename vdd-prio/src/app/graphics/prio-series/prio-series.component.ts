@@ -76,7 +76,6 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
             }
           }
         });
-        console.log(dimension)
         this.date = this.T[dimension-1];
         this.onTimeLineChanged.emit(xAxisInfo.value);
       }
