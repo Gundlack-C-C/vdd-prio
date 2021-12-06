@@ -22,7 +22,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
 
   @Input() T: string[] = EXAMPLE_DATES;
   @Input() date: string =  'Jan';
-
+  dimension = 1;
   @ViewChild("myChart") myChart!: ElementRef;
   mayEChart: any;
 
@@ -76,6 +76,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
             }
           }
         });
+        this.dimension = dimension;
         this.date = this.T[dimension-1];
         this.onTimeLineChanged.emit(xAxisInfo.value);
       }
@@ -83,6 +84,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.date) {
+      this.dimension = this.T.indexOf(this.date) + 1;
       this.renderChart()
     }
   }
@@ -104,7 +106,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
         focus: 'self'
       },
       label: {
-        formatter: '{b}: {@2012} ({d}%)'
+        formatter: '{b}: {@[' + this.dimension + ']} ({d}%)'
       },
       encode: {
         itemName: 'Label',
@@ -133,8 +135,10 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
       grid: { top: '55%' },
       series: series
     };
-    if(this.mayEChart)
+    if(this.mayEChart) {
       this.mayEChart.setOption(this.options);
+    }
+
   }
 
 }
