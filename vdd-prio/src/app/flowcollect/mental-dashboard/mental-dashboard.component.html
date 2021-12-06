@@ -1,37 +1,13 @@
-<div *ngIf="symptome.length && ursachen.length; else NoDataAvailable">
-    <div class="container-fluid p-0">
-      <div class="d-flex flex-row pb-4 pt-4">
-        <div class="d-flex flex-grow-1">
-          <select class="form-control" [(ngModel)]="date">
-            <option *ngFor="let item of T">{{item}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="row m-0">
-      <div class="col-12 col-md-6 p-0 pr-2">
-        <div class="card">
-          <div class="card-header bg-dark text-light">
-            <h5>Sympthome</h5>
-            <div class="small">Sympthome für Mitarbeiter Stress (<b class="font-italic">Mittelwert</b>).</div>
-          </div>
-          <div class="card-body p-2">
-            <app-prio-series [prio]="prio_A" [T]="T" [date]="date"></app-prio-series>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 p-0 pl-2">
-        <div class="card">
-          <div class="card-header bg-dark text-light">
-            <h5>Ursachen</h5>
-            <div class="small">Quellen von Mitarbeiter Stress (<b class="font-italic">Mittelwert</b>).</div>
-          </div>
-          <div class="card-body p-2">
-            <app-prio-series [prio]="prio_B" [T]="T" [date]="date"></app-prio-series>
-          </div>
-        </div>
-      </div>
-    </div>
+<div *ngIf="sympthome.length && ursachen.length; else NoDataAvailable">
+  <div class="mt-2">
+    <h2>Monatsübersicht</h2>
+    <app-mental-monthly [data]="data" [date]="date"></app-mental-monthly>
+  </div>
+  <div>
+    <h2>Zeitverlauf</h2>
+    <p>Zeitliche Verläufe und Entwicklungen</p>
+    <app-mental-timeline [sympthome]="sympthome" [ursachen]="ursachen" [dates]="dates" (onDateChanged)="onDateChanged($event)"></app-mental-timeline>
+  </div>
 </div>
 <ng-template #NoDataAvailable>
   <div class="alert alert-warning mt-3">

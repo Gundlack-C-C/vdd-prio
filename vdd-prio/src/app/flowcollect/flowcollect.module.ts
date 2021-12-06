@@ -22,6 +22,8 @@ import { BusinessLandingpageComponent } from './business-landingpage/business-la
 import { AuthModule } from '../auth/auth.module';
 import { BusinessAdminModule } from '../business-admin/business-admin.module';
 import { MentalDashboardViewComponent } from './mental-dashboard-view/mental-dashboard-view.component';
+import { MentalMonthlyComponent } from './mental-dashboard/mental-monthly/mental-monthly.component';
+import { MentalTimelineComponent } from './mental-dashboard/mental-timeline/mental-timeline.component';
 
 @NgModule({
   imports: [
@@ -46,7 +48,9 @@ import { MentalDashboardViewComponent } from './mental-dashboard-view/mental-das
     MentalDashboardViewComponent,
     MentalFeedbackAppComponent,
     BusinessAppComponent,
-    BusinessLandingpageComponent
+    BusinessLandingpageComponent,
+    MentalMonthlyComponent,
+    MentalTimelineComponent
   ],
   providers: [FeedbackService],
   exports: [

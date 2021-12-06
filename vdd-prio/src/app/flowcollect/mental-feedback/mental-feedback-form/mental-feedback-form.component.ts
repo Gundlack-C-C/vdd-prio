@@ -111,7 +111,6 @@ export class MentalFeedbackFormComponent {
     domElement.select()
     document.execCommand('copy')
     domElement.setSelectionRange(0,0)
-    console.log("test")
   }
 
   openCoaching() {

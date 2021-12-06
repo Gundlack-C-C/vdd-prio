@@ -5,7 +5,7 @@
         <div class="input-group-prepend">
           <button class=" btn btn-secondary btn-fixed-width" [title]="pollID" (click)="openPoll()">{{pollID}}</button>
         </div>
-        <input  class="form-control" type="text" [value]="PollURL" [id]="'pollurl-input-' + pollID">
+        <input  class="form-control d-none d-md-block" type="text" [value]="PollURL" [id]="'pollurl-input-' + pollID">
         <div class="input-group-append">
           <button class="btn btn-info" (click)="copyURL('pollurl-input-' + pollID)">COPY<fa-icon [icon]="['fas', 'copy']"
             class="ml-2"></fa-icon></button>
@@ -17,7 +17,7 @@
     </div>
     <h3 *ngIf="!isDataAvailable">Keine Daten vorhanden</h3>
   </div>
-  <app-mental-dashboard *ngIf="isDataAvailable" [symptome]="Symptome" [ursachen]="Ursachen" [dates]="Dates"></app-mental-dashboard>
+  <app-mental-dashboard *ngIf="isDataAvailable" [sympthome]="Sympthome" [ursachen]="Ursachen" [dates]="Dates" [data]="data"></app-mental-dashboard>
 </div>
 
 <ng-template #loadingData>

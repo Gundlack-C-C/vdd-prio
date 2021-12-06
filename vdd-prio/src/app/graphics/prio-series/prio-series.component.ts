@@ -1,31 +1,34 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild, SimpleChanges, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import * as echarts from 'echarts';
+
+const EXAMPLE_PRIO = [
+  {label: 'Milk Tea', value: [56.5, 82.1, 88.7, 70.1, 53.4, 85.1]},
+  {label: 'Matcha Latte', value: [51.1, 51.4, 55.1, 53.3, 73.8, 68.7]},
+  {label: 'Cheese Cocoa', value: [40.1, 62.2, 69.5, 36.4, 45.2, 32.5]},
+  {label: 'Walnut Brownie', value: [25.2, 37.1, 41.2, 18, 33.9, 49.1]}
+]
+const EXAMPLE_DATES = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
 
 @Component({
   selector: 'app-prio-series',
   templateUrl: './prio-series.component.html',
-  styleUrls: ['./prio-series.component.css']
+  styleUrls: ['./prio-series.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
   options = {}
-  @Input() prio: {label: string, value: number[]}[] = [
-    {label: 'Milk Tea', value: [56.5, 82.1, 88.7, 70.1, 53.4, 85.1]},
-    {label: 'Matcha Latte', value: [51.1, 51.4, 55.1, 53.3, 73.8, 68.7]},
-    {label: 'Cheese Cocoa', value: [40.1, 62.2, 69.5, 36.4, 45.2, 32.5]},
-    {label: 'Walnut Brownie', value: [25.2, 37.1, 41.2, 18, 33.9, 49.1]}
-  ]
 
-  @Input() T: string[] = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
-  @Input() displayOptions = {
-    showDateSelect: false
-  }
+  @Input() prio: {label: string, value: number[]}[] = EXAMPLE_PRIO;
 
-  @ViewChild("myChart")
-  myChart!: ElementRef;
+  @Input() T: string[] = EXAMPLE_DATES;
+  @Input() date: string =  'Jan';
 
+  @ViewChild("myChart") myChart!: ElementRef;
   mayEChart: any;
 
-  @Input() date: string =  'Jan';
+  @Output() onTimeLineChanged = new EventEmitter<number>();
+
+
 
   data: any[] = []
 
@@ -51,12 +54,17 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
 
     this.renderChart();
 
-    const mayEChart =  this.mayEChart
-    this.mayEChart.on('updateAxisPointer', function (event: any) {
+    const callback = this.handleTimelineChanged.bind(this);
+    this.mayEChart.on('updateAxisPointer', function(event: any) {
+      callback(event);
+    });
+  }
+
+  handleTimelineChanged(event: any) {
       const xAxisInfo = event.axesInfo[0];
       if (xAxisInfo) {
         const dimension = xAxisInfo.value + 1;
-        mayEChart.setOption({
+        this.mayEChart.setOption({
           series: {
             id: 'pie',
             label: {
@@ -68,12 +76,9 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
             }
           }
         });
+        this.date = this.T[dimension-1];
+        this.onTimeLineChanged.emit(xAxisInfo.value);
       }
-    });
-  }
-
-  onTimelineChanged() {
-    this.renderChart();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -128,8 +133,8 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
       grid: { top: '55%' },
       series: series
     };
-
-    this.mayEChart.setOption(this.options);
+    if(this.mayEChart)
+      this.mayEChart.setOption(this.options);
   }
 
 }
