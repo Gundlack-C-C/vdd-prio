@@ -23,6 +23,7 @@ import { AuthModule } from '../auth/auth.module';
 import { BusinessAdminModule } from '../business-admin/business-admin.module';
 import { MentalDashboardViewComponent } from './mental-dashboard-view/mental-dashboard-view.component';
 import { MentalMonthlyComponent } from './mental-dashboard/mental-monthly/mental-monthly.component';
+import { MentalTimelineComponent } from './mental-dashboard/mental-timeline/mental-timeline.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { MentalMonthlyComponent } from './mental-dashboard/mental-monthly/mental
     MentalFeedbackAppComponent,
     BusinessAppComponent,
     BusinessLandingpageComponent,
-    MentalMonthlyComponent
+    MentalMonthlyComponent,
+    MentalTimelineComponent
   ],
   providers: [FeedbackService],
   exports: [
