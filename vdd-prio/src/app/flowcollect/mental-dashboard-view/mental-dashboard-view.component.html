@@ -17,7 +17,7 @@
     </div>
     <h3 *ngIf="!isDataAvailable">Keine Daten vorhanden</h3>
   </div>
-  <app-mental-dashboard *ngIf="isDataAvailable" [symptome]="Symptome" [ursachen]="Ursachen" [dates]="Dates" [data]="data"></app-mental-dashboard>
+  <app-mental-dashboard *ngIf="isDataAvailable" [symptome]="Symptome" [ursachen]="Ursachen" [dates]="Dates" [data]="data" [correlation]="correlation"></app-mental-dashboard>
 </div>
 
 <ng-template #loadingData>

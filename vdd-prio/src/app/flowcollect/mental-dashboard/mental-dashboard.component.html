@@ -1,4 +1,9 @@
 <div *ngIf="symptome.length && ursachen.length; else NoDataAvailable">
+  <div>
+    <h2>Korrelation</h2>
+    <p>Zusammenhänge zwischen Sympthomen und Ursachen</p>
+    <app-mental-correlation [data]="correlation"></app-mental-correlation>
+  </div>
   <div class="mt-2">
     <h2>Monatsübersicht</h2>
     <app-mental-monthly [data]="data" [date]="date"></app-mental-monthly>
@@ -9,6 +14,7 @@
     <app-mental-timeline [Symptome]="symptome" [ursachen]="ursachen" [dates]="dates" (onDateChanged)="onDateChanged($event)"></app-mental-timeline>
   </div>
 </div>
+
 <ng-template #NoDataAvailable>
   <div class="alert alert-warning mt-3">
     <h3>Keine Daten vorhanden</h3>

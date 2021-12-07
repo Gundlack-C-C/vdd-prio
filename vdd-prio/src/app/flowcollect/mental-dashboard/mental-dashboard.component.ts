@@ -12,6 +12,7 @@ export class MentalDashboardComponent {
   @Input() ursachen: any[] = [];
   @Input() dates: any[] = [];
   @Input() data: any[] = [];
+  @Input() correlation: any[] = [];
 
   date: string = ""
 

@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, Output, SimpleChanges, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, SimpleChanges, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 
 const EXAMPLE_A = [
@@ -26,7 +26,8 @@ const EXAMPLE_T = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
 @Component({
   selector: 'app-mental-timeline',
   templateUrl: './mental-timeline.component.html',
-  styleUrls: ['./mental-timeline.component.css']
+  styleUrls: ['./mental-timeline.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MentalTimelineComponent implements OnChanges {
   @Input() Symptome: any[] = [];

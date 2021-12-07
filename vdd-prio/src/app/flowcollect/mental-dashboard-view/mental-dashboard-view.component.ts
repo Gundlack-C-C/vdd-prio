@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FeedbackService, getDictionaryArray, getSectionStatistics } from '../feedback.service';
+import { FeedbackService, getCorrelationArray, getDictionaryArray, getSectionStatistics } from '../feedback.service';
 import * as d3 from 'd3';
 
 @Component({
@@ -14,6 +14,7 @@ export class MentalDashboardViewComponent implements OnChanges {
 
   dates: any[] = [];
   sections: {[section: string]: any[]} = {}
+  correlation: {A: string, B: string, val: number[]}[] = [];
   data: {key: string, val: number, T: string, M: string, section: string}[] = []
 
   constructor(private feedback_servcie: FeedbackService) { }
@@ -35,9 +36,8 @@ export class MentalDashboardViewComponent implements OnChanges {
       this.feedback_servcie.getPolls(pollID).subscribe((items: any[]) => {
         if(items.length) {
           this.data = getDictionaryArray(items);
-
+          this.correlation = getCorrelationArray(items);
           this.sections = getSectionStatistics(this.data);
-
           this.dates = Array.from(d3.group(this.data, d => d.T).keys())
         }
         resolve(true)
