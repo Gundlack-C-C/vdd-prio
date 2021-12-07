@@ -29,7 +29,7 @@ const EXAMPLE_T = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
   styleUrls: ['./mental-timeline.component.css']
 })
 export class MentalTimelineComponent implements OnChanges {
-  @Input() sympthome: any[] = [];
+  @Input() Symptome: any[] = [];
   @Input() ursachen: any[] = [];
   @Input() dates: any[] = [];
   @Output() onDateChanged = new EventEmitter<string>()
@@ -40,11 +40,11 @@ export class MentalTimelineComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.sympthome || changes.ursachen || changes.dates){
+    if(changes.Symptome || changes.ursachen || changes.dates){
       this.T = this.dates;
       this.date = this.dates[0];
 
-      this.sympthome.forEach((item, i) => {
+      this.Symptome.forEach((item, i) => {
         this.prio_A[i].value = item;
       })
 

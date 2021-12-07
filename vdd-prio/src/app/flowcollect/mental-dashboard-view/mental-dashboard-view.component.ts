@@ -49,7 +49,7 @@ export class MentalDashboardViewComponent implements OnChanges {
     return this.data.length > 0;
   }
 
-  get Sympthome() {
+  get Symptome() {
     return this.sections["0"]
   }
 

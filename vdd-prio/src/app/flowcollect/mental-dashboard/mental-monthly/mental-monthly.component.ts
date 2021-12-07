@@ -38,7 +38,7 @@ export class MentalMonthlyComponent implements OnChanges {
     });
   }
 
-  get Sympthome(): any[] {
+  get Symptome(): any[] {
 
     let values = d3.group(this.data.filter((item: {key: string, val: number, T: string, M: string, section: string}) => {
       return item.M == this.date && item.section == "0";

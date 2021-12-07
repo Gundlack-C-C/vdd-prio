@@ -8,7 +8,7 @@ import { getMonthOnly } from '../feedback.service';
   styleUrls: ['./mental-dashboard.component.css']
 })
 export class MentalDashboardComponent {
-  @Input() sympthome: any[] = [];
+  @Input() symptome: any[] = [];
   @Input() ursachen: any[] = [];
   @Input() dates: any[] = [];
   @Input() data: any[] = [];
