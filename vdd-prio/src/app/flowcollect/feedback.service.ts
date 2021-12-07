@@ -35,6 +35,21 @@ export function getDictionaryArray(items: any[]) {
   return data;
 }
 
+export function getCorrelationArray(items: any[]): {A: string, B: string, val: number[]}[]{
+  let data: {A: string, B: string, val: number[]}[] = []
+  items.forEach((item: {createdAt: any, values: {[key: string]: number[]}}) => {
+    const A = item.values["1"];
+    const B = item.values["2"];
+    A.forEach((val_A: number, i: number) => {
+      B.forEach((val_b: number, j: number) => {
+        data.push({A: i.toString(), B: j.toString(), val: [val_A, val_b] })
+      });
+
+    })
+  });
+  return data;
+}
+
 export function getSectionStatistics(items: {key: string, val: number, T: string, M: string, section: string}[], d3_format=false) {
   let section_group = d3.group(items, d => d.section)
   let statistics: {[section: string]: any[]} = {};
