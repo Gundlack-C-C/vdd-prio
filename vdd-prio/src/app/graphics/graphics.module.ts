@@ -6,6 +6,7 @@ import { PrioSeriesComponent } from './prio-series/prio-series.component';
 import { GraphicsDemoComponent } from './graphics-demo/graphics-demo.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { PrioCorrelationScatterComponent } from './prio-correlation-scatter/prio-correlation-scatter.component';
 
 @NgModule({
   imports: [
@@ -16,11 +17,13 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     PrioBarchartComponent,
     PrioSeriesComponent,
+    PrioCorrelationScatterComponent,
     GraphicsDemoComponent
   ],
   exports: [
     PrioBarchartComponent,
     PrioSeriesComponent,
+    PrioCorrelationScatterComponent,
     GraphicsDemoComponent
   ]
 })
