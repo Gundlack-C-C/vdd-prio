@@ -33,22 +33,13 @@
 
       </div>
       <div>
-        <h3>Top 5 - Korrelationen</h3>
-        <div *ngFor="let link of links | slice:0:5; index as i" class="card mb-2 p-2">
-          <div class="d-flex flex-row align-items-center">
+        <h3>Stärkste Zusammenhänge</h3>
+        <div *ngFor="let link of links | slice:0:3; index as i" class="card mb-2 p-2 cor-indicator">
+          <div class="d-flex flex-row">
             <h4 class="m-0">
               <span class="badge badge-dark d-inline">{{i+1}}</span>
-              &nbsp;{{link.source}}&nbsp;--&nbsp;{{link.target}}
             </h4>
-            <div class="ml-auto">
-              <span class="badge badge-dark badge-pill">{{link.cor}}</span>
-            </div>
-          </div>
-          <div class="mt-2 text-right">
-            <span *ngIf="isCorrelationNone(link.cor)" class="font-italic ml-auto">&nbsp;Keine Korrelation</span>
-            <span *ngIf="isCorrelationS(link.cor)" class="font-italic ml-auto">&nbsp;Geringe Korrelation</span>
-            <span *ngIf="isCorrelationM(link.cor)" class="font-italic ml-auto">&nbsp;Mittlere Korrelation</span>
-            <span *ngIf="isCorrelationL(link.cor)" class="font-italic ml-auto">&nbsp;Hohe Korrelation</span>
+            <app-cor-gauge [link]="link"></app-cor-gauge>
           </div>
         </div>
       </div>
