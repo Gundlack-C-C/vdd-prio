@@ -236,6 +236,7 @@ export class PrioCorrelationScatterComponent implements OnChanges {
       const std_y: any = d3.deviation(y);
 
       this.cor = this.cov/(std_x*std_y)
+      
       this.regression = ecStat.regression('linear', this.data, 2);
       this.render()
       console.log("Update Scatter");

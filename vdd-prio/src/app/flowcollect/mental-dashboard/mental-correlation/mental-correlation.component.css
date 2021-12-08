@@ -1,7 +1,4 @@
-app-mental-correlation .echarts-container {
-  min-width: 400px;
-  min-height: 300px;
-}
+
 
 app-mental-correlation div.card-body {
   overflow-y: auto;

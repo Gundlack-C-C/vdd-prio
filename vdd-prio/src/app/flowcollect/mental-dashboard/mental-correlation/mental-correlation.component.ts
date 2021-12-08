@@ -14,7 +14,7 @@ const label: {[section: string]: string[]} = {
 })
 export class MentalCorrelationComponent implements OnChanges {
   @Input() data: {A: string, B: string, val: number[]}[] = []
-  correlation: {[key: string]: {[key: string]: number[]}}= {}
+  correlation: {[key: string]: {[key: string]: number[][]}}= {}
   views = ['scatter']
   view = 'scatter'
   constructor() { }

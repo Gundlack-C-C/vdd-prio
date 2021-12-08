@@ -6,7 +6,8 @@
         <div class="small">Zusammenhänge von Symptomen und Ursachen</div>
       </div>
       <div class="card-body p-2">
-        <app-mental-correlation-scatter *ngIf="correlation" [correlation]="correlation"></app-mental-correlation-scatter>
+        <app-mental-correlation-sankey *ngIf="correlation" [correlation]="correlation"></app-mental-correlation-sankey>
+        <!--<app-mental-correlation-scatter *ngIf="correlation" [correlation]="correlation"></app-mental-correlation-scatter>-->
       </div>
     </div>
   </div>
