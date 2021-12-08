@@ -1,5 +1,4 @@
-
-
 app-mental-correlation div.card-body {
   overflow-y: auto;
+  max-height: 75vh;
 }

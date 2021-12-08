@@ -2,12 +2,22 @@
   <div class="col-12 p-0 mb-2">
     <div class="card">
       <div class="card-header bg-dark text-light">
-        <h5>Zusammenhänge und Analyse</h5>
-        <div class="small">Zusammenhänge von Symptomen und Ursachen</div>
+        <div class="d-flex flex-grow-1 flex-row align-items-center">
+          <div class="d-flex flex-column">
+            <h5>Zusammenhänge und Analyse</h5>
+            <div class="small">Zusammenhänge von Symptomen und Ursachen</div>
+          </div>
+          <div class="ml-auto d-flex">
+            <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-lg" [class.btn-light]="view !== 'overview'" [class.btn-info]="view === 'overview'" (click)="view = 'overview'"><fa-icon [icon]="['fas', 'chart-line']"></fa-icon></button>
+              <button type="button" class="btn btn-lg" [class.btn-light]="view !== 'analyse'"  [class.btn-info]="view === 'analyse'" (click)="view = 'analyse'"><fa-icon [icon]="['fas', 'microscope']"></fa-icon></button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-body p-2">
-        <app-mental-correlation-sankey *ngIf="correlation" [correlation]="correlation"></app-mental-correlation-sankey>
-        <!--<app-mental-correlation-scatter *ngIf="correlation" [correlation]="correlation"></app-mental-correlation-scatter>-->
+        <app-mental-correlation-sankey *ngIf="correlation && view ==='overview'" [correlation]="correlation"></app-mental-correlation-sankey>
+        <app-mental-correlation-scatter *ngIf="correlation && view ==='analyse'" [correlation]="correlation"></app-mental-correlation-scatter>
       </div>
     </div>
   </div>
