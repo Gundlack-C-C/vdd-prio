@@ -6,13 +6,7 @@
         <div class="small">Zusammenhänge von Symptomen und Ursachen</div>
       </div>
       <div class="card-body p-2">
-        <div class="d-flex flex-row align-items-center">
-          <div *ngFor="let A of correlation | keyvalue; index as key_A" class="d-flex flex-grow-1 flex-column align-items-center">
-            <div *ngFor="let B of A.value | keyvalue; index as key_B" class="d-flex flex-grow-1 align-self-center">
-              <app-prio-correlation-scatter [data]="B.value" [labels]="[A.key, B.key]"></app-prio-correlation-scatter>
-            </div>
-          </div>
-        </div>
+        <app-mental-correlation-scatter *ngIf="correlation" [correlation]="correlation"></app-mental-correlation-scatter>
       </div>
     </div>
   </div>

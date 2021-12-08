@@ -1,0 +1,12 @@
+<div class="d-flex flex-row align-items-center">
+  <div *ngFor="let A of correlation | keyvalue; index as i" class="d-flex flex-grow-1 flex-column align-items-center alert border-info m-1">
+    <div  class="d-flex flex-grow-1 align-self-center text-info">
+      <h3 class="p-0 m-0 text-center">{{getLabelSymptome(A.key)}}</h3>
+    </div>
+    <div *ngFor="let B of A.value | keyvalue; index as j" class="d-flex flex-grow-1 align-self-center">
+      <div class="text-center text-warning">
+        <app-prio-correlation-scatter [data]="B.value" [labels]="[getLabelSymptome(A.key), getLabelUrsachen(B.key)]"></app-prio-correlation-scatter>
+      </div>
+    </div>
+  </div>
+</div>

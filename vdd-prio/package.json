@@ -31,6 +31,7 @@
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^4.5.0",
     "echarts": "5.2.2",
+    "echarts-stat": "1.2.0",
     "firebase": "^7.0 || ^8.0",
     "ngx-echarts": "8.0.0",
     "ngx-markdown": "13.0.0",

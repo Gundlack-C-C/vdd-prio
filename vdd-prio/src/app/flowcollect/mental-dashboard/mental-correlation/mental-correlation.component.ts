@@ -1,6 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import * as d3 from "d3";
 
+const label: {[section: string]: string[]} = {
+  "0": ['Meine Tätigkeit', 'Beruflicher Stress', 'Überforderung', 'Schlafstörung', 'Angst vor Zukunft', 'Antriebslosigkeit', 'Sinnhaftigkeit der Aufgabe'],
+  "1": ['Vorgesetzter', 'Kollege', 'Team', 'Veränderung', 'Familie', 'Finanzen', 'Karriereplanung']
+}
+
 @Component({
   selector: 'app-mental-correlation',
   templateUrl: './mental-correlation.component.html',
@@ -10,6 +15,8 @@ import * as d3 from "d3";
 export class MentalCorrelationComponent implements OnChanges {
   @Input() data: {A: string, B: string, val: number[]}[] = []
   correlation: {[key: string]: {[key: string]: number[]}}= {}
+  views = ['scatter']
+  view = 'scatter'
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -26,4 +33,11 @@ export class MentalCorrelationComponent implements OnChanges {
     }
   }
 
+  getLabelSymptome(index: string): string {
+    return label["0"][Number.parseInt(index)];
+  }
+
+  getLabelUrsachen(index: string): string {
+    return label["1"][Number.parseInt(index)];
+  }
 }

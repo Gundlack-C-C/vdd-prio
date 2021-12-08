@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { textChangeRangeIsUnchanged } from 'typescript';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import * as d3 from "d3"
+import * as echarts from 'echarts';
+import * as ecStat from 'echarts-stat';
 
 const data = [
   [0.067732, 3.176513],
@@ -210,21 +212,91 @@ const data = [
   styleUrls: ['./prio-correlation-scatter.component.css']
 })
 export class PrioCorrelationScatterComponent implements OnChanges {
-  @Input() data: any[] = data
-  @Input() labels: any[] = ["A", "B"]
-  @Input() min: number = 1;
-  @Input() max: number = 1;
+  @Input() data: any[] = data;
+  @Input() labels: any[] = ["A", "B"];
+  @Input() regression: any = null;
+
+  mean: any[][] = [[50, 50]];
+  cov: number = 0;
+  cor: number = 0;
   options = {}
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.data && changes.labels) {
+      let x = this.data.map((val) => val[0]);
+      let y = this.data.map((val) => val[1]);
+      const mean_x: any = d3.mean(x);
+      const mean_y: any = d3.mean(y);
+      this.mean = [[mean_x, mean_y]]
+
+      this.cov = d3.sum([x.map((val: number) => val - mean_x), y.map((val: number) => val - mean_y)].map((val: number[]) => val[0]*val[1]))/(x.length -1);
+
+      const std_x: any = d3.deviation(x);
+      const std_y: any = d3.deviation(y);
+
+      this.cor = this.cov/(std_x*std_y)
+      this.regression = ecStat.regression('linear', this.data, 2);
       this.render()
       console.log("Update Scatter");
     }
   }
 
   render() {
+    const xAxis = {
+      name: this.labels[1],
+      nameLocation: 'middle',
+      nameGap: 30,
+      nameTextStyle: {
+        fontWeight: 'bolder',
+        fontSize: 16,
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    }
+
+    const yAxis =  {
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    }
+    let series = []
+    series.push(
+      {
+          type: 'effectScatter',
+          symbolSize: 10,
+          data: this.mean
+        }
+    );
+
+    series.push(
+      {
+          type: 'scatter',
+          encode: { tooltip: [0, 1] },
+          symbolSize: 15,
+          itemStyle: {
+            borderColor: '#555'
+          },
+          z: 3
+        }
+    );
+
+    if(this.regression) {
+      series.push({
+        type: 'line',
+        z:0,
+        data: [
+          this.regression.points[0],
+          this.regression.points[this.regression.points.length-1]
+        ]
+      })
+    }
+
     this.options =  {
       dataset: [
         {
@@ -237,36 +309,9 @@ export class PrioCorrelationScatterComponent implements OnChanges {
           type: 'cross'
         }
       },
-      xAxis: {
-        name: this.labels[1],
-        nameLocation: 'middle',
-        nameGap: 30,
-        splitLine: {
-          lineStyle: {
-            type: 'dashed'
-          }
-        }
-      },
-      yAxis: {
-        name: this.labels[0],
-        nameLocation: 'middle',
-        nameGap: 30,
-        splitLine: {
-          lineStyle: {
-            type: 'dashed'
-          }
-        }
-      },
-      series: [
-        {
-          type: 'scatter',
-          encode: { tooltip: [0, 1] },
-          symbolSize: 15,
-          itemStyle: {
-            borderColor: '#555'
-          },
-        },
-      ]
+      xAxis: xAxis,
+      yAxis: yAxis,
+      series: series
     };
   }
 

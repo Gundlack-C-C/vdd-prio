@@ -25,6 +25,7 @@ import { MentalDashboardViewComponent } from './mental-dashboard-view/mental-das
 import { MentalMonthlyComponent } from './mental-dashboard/mental-monthly/mental-monthly.component';
 import { MentalTimelineComponent } from './mental-dashboard/mental-timeline/mental-timeline.component';
 import { MentalCorrelationComponent } from './mental-dashboard/mental-correlation/mental-correlation.component';
+import { MentalCorrelationScatterComponent } from './mental-dashboard/mental-correlation/mental-correlation-scatter/mental-correlation-scatter.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { MentalCorrelationComponent } from './mental-dashboard/mental-correlatio
     BusinessLandingpageComponent,
     MentalMonthlyComponent,
     MentalTimelineComponent,
-    MentalCorrelationComponent
+    MentalCorrelationComponent,
+    MentalCorrelationScatterComponent,
   ],
   providers: [FeedbackService],
   exports: [
