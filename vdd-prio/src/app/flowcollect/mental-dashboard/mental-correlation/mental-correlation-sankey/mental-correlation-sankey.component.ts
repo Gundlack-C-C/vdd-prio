@@ -30,13 +30,13 @@ export function getCorrelation(data: number[][]) {
 export class MentalCorrelationSankeyComponent implements OnChanges {
   @Input() correlation: {[key: string]: {[key: string]: number[][]}} = {};
   test: Object = {};
-  links: {source: string, target: string, value: number}[] = [];
+  links: {source: string, target: string, value: number, cor: number}[] = [];
   data: {name: string}[] = [];
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes.correlation) {
-      let links: {source: string, target: string, value: number}[] = []
+      let links: {source: string, target: string, value: number, cor: number}[] = []
       Object.entries(this.correlation).forEach(([key_A, value_A]) => {
 
         const name_A = label["0"][Number.parseInt(key_A)];
@@ -47,14 +47,31 @@ export class MentalCorrelationSankeyComponent implements OnChanges {
             links.push({
               source: name_A,
               target: name_B,
-              value: Math.abs(Number((cor).toFixed(2)))
+              value: Math.abs(Number((cor).toFixed(2))),
+              cor: Number((cor).toFixed(2))
             });
           }
         });
       })
-      this.links = links;
+      this.links = links.sort((a, b) => b.value - a.value);
       this.data = [...label["0"].map((val: string)=> {return {name: val}}), ...label["1"].map((val: string)=> {return {name: val}})];
     }
+  }
+
+  isCorrelationNone(val: number): boolean {
+    return Math.abs(val) < 0.1 || val == -Infinity || val == +Infinity;
+  }
+
+  isCorrelationS(val: number): boolean {
+    return Math.abs(val) >= 0.1 && Math.abs(val) < 0.3;
+  }
+
+  isCorrelationM(val: number): boolean {
+    return Math.abs(val) >= 0.3 && Math.abs(val) < 0.5;
+  }
+
+  isCorrelationL(val: number): boolean {
+    return Math.abs(val) >= 0.5 && Math.abs(val) <= 1.0;
   }
 
   getLabelSymptome(index: string): string {
