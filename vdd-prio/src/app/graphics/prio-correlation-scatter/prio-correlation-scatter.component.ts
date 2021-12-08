@@ -236,11 +236,26 @@ export class PrioCorrelationScatterComponent implements OnChanges {
       const std_y: any = d3.deviation(y);
 
       this.cor = this.cov/(std_x*std_y)
-      
+
       this.regression = ecStat.regression('linear', this.data, 2);
       this.render()
       console.log("Update Scatter");
     }
+  }
+
+  get isCorrelationNone(): boolean {
+    return Math.abs(this.cor) < 0.1 || this.cor == -Infinity || this.cor == +Infinity;
+  }
+  get isCorrelationS(): boolean {
+    return Math.abs(this.cor) >= 0.1 && Math.abs(this.cor) <= 0.3;
+  }
+
+  get isCorrelationM(): boolean {
+    return Math.abs(this.cor) >= 0.3 && Math.abs(this.cor) <= 0.5;
+  }
+
+  get isCorrelationL(): boolean {
+    return Math.abs(this.cor) >= 0.5 && Math.abs(this.cor) <= 1.0;
   }
 
   render() {
@@ -266,6 +281,7 @@ export class PrioCorrelationScatterComponent implements OnChanges {
         }
       }
     }
+
     let series = []
     series.push(
       {
@@ -309,6 +325,12 @@ export class PrioCorrelationScatterComponent implements OnChanges {
         axisPointer: {
           type: 'cross'
         }
+      },
+      grid: {
+        left: '0',
+        right: '0',
+        top: '20',
+        containLabel: true
       },
       xAxis: xAxis,
       yAxis: yAxis,

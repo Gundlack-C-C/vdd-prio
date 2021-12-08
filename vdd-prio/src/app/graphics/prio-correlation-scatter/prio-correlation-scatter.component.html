@@ -1,7 +1,12 @@
 <div>
-  <div class="d-flex flex-column text-secondary p-2">
-    <div class="d-flex"><b>Covariance:</b>&nbsp;{{cov | number:'1.0-2'}}</div>
-    <div class="d-flex"><b>Correlation:</b>&nbsp;{{cor | number:'1.0-2'}}</div>
+  <div class="d-flex flex-column p-2 small">
+    <div class="d-flex text-secondary"><b>Covariance:</b>&nbsp;{{cov | number:'1.0-2'}}</div>
+    <div class="d-flex" [ngClass]="{'text-secondary': isCorrelationNone, 'text-info': isCorrelationS, 'text-warning': isCorrelationM, 'text-danger': isCorrelationL}">
+      <b>Correlation:</b>&nbsp;{{cor | number:'1.0-2'}}
+      <span *ngIf="isCorrelationS" class="font-italic ml-auto">&nbsp;Geringe Korrelation</span>
+      <span *ngIf="isCorrelationM" class="font-italic ml-auto">&nbsp;Mittlere Korrelation</span>
+      <span *ngIf="isCorrelationL" class="font-italic ml-auto">&nbsp;Hohe Korrelation</span>
+    </div>
   </div>
   <div echarts [options]="options" class="echarts-container"></div>
 </div>
