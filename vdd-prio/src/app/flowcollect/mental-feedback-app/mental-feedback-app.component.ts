@@ -10,7 +10,6 @@ export class MentalFeedbackAppComponent implements OnInit {
   sectionID: string | null = null
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe((params) => {
-      console.log(params)
       if(params.sectionID) {
         this.sectionID = params.sectionID
       }
