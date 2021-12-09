@@ -1,6 +1,6 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3 p-0 d-flex flex-column text-info">
+<div class="container-fluid p-0">
+  <div class="d-flex flex-grow-1 flex-row">
+    <div class="p-0 d-flex flex-column text-info correlation-dashboard-sidebar">
       <div class="alert p-2" [ngClass]="{'alert-success': isCorrelationNone(links[0].cor) || isCorrelationS(links[0].cor), 'alert-warning': isCorrelationM(links[0].cor), 'alert-danger': isCorrelationL(links[0].cor)}">
         <div class="d-flex flex-row">
           <div *ngIf="isCorrelationNone(links[0].cor) || isCorrelationS(links[0].cor)">
@@ -54,8 +54,10 @@
         </small>
       </div>
     </div>
-    <div class="col-9 p-0">
-      <app-prio-correlation-sankey *ngIf="data.length" [data]="data" [links]="links"></app-prio-correlation-sankey>
+    <div class="d-flex flex-grow-1 p-0 d-flex flex-row align-items-center">
+      <div class="container-fluid p-0">
+        <app-prio-correlation-sankey *ngIf="data.length" [data]="data" [links]="links"></app-prio-correlation-sankey>
+      </div>
     </div>
   </div>
 </div>

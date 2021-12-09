@@ -1,6 +1,6 @@
 app-mental-correlation-sankey app-prio-correlation-sankey .echarts-container {
   min-width: 400px;
-  min-height: 1000px;
+  min-height: 900px;
 }
 
 app-mental-correlation-sankey app-cor-gauge .echarts-container {
@@ -10,4 +10,8 @@ app-mental-correlation-sankey app-cor-gauge .echarts-container {
 app-mental-correlation-sankey .cor-indicator {
   max-height: 220px;
   overflow: hidden;
+}
+
+div.correlation-dashboard-sidebar {
+  min-width: 420px;
 }
