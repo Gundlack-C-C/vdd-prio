@@ -1,14 +1,19 @@
 <div class="card">
-  <div class="card-header bg-dark p-md-2 p-1">
-    <div class="align-self-center">
-      <ngb-pagination [collectionSize]="4" [(page)]="page" [pageSize]="1" (pageChange)="this.handlePageChanged($event)" class="align-self-center pb-0 mb-0">
-        <ng-template ngbPaginationNumber let-p>{{ getPageSymbol(p) }}</ng-template>
-      </ngb-pagination>
+  <div class="card-header bg-dark p-md-2">
+    &nbsp;
+    <div class="card-title">
+      <div class="text-center text-info p-2">
+        <h4 class="p-0 m-0">
+          <ng-container *ngFor="let i of [1,2, 3,4]">
+            <fa-icon *ngIf="page < i" class="mr-2" [icon]= "['far', 'circle']" (click)="page=i"></fa-icon>
+            <fa-icon *ngIf="page >= i" class="mr-2" [icon]= "['fas', 'circle']" (click)="page=i"></fa-icon>
+          </ng-container>
+        </h4>
+      </div>
     </div>
   </div>
   <div class="card-body" *ngIf="page==1">
     <markdown class="variable-binding" [data]="description"></markdown>
-    <button class="btn btn-info" (click)="page=2">Start</button>
   </div>
   <div *ngFor="let item of items; index as i" class="card-body p-2" [class.d-none]="i + 2 !== page">
     <div>
@@ -56,6 +61,14 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="card-footer form-row">
+    <button *ngIf="page==1" class="btn btn-info col-6 col-md-12" (click)="page=2">Start</button>
+    <div *ngIf="page>1 && page < 4" class="btn-group col-12">
+      <button class="btn btn-info" (click)="page=page-1">Zurück</button>
+      <button class="btn btn-info" (click)="page=page+1">Weiter</button>
+    </div>
+    <button *ngIf="page==4" class="btn btn-info col-6 col-md-12" (click)="page=3">Zurück</button>
   </div>
 
 </div>

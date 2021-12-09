@@ -54,7 +54,7 @@ export class MentalFeedbackFormComponent {
     "B": false
   }
 
-  page: number = 0;
+  page: number = 1;
   pages: string[] = [
     "Start",
     "A",

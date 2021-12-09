@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Input, Output, EventEmitter} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-prio-const-sum',
@@ -10,10 +9,13 @@ import { FormBuilder } from '@angular/forms';
 export class PrioConstSumComponent implements OnInit {
   @Input() maxSum: number = 100
   @Input() items: {label: string, description: string, value: number}[] = []
+  @Input() options = {
+    submitHidden: true
+  }
   @Output() onPrioChanged = new EventEmitter<number[]>();
   @Output() onPrioSubmit = new EventEmitter<number[]>();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   get SUM(): number {
     const sum = (previousValue: number, currentValue: number) => previousValue + currentValue;

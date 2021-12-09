@@ -20,6 +20,6 @@
     </div>
   </div>
 </div>
-<div class="p-2">
+<div *ngIf="!options.submitHidden" class="p-2">
   <button class="form-control btn btn-sm btn-primary" (click)="onSubmit()">Save</button>
 </div>
