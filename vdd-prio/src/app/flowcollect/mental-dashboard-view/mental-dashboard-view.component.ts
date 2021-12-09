@@ -63,7 +63,7 @@ export class MentalDashboardViewComponent implements OnChanges {
 
 
   get PollURL() {
-    return window.location.host + "/flowcollect-app/" + this.pollID;
+    return window.location.origin + "/flowcollect-app/" + this.pollID;
   }
 
   openPoll() {
