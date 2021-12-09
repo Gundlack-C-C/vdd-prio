@@ -30,6 +30,7 @@ export class MentalFeedbackComponent implements OnChanges {
     this.completed = $event.completed;
     if(this.poll) {
       this.poll.values = $event.value;
+      this.onSaveFeedback();
     }
   }
 
