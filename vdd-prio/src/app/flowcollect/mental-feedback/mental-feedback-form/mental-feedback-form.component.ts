@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core'
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-mental-feedback-form',
@@ -9,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class MentalFeedbackFormComponent {
-  @Output() onPrioChanged = new EventEmitter<number[][]>();
+  @Output() onPrioChanged = new EventEmitter<{completed: boolean, value: number[][]}>();
 
   @ViewChild('codeInput') input!: ElementRef;
 
@@ -47,7 +46,6 @@ export class MentalFeedbackFormComponent {
   Über FlowCollect® erhalten Sie einen kostenlosen Zugang zu einem Therapeuten oder Coach ihrer Wahl. \
   So können Sie mit professioneller Unterstützung etwas für ihr mentales Wohlbefinden tun und ihren individuellen Konflikt bewältigen.<br>\
   <b>100% Anonym.</b>"
-  feedbackForm = this.formBuilder.group({});
 
   prio_changed: {[key: string]: boolean} = {
     "A": false,
@@ -75,7 +73,6 @@ export class MentalFeedbackFormComponent {
   }
 
   pollRef = null;
-  constructor(private formBuilder: FormBuilder) {}
 
   getPrioGraphData(i: number): { label: string; value: number }[] {
     return this.items[i].items.map((item) => {
@@ -89,21 +86,7 @@ export class MentalFeedbackFormComponent {
 
   handlePrioChanged(section: string) {
     this.prio_changed[section] = true;
-  }
-
-  handlePrioSubmit(prio: number[], index: number) {
-    this.page = index + 3;
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-
-  handlePageChanged(page: number) {
-    if(page==4) {
-      this.onPrioChanged.next(this.PRIO);
-    }
+    this.onPrioChanged.next({completed: this.PRIO_COMPLETED, value: this.PRIO});
   }
 
   copyCode() {

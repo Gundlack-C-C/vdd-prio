@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener, OnChanges, SimpleChanges } from '@angular/core';
 import { POLL } from '../feedback.service'
 import { FeedbackService } from '../feedback.service';
 
@@ -7,20 +7,36 @@ import { FeedbackService } from '../feedback.service';
   templateUrl: './mental-feedback.component.html',
   styleUrls: ['./mental-feedback.component.css']
 })
-export class MentalFeedbackComponent implements OnInit {
+export class MentalFeedbackComponent implements OnChanges {
   @Input() sectionID!: string | null;
-  constructor(private feedback_service: FeedbackService) { }
+  poll!: POLL | null;
+  completed = false;
 
-  ngOnInit() {
+  constructor(private feedback_service: FeedbackService) {
+
   }
 
-  onSaveFeedback(val: number[][]) {
-    if(this.sectionID) {
-      var poll = new POLL();
-      poll.values = val;
-      poll.type= 'mental';
-      poll.pollID = this.sectionID;
-      this.feedback_service.saveFeedback(poll)
+  ngOnChanges(changes: SimpleChanges): void {
+      if(changes.sectionID && this.sectionID) {
+        this.poll = new POLL();
+        this.poll.type = 'mental';
+        this.poll.pollID = this.sectionID;
+      } else {
+        this.poll = null
+      }
+  }
+
+  handlePrioChanged($event: {completed: boolean, value: number[][]}) {
+    this.completed = $event.completed;
+    if(this.poll) {
+      this.poll.values = $event.value;
+    }
+  }
+
+  @HostListener('window:beforeunload')
+  onSaveFeedback() {
+    if(this.sectionID && this.poll && this.completed) {
+      this.feedback_service.saveFeedback(this.poll)
     }
   }
 
