@@ -1,8 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Business, BusinessAdminService } from 'src/app/business-admin/BusinessAdmin.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Section, SectionAdminService } from 'src/app/section-admin/section-admin.service';
 import { Observable } from 'rxjs';
+import { MentalDashboardViewComponent } from '../mental-dashboard-view/mental-dashboard-view.component';
+
 
 @Component({
   selector: 'app-business-app',
@@ -16,6 +18,8 @@ export class BusinessAppComponent {
 
   loaded = false;
   uid: string = "";
+
+  @ViewChild(MentalDashboardViewComponent) dashboardRef!: MentalDashboardViewComponent;
 
   _states = [{
     action: 'Unternehmensinformationen',
@@ -53,6 +57,40 @@ export class BusinessAppComponent {
     }
   }
 
+  onDownloadCSV() {
+    console.log("Download CSV");
+    if(this.dashboardRef) {
+
+      if (!this.dashboardRef.data || !this.dashboardRef.data.length) {
+        return;
+      }
+      const T: Date = new Date();
+      const filename = `${T.getMonth()}.${T.getDay()}.${T.getFullYear()}.csv`;
+      const cols = Object.keys(this.dashboardRef.data[0])
+      const rows = this.dashboardRef.data.map((r)=> Object.values(r));
+      const separator = ";";
+
+      const csvContent =
+        `sep=${separator}\n` +
+        cols.join(separator) +
+        '\n' +
+        rows.map(row => row.join(separator)).join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+      const link = document.createElement('a');
+      if (link.download !== undefined) {
+          // Browsers that support HTML5 download attribute
+          const url = URL.createObjectURL(blob);
+          link.setAttribute('href', url);
+          link.setAttribute('download', filename);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      }
+    }
+  }
+
   loadSection(sectionID: string): Promise<any> {
     return this.section_service.getSection(sectionID);
   }
@@ -72,6 +110,5 @@ export class BusinessAppComponent {
       document.execCommand('copy')
       domElement.setSelectionRange(0,0)
     }
-
   }
 }

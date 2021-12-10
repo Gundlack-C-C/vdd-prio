@@ -38,10 +38,17 @@
         <p>Ihre Cockpit der <b>mentale Gesundheit</b> ihres Unternehmens.</p>
       </div>
       <div class="card-body p-0">
-        <app-mental-dashboard-view [pollID]="pollSelected"></app-mental-dashboard-view>
+        <app-mental-dashboard-view [pollID]="pollSelected" #MentalDashBoardView></app-mental-dashboard-view>
       </div>
       <div class="card-footer">
-        <small><b>Umfrage:</b>&nbsp;{{pollSelected}}</small>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <small><b>Umfrage:</b>&nbsp;{{pollSelected}}</small>
+          </div>
+          <div class="col-12 col-md-6 text-right">
+            <button (click)="onDownloadCSV()" class="btn btn-info btn-sm">Download <fa-icon [icon]="['fas', 'file-csv']" class="ml-2"></fa-icon></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
