@@ -50,29 +50,39 @@ export function getCorrelationArray(items: any[]): {A: string, B: string, val: n
   return data;
 }
 
-export function getSectionStatistics(items: {key: string, val: number, T: string, M: string, section: string}[], d3_format=false) {
+const zip = (a: any[], b: any[]) => a.map((k, i) => [k, b[i]]);
+
+export function getSectionStatistics(items: {key: string, val: number, T: string, M: string, section: string}[]): {key: string, T: string[], values: {key: string, values: any[]}[]}[] {
   let section_group = d3.group(items, d => d.section)
-  let statistics: {[section: string]: any[]} = {};
-  section_group.forEach((item, section)=>{
-    let stats: any[][] = [];
+  let statistics: {key: string, T: string[], values: {key: string, values: any[]}[]}[] = [];
 
-    if(d3_format)
-      stats.push(['key'].concat(...d3.group(item, d=> d.T).keys()))
+  // Calculate for Each Section
+  section_group.forEach((section_items, key_section)=>{
+    let stats: {key: string, values: any[]} [] = [];
+    let dates: string[] = [];
+    //Calculate for Each Category
+    d3.group(section_items, d => d.key, d=>d.T).forEach((feature, key) => {
+      let key_stats: any= [];
 
-    d3.group(item, d => d.key, d=>d.T).forEach((item_key, key) => {
-      let key_stats = [];
 
-      if(d3_format)
-        key_stats.push(key);
+      //Sort by Date
+      let data = Array.from(feature).map((item)=> {
+        return {key: item[0], val: item[1]}
+      }).sort((a, b) => {
+        return new Date(a.key).getTime() - new Date(b.key).getTime()
+      });
 
-      item_key.forEach((item_T, T) => {
-        let med = d3.median(item_T, d=>d.val)
-        key_stats.push(med ? med.toString() : "0")
+      if(dates.length == 0)
+        dates = data.map((item)=> item.key)
+
+      data.map((item)=> item.val).forEach((val, i) => {
+          let med = d3.median(val, d => d.val)
+          key_stats.push(med ? med.toString() : "0")
       })
-      stats.push(key_stats)
+      stats.push({key: key, values: key_stats})
     });
 
-    statistics[section] = stats;
+    statistics.push({key: key_section, T: dates, values: stats});
   });
   return statistics;
 }

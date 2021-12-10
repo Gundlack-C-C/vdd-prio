@@ -37,8 +37,11 @@ export class MentalDashboardViewComponent implements OnChanges {
         if(items.length) {
           this.data = getDictionaryArray(items);
           this.correlation = getCorrelationArray(items);
-          this.sections = getSectionStatistics(this.data);
-          this.dates = Array.from(d3.group(this.data, d => d.T).keys())
+
+          let analytics = getSectionStatistics(this.data);
+          this.sections["0"] = analytics[0].values.map((item)=>item.values);
+          this.sections["1"] = analytics[1].values.map((item)=>item.values);
+          this.dates = analytics[0].T;
         }
         resolve(true)
       });

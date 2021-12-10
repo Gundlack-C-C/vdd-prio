@@ -95,7 +95,7 @@ export class CorGaugeComponent implements OnChanges {
               const str = Math.abs(value) >= 0.5 ? "Hoch": Math.abs(value) <= 0.3 ? "Gering": "Mittel";
               return `${value}\n${str}`;
             },
-            color: 'auto'
+            color: 'inherit'
           },
           data: [
             {
