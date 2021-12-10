@@ -31,7 +31,7 @@ const EXAMPLE_T = ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun']
 })
 export class MentalTimelineComponent implements OnChanges {
   @Input() Symptome: any[] = [];
-  @Input() ursachen: any[] = [];
+  @Input() Ursachen: any[] = [];
   @Input() dates: any[] = [];
   @Output() onDateChanged = new EventEmitter<string>()
   prio_A: {label: string, value: number[]}[] = EXAMPLE_A;
@@ -49,9 +49,10 @@ export class MentalTimelineComponent implements OnChanges {
         this.prio_A[i].value = item;
       })
 
-      this.ursachen.forEach((item, i) => {
+      this.Ursachen.forEach((item, i) => {
         this.prio_B[i].value = item;
       })
+      console.log("")
     }
   }
 

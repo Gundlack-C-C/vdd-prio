@@ -50,8 +50,6 @@ export function getCorrelationArray(items: any[]): {A: string, B: string, val: n
   return data;
 }
 
-const zip = (a: any[], b: any[]) => a.map((k, i) => [k, b[i]]);
-
 export function getSectionStatistics(items: {key: string, val: number, T: string, M: string, section: string}[]): {key: string, T: string[], values: {key: string, values: any[]}[]}[] {
   let section_group = d3.group(items, d => d.section)
   let statistics: {key: string, T: string[], values: {key: string, values: any[]}[]}[] = [];
@@ -76,8 +74,8 @@ export function getSectionStatistics(items: {key: string, val: number, T: string
         dates = data.map((item)=> item.key)
 
       data.map((item)=> item.val).forEach((val, i) => {
-          let med = d3.median(val, d => d.val)
-          key_stats.push(med ? med.toString() : "0")
+          let med = Number(d3.mean(val, d => d.val)).toFixed(1);
+          key_stats.push(med ? med.toString() : "0");
       })
       stats.push({key: key, values: key_stats})
     });
