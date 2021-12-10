@@ -35,7 +35,7 @@ export class MentalMonthlyComponent implements OnChanges {
 
     return Array.from(values.keys()).map((key: string) => {
       var val = values.get(key);
-      return {label: label["1"][Number.parseInt(key)], value: val ? d3.mean(val, d=>d.val) : 0}
+      return {label: label["1"][Number.parseInt(key)], value: val ? Number(d3.mean(val, d=>d.val)).toFixed(1) : 0}
     });
   }
 
@@ -47,7 +47,7 @@ export class MentalMonthlyComponent implements OnChanges {
 
     return Array.from(values.keys()).map((key: string) => {
       var val = values.get(key);
-      return {label: label["0"][Number.parseInt(key)], value: val ? d3.mean(val, d=>d.val) : 0}
+      return {label: label["0"][Number.parseInt(key)], value: val ? Number(d3.mean(val, d=>d.val)).toFixed(1) : 0}
     });
   }
 
