@@ -2,7 +2,7 @@
   <div class="container-fluid p-0">
     <div class="d-flex flex-column pb-1 pt-1">
       <div class="d-flex flex-grow-1">
-        <select class="form-control" [(ngModel)]="date">
+        <select class="form-control" [(ngModel)]="date" (change)="onMonthChanged.next(date)">
           <option *ngFor="let item of dates">{{item}}</option>
         </select>
       </div>

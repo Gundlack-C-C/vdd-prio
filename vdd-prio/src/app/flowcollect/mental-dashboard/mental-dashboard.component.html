@@ -1,17 +1,27 @@
 <div *ngIf="symptome.length && ursachen.length; else NoDataAvailable">
   <div class="mt-4">
-    <h1 class="text-dark text-uppercase bold">Monatsübersicht</h1>
-    <app-mental-monthly [data]="data" [date]="date"></app-mental-monthly>
+    <div class="d-flex flex-row">
+      <h1 class="d-flex text-dark text-uppercase bold">Monatsübersicht</h1>
+      <h2 class="d-flex text-dark text-uppercase bold ml-auto"><b>{{month}}</b></h2>
+    </div>
+
+    <app-mental-monthly [data]="data" [date]="month" (onMonthChanged)="onMonthChanged($event)"></app-mental-monthly>
   </div>
   <div class="mt-4">
-    <h1 class="text-dark text-uppercase bold">Zeitverlauf</h1>
+    <div class="d-flex flex-row">
+      <h1 class="d-flex text-dark text-uppercase bold">Zeitverlauf</h1>
+      <h2 class="d-flex text-dark text-uppercase bold ml-auto"><b>{{month}}</b></h2>
+    </div>
     <p>Zeitliche Verläufe und Entwicklungen</p>
     <app-mental-timeline [Symptome]="symptome" [Ursachen]="ursachen" [dates]="dates" (onDateChanged)="onDateChanged($event)"></app-mental-timeline>
   </div>
   <div class="mt-4">
-    <h1 class="text-dark text-uppercase bold">Korrelation</h1>
+    <div class="d-flex flex-row">
+      <h1 class="text-dark text-uppercase bold">Korrelation</h1>
+      <h2 class="text-dark text-uppercase bold ml-auto"><b>{{month}}</b></h2>
+    </div>
     <p>Zusammenhänge zwischen Sympthomen und Ursachen</p>
-    <app-mental-correlation [data]="correlation"></app-mental-correlation>
+    <app-mental-correlation [data]="correlation" [date]="month"></app-mental-correlation>
   </div>
 </div>
 

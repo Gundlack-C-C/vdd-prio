@@ -13,16 +13,17 @@ const label: {[section: string]: string[]} = {
   encapsulation: ViewEncapsulation.None
 })
 export class MentalCorrelationComponent implements OnChanges {
-  @Input() data: {A: string, B: string, val: number[]}[] = []
-  correlation: {[key: string]: {[key: string]: number[][]}}= {}
+  @Input() data: {A: string, B: string, val: number[], M: string}[] = [];
+  @Input() date: string = '';
+  correlation: {[key: string]: {[key: string]: number[][]}}= {};
   views = ['overview', 'analyse'];
   view = 'overview';
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.data) {
+    if(changes.data || changes.date) {
       let values: {[key: string]: any} = {};
-      d3.group(this.data, d => d.A, d => d.B).forEach((value: any, key: string)=>{
+      d3.group(this.data.filter((x)=> this.date.length ? x.M == this.date : true), d => d.A, d => d.B).forEach((value: any, key: string)=>{
         let val: any[] = [];
         value.forEach((value: {A: string, B: string, val: number[]}[], key: string) => {
           val.push([key, value.map((item)=> item.val)]);

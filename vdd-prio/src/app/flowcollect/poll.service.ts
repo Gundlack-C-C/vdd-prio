@@ -35,14 +35,15 @@ export function getDictionaryArray(items: any[]) {
   return data;
 }
 
-export function getCorrelationArray(items: any[]): {A: string, B: string, val: number[]}[]{
-  let data: {A: string, B: string, val: number[]}[] = []
+export function getCorrelationArray(items: any[]): {A: string, B: string, val: number[], M: string}[]{
+  let data: {A: string, B: string, val: number[], M: string}[] = []
   items.forEach((item: {createdAt: any, values: {[key: string]: number[]}}) => {
     const A = item.values["1"];
     const B = item.values["2"];
+    const M = getMonthOnly(new Date(item.createdAt.toMillis()))
     A.forEach((val_A: number, i: number) => {
       B.forEach((val_b: number, j: number) => {
-        data.push({A: i.toString(), B: j.toString(), val: [val_A, val_b] })
+        data.push({A: i.toString(), B: j.toString(), val: [val_A, val_b], M: M })
       });
 
     })

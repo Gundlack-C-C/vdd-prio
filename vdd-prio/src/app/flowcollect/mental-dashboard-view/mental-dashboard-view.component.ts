@@ -14,7 +14,7 @@ export class MentalDashboardViewComponent implements OnChanges {
 
   dates: any[] = [];
   sections: {[section: string]: any[]} = {}
-  correlation: {A: string, B: string, val: number[]}[] = [];
+  correlation: {A: string, B: string, val: number[], M: string}[] = [];
   data: {key: string, val: number, T: string, M: string, section: string}[] = []
 
   constructor(private poll_service: PollService) { }

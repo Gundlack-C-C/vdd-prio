@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import * as d3 from 'd3';
 
 const label: {[section: string]: string[]} = {
@@ -15,6 +15,7 @@ const label: {[section: string]: string[]} = {
 export class MentalMonthlyComponent implements OnChanges {
   @Input() data: any[] = []
   @Input() date: string = "";
+  @Output() onMonthChanged = new EventEmitter();
   dates: string[] = [];
 
   constructor() { }
