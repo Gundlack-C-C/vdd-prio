@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FeedbackService, getCorrelationArray, getDictionaryArray, getSectionStatistics } from '../feedback.service';
+import { PollService, getCorrelationArray, getDictionaryArray, getSectionStatistics } from '../poll.service';
 import * as d3 from 'd3';
 
 @Component({
@@ -17,7 +17,7 @@ export class MentalDashboardViewComponent implements OnChanges {
   correlation: {A: string, B: string, val: number[]}[] = [];
   data: {key: string, val: number, T: string, M: string, section: string}[] = []
 
-  constructor(private feedback_servcie: FeedbackService) { }
+  constructor(private poll_service: PollService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.pollID) {
@@ -33,7 +33,7 @@ export class MentalDashboardViewComponent implements OnChanges {
 
   loadPoll(pollID: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.feedback_servcie.getPolls(pollID).subscribe((items: any[]) => {
+      this.poll_service.getPolls(pollID).subscribe((items: any[]) => {
         if(items.length) {
           this.data = getDictionaryArray(items);
           this.correlation = getCorrelationArray(items);

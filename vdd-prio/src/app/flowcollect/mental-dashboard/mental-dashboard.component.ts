@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { getMonthOnly } from '../feedback.service';
+import { getMonthOnly } from '../poll.service';
 
 
 @Component({

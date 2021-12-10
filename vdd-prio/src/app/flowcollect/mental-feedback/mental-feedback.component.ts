@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, HostListener, OnChanges, SimpleChanges } from '@angular/core';
-import { POLL } from '../feedback.service'
-import { FeedbackService } from '../feedback.service';
+import { POLL } from '../poll.service'
+import { PollService } from '../poll.service';
 
 @Component({
   selector: 'app-mental-feedback',
@@ -12,7 +12,7 @@ export class MentalFeedbackComponent implements OnChanges {
   poll!: POLL | null;
   completed = false;
 
-  constructor(private feedback_service: FeedbackService) {
+  constructor(private poll_service: PollService) {
 
   }
 
@@ -37,7 +37,7 @@ export class MentalFeedbackComponent implements OnChanges {
   @HostListener('window:beforeunload')
   onSaveFeedback() {
     if(this.sectionID && this.poll && this.completed) {
-      this.feedback_service.saveFeedback(this.poll)
+      this.poll_service.saveFeedback(this.poll)
     }
   }
 

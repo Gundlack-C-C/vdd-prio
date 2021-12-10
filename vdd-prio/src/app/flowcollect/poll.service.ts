@@ -93,7 +93,7 @@ export class POLLSTAT {
 @Injectable({
   providedIn: 'root'
 })
-export class FeedbackService {
+export class PollService {
 
   pollRef: AngularFirestoreCollection<any>;
   docRef!: DocumentReference<any>;

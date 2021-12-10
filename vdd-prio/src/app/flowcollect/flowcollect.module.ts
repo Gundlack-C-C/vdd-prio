@@ -16,7 +16,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { FeedbackService } from './feedback.service';
+import { PollService } from './poll.service';
 import { BusinessAppComponent } from './business-app/business-app.component';
 import { BusinessLandingpageComponent } from './business-landingpage/business-landingpage.component';
 import { AuthModule } from '../auth/auth.module';
@@ -58,7 +58,7 @@ import { MentalCorrelationSankeyComponent } from './mental-dashboard/mental-corr
     MentalCorrelationScatterComponent,
     MentalCorrelationSankeyComponent
   ],
-  providers: [FeedbackService],
+  providers: [PollService],
   exports: [
     MentalFeedbackAppComponent,
     BusinessAppComponent,
