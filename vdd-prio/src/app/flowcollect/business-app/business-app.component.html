@@ -19,8 +19,11 @@
       <div *ngFor="let item of polls; index as i" class="d-flex mb-2">
         <div  class="input-group">
           <div class="input-group-prepend">
-            <button class=" btn btn-secondary btn-fixed-width" [class.btn-secondary]="pollSelected!==item" [class.btn-info]="pollSelected===item" [title]="item" (click)="pollSelected=item">{{item}}</button>
+            <button class=" btn btn-secondary btn-fixed-width" [class.btn-secondary]="pollSelected!==item" [class.btn-info]="pollSelected===item" [title]="item" (click)="pollSelected=item">
+              <fa-icon class="mr-2 float-left" [icon]="['fas','external-link-alt']"></fa-icon>{{item}}
+            </button>
           </div>
+
           <input  class="form-control d-none d-md-block" type="text" [value]="HostURL + PollURL + '/' + item" [id]="'pollurl-input-' + i">
           <div class="input-group-append">
             <button class="btn btn-info" (click)="copyURL('pollurl-input-' + i)">COPY<fa-icon [icon]="['fas', 'copy']"
