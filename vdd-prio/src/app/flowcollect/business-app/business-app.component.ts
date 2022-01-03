@@ -1,9 +1,11 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Business, BusinessAdminService } from 'src/app/business-admin/BusinessAdmin.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Section, SectionAdminService } from 'src/app/section-admin/section-admin.service';
 import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { MentalDashboardViewComponent } from '../mental-dashboard-view/mental-dashboard-view.component';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,9 +14,9 @@ import { MentalDashboardViewComponent } from '../mental-dashboard-view/mental-da
   styleUrls: ['./business-app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BusinessAppComponent {
-  polls: string[] = ['test'];
-  pollSelected = "test";
+export class BusinessAppComponent implements OnInit {
+  polls: string[] = [];
+  pollSelected = "";
 
   loaded = false;
   uid: string = "";
@@ -36,7 +38,7 @@ export class BusinessAppComponent {
   business!: Business | null;
   business_sections: Section[] = [];
 
-  constructor(private auth_service: AuthService, private business_service: BusinessAdminService, private section_service: SectionAdminService) {
+  constructor(private route: ActivatedRoute, private auth_service: AuthService, private business_service: BusinessAdminService, private section_service: SectionAdminService) {
     if(this.auth_service.userState){
       this.uid = this.auth_service.userState.uid;
       this.status = 0;
@@ -50,11 +52,18 @@ export class BusinessAppComponent {
           })).then((sections: Section[]) => {
             this.business_sections = sections;
             this.polls = sections.map((section:Section) => section.pollID);
-            this.polls.push("test");
+            this.pollSelected = this.polls[0];
+            if(this.route.snapshot.queryParamMap.get("test")) {
+              this.polls.push("test");
+            }
           });
         });
       });
     }
+  }
+
+  ngOnInit() {
+      console.log("test")
   }
 
   onDownloadCSV() {

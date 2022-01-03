@@ -33,6 +33,7 @@ export class PrioSeriesComponent implements AfterViewInit, OnInit, OnChanges  {
   data: any[] = []
 
   constructor() { }
+  
   ngOnInit() {
     this.date = this.T[0];
     let head: (string | number)[] = [];

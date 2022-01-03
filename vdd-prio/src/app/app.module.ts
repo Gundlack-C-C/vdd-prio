@@ -21,6 +21,7 @@ import { FlowcollectModule } from './flowcollect/flowcollect.module';
 import { BusinessAdminModule } from './business-admin/business-admin.module';
 import { SectionAdminModule } from './section-admin/section-admin.module';
 import { AuthModule } from './auth/auth.module';
+import { ConnectedAppModule } from './connected-app/connected-app.module';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { AuthModule } from './auth/auth.module';
     FlowcollectModule,
     BusinessAdminModule,
     SectionAdminModule,
-    AuthModule
+    AuthModule,
+    ConnectedAppModule
   ],
   declarations: [
     AppComponent,

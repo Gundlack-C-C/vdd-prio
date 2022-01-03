@@ -4,6 +4,7 @@ import { AgileManifestComponent } from './agile-manifest/agile-manifest.componen
 import { AuthGuard } from './auth/auth.guard';
 import { AuthViewComponent } from './auth/AuthView/AuthView.component';
 import { BusinessAdminComponent } from './business-admin/business-admin.component';
+import { ConnectedAppComponent } from './connected-app/connected-app.component';
 import { BusinessAppComponent } from './flowcollect/business-app/business-app.component';
 import { BusinessLandingpageComponent } from './flowcollect/business-landingpage/business-landingpage.component';
 import { MentalDashboardComponent } from './flowcollect/mental-dashboard/mental-dashboard.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'poll/:key',  component: PollDetailViewComponent, resolve: {data: PollResolver} },
   { path: 'agile-manifest', component: AgileManifestComponent},
   { path: 'graphics', component: GraphicsDemoComponent},
+  { path: 'connected-app', component: ConnectedAppComponent},
   { path: 'flowcollect-app', component: MentalFeedbackAppComponent},
   { path: 'flowcollect-app/:sectionID', component: MentalFeedbackAppComponent},
   {
@@ -30,7 +32,8 @@ const routes: Routes = [
   },
   { path: 'flowcollect-dashboard', component: MentalDashboardComponent},
   { path: 'flowcollect-business-admin', component: BusinessAdminComponent},
-  { path: '', redirectTo: 'flowcollect', pathMatch: 'full' },
+
+  { path: '**', redirectTo: 'flowcollect/sign-in'},
   { path: 'flowcollect', component: BusinessLandingpageComponent},
   { path: 'flowcollect/:view', component: BusinessLandingpageComponent},
 ];

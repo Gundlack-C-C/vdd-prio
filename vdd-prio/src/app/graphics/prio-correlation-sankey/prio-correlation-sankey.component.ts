@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, Output, SimpleChanges, ViewChild, EventEmitter} from '@angular/core';
+import * as echarts from 'echarts';
 
 const DATA_EXMPLE = [
   { name: 'a' },
@@ -48,12 +49,35 @@ const LINK_EXMPLE =
   templateUrl: './prio-correlation-sankey.component.html',
   styleUrls: ['./prio-correlation-sankey.component.css']
 })
-export class PrioCorrelationSankeyComponent implements OnChanges {
+export class PrioCorrelationSankeyComponent implements OnChanges, AfterViewInit {
   @Input() links: {source: string, target: string, value: number}[] = LINK_EXMPLE;
   @Input() data: {name: string}[] = DATA_EXMPLE;
+  @Input() formatter: any = '{b}<br/>Value: <b>{c}</b>'
+  @Output() onEdgeClicked = new EventEmitter();
+  @Output() onNodeClicked = new EventEmitter();
+
   options = {}
+
+  @ViewChild("myChart") myChart!: ElementRef;
+  mayEChart: any;
+
   constructor() {
     this.render()
+  }
+
+  ngAfterViewInit() {
+    var dom = this.myChart?.nativeElement
+    this.mayEChart = echarts.init(dom)
+    var that = this;
+    this.mayEChart.on('click', function(params: any) {
+      const data = params.data;
+      const type = params.dataType;
+      if(type=='edge') {
+        that.onEdgeClicked.emit(data);
+      } else {
+        that.onNodeClicked.emit(data);
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -66,7 +90,8 @@ export class PrioCorrelationSankeyComponent implements OnChanges {
     this.options = {
       tooltip: {
         trigger: 'item',
-        triggerOn: 'mousemove'
+        triggerOn: 'mousemove',
+        formatter: this.formatter
       },
       series: {
         type: 'sankey',

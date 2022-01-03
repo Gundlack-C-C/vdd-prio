@@ -29,7 +29,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Flowcollect-App-Business",
-            "url": "http://localhost:4200/flowcollect-app-unternehmer",
+            "url": "http://localhost:4200/flowcollect-app-unternehmer?test=true",
             "webRoot": "${workspaceFolder}/vdd-prio"
         },
         {
@@ -37,6 +37,13 @@
             "request": "launch",
             "name": "Flowcollect-Business-Admin",
             "url": "http://localhost:4200/flowcollect-business-admin",
+            "webRoot": "${workspaceFolder}/vdd-prio"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Connected-App",
+            "url": "http://localhost:4200/connected-app",
             "webRoot": "${workspaceFolder}/vdd-prio"
         }
     ]

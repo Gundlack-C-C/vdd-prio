@@ -31,8 +31,11 @@ export class AuthService {
         if (user) {
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(this.userState));
-          this.router.navigate(['flowcollect-app-unternehmer']);
           console.log("User authenticated")
+          console.log(this.router.url)
+          if(this.router.url == '/flowcollect') {
+            this.router.navigate(['flowcollect-app-unternehmer'])
+          }
         } else {
           localStorage.removeItem('user');
           console.log("User loggedout/not authenticated ...")
@@ -54,7 +57,6 @@ export class AuthService {
         .then((result) => {
           this.ngZone.run(() => {
             this.SetUserData(result.user);
-            this.router.navigate(['flowcollect-app-unternehmer'])
           });
         }).catch((error) => {
           window.alert(error.message)

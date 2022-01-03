@@ -1,0 +1,85 @@
+<div>
+  <div class="row m-1">
+    <div class="col-3 p-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="input-group">
+            <input class="form-control" type="text" [(ngModel)]="new_link.source" placeholder="Start"/>
+            <span class="input-group-text mr-2 ml-2">To</span>
+            <input class="form-control" type="text" [(ngModel)]="new_link.target" placeholder="Ziel"/>
+          </div>
+
+        </div>
+        <div class="card-body text-center">
+          <div class="form-group">
+            <div class="input-group input-group-sm">
+              <input class="form-control" type="number" [(ngModel)]="new_link.value" placholder="Kosten"/>
+              <div class="input-group-append">
+                <span class="input-group-text">€</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group input-group-sm">
+              <input class="form-control" type="number" [(ngModel)]="new_link.T" placeholder="Flugzeit"/>
+              <div class="input-group-append">
+                <span class="input-group-text">MIN</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group input-group-sm">
+              <input class="form-control" type="text" [(ngModel)]="new_link.link" placeholder="Link zum Flug"/>
+              <div class="input-group-append">
+                <span class="input-group-text">URL</span>
+              </div>
+            </div>
+          </div>
+          <button class="form-control btn-primary btn-sm" (click)="onNewLink()">Hinzufügen</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 p-1" *ngFor="let link of links">
+      <div class="card">
+        <div class="card-header">
+          <div class="input-group input-group-sm">
+            <input class="form-control" [(ngModel)]="link.source"/>
+            <span class="input-group-text mr-2 ml-2">To</span>
+            <input class="form-control" [(ngModel)]="link.target"/>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="input-group input-group-sm">
+              <input class="form-control" [(ngModel)]="link.value"/>
+              <div class="input-group-append">
+                <span class="input-group-text">€</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group input-group-sm">
+              <input class="form-control" [(ngModel)]="link.T"/>
+              <div class="input-group-append">
+                <span class="input-group-text">MIN</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" (click)="onLinkClicked(link)">Open</button>
+              </div>
+              <input class="form-control" [(ngModel)]="link.link"/>
+              <div class="input-group-append">
+                <span class="input-group-text">URL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-prio-correlation-sankey [data]='data' [links]='links' [formatter]='formatter' (onEdgeClicked)="onLinkClicked($event)"></app-prio-correlation-sankey>
+</div>
