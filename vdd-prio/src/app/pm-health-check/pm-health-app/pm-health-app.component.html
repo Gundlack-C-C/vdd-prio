@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header bg-dark p-md-2">
+    &nbsp;
+    <div class="card-title">
+      <div class="text-center text-info p-2">
+        <h6 class="p-0 m-0">
+          <ng-container *ngFor="let i of pages">
+            <fa-icon *ngIf="Page < i" class="mr-2" [icon]= "['far', 'circle']" (click)="Page=i"></fa-icon>
+            <fa-icon *ngIf="Page >= i" class="mr-2" [icon]= "['fas', 'circle']" (click)="Page=i"></fa-icon>
+          </ng-container>
+        </h6>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="page==1">
+    <div class="mb-4">
+      <h2><fa-icon class="mr-2" [icon]= "['far', 'compass']"></fa-icon>Projekt Kompass</h2>
+    </div>
+    <div class="mb-4">
+      <p>Es gibt zahlreiche <b>Gründe für den Erfolg und Misserfolg von Projekten</b>.</p>
+      <p>Mit <b>Projekt Kompass</b> bieten wir ihnen die Möglichkeiten, den aktuellen Gesundheitsstand ihres Projektes zu evaluieren.</p>
+    </div>
+    <hr>
+    <div class="mb-4">
+      <h3>Top Einflussfaktoren</h3>
+      <p>
+        In regelmäßigen Studien erfassen Konsosortien Informationen über den Erfolg und Misserfolg von Projekten.
+        Untersucht wird hierbei welche Maßnahmen und Investitionen die <b>Qualität des Projektmanagements tatsächlich verbessern</b>.<br>
+        Dies liefert die Grundlage, um den Erfolg und Misserfolg eines Projektes zu deuten.<br>
+        Lernen Sie von den Erfahrungen vergangener Projekte.
+      </p>
+    </div>
+    <app-pm-health-weight-graph></app-pm-health-weight-graph>
+    <div class="text-right font-italic mb-4">
+      <small>Einflussfaktoren für den Erfolg und Misserfolg von Projekten<br><b>Quelle:</b>&nbsp;<a href="https://www.gpm-ipma.de/know_how/studienergebnisse/pm_studie_2008_erfolg_und_scheitern_im_pm.html" target="_">GPM - Gesellschaft für Projektmanagement e.V. - "Erfolg und Scheitern im Projektmanagement"</a></small>
+    </div>
+    <hr>
+    <div>
+      <div class="mb-4">
+        <b>Starten</b> Sie jetzt ...
+      </div>
+      <div class="mb-4"><h4><fa-icon class="mr-4 text-danger" [icon]= "['fas', 'heartbeat']"></fa-icon>Messen Sie jetzt den Gesundheitsstatus ihres Projektes!</h4></div>
+      <div class="mb-4"><h4><fa-icon class="mr-4 text-primary" [icon]= "['fas', 'level-up-alt']"></fa-icon>Identifizieren Sie Verbesserungspotentiale!</h4></div>
+      <div class="mb-4"><h4><fa-icon class="mr-4 text-success" [icon]= "['fas', 'check-double']"></fa-icon>Maximieren Sie Ihren Projekterfolg!</h4></div>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="card-body p-2" [class.d-none]="page!=2">
+    <div>
+      <h4 class="mb-1">Projekt Status</h4>
+    </div>
+    <div class="mb-4">
+      Bewerten sie folgende Kriterien um ihren Projekt Status zu bestimmen.
+    </div>
+    <div>
+      <app-pm-health-form></app-pm-health-form>
+    </div>
+  </div>
+  <div class="card-body p-2" *ngIf="page==3">
+    <div cass="card-body p-2">
+      <app-pm-health-analytics [data]="formData"></app-pm-health-analytics>
+    </div>
+  </div>
+  <div class="card-footer form-row">
+    <button *ngIf="Page==PageMin" class="btn btn-info col-6 col-md-12" (click)="Page=Page+1">Start<fa-icon class="mr-2 float-right" [icon]= "['far', 'compass']"></fa-icon></button>
+    <div *ngIf="Page>PageMin && Page < PageMax" class="btn-group col-12">
+      <button class="btn btn-info" (click)="Page=Page-1">Zurück</button>
+      <button class="btn btn-info" (click)="Page=Page+1">Weiter</button>
+    </div>
+    <button *ngIf="Page==PageMax" class="btn btn-info col-6 col-md-12" (click)="Page=Page-1">Zurück</button>
+  </div>
+</div>

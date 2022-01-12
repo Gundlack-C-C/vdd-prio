@@ -1,0 +1,39 @@
+<form [formGroup]="pmHeahlForm" (ngSubmit)="onSubmit()" class="container-fluid p-0">
+  <div class="card mb-4 p-4" *ngFor="let item of projectHealthFormShort | keyvalue">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h4>{{item.value.description}}</h4>
+      </div>
+      <div class="col-6 text-left font-weight-bold">
+        {{item.value.B}}
+      </div>
+      <div class="col-6 text-right font-weight-bold">
+        {{item.value.A}}
+      </div>
+      <div class="col-12">
+        <input class="form-control" type="range" [formControlName]="item.key" min=1 max=5>
+      </div>
+      <div class="col-12 d-flex flex-row">
+        <div class="d-flex flex-grow-1 justify-content-start small">
+          Trifft nicht zu!
+        </div>
+        <div  class="d-flex flex-grow-1 justify-content-start small">
+          Weniger!
+        </div>
+        <div class="d-flex flex-grow-1 justify-content-center small">
+          Unbekannt?
+        </div>
+        <div  class="d-flex flex-grow-1 justify-content-center small">
+          Etwas!
+        </div>
+        <div class="d-flex flex-grow-1 justify-content-end small">
+          Trifft zu!
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info form-control" type="submit">
+    Speichern
+  </button>
+</form>
+

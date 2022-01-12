@@ -1,0 +1,11 @@
+<div>
+  <div echarts [options]="options"></div>
+  <div class="text-center text-info p-2">
+    <h6 class="p-0 m-0 small">
+      <ng-container *ngFor="let i of [0,1,2]">
+        <fa-icon *ngIf="mode != i" class="mr-2" [icon]= "['far', 'circle']" (click)="Mode=i"></fa-icon>
+        <fa-icon *ngIf="mode == i" class="mr-2" [icon]= "['fas', 'circle']" (click)="Mode=i"></fa-icon>
+      </ng-container>
+    </h6>
+  </div>
+</div>

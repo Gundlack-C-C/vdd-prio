@@ -11,6 +11,7 @@ import { MentalDashboardComponent } from './flowcollect/mental-dashboard/mental-
 import { MentalFeedbackAppComponent } from './flowcollect/mental-feedback-app/mental-feedback-app.component';
 import { GraphicsDemoComponent } from './graphics/graphics-demo/graphics-demo.component';
 import { PageNotFoundComponent } from './PageNotFound/PageNotFound.component';
+import { PmHealthCheckComponent } from './pm-health-check/pm-health-check.component';
 import { PollDetailViewComponent } from './poll/poll-detail-view/poll-detail-view.component';
 import { PollSectionComponent } from './poll/poll-section/poll-section.component';
 import { PollResolver } from './poll/poll.service';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'agile-manifest', component: AgileManifestComponent},
   { path: 'graphics', component: GraphicsDemoComponent},
   { path: 'connected-app', component: ConnectedAppComponent},
+  { path: 'pm-health', component: PmHealthCheckComponent},
   { path: 'flowcollect-app', component: MentalFeedbackAppComponent},
   { path: 'flowcollect-app/:sectionID', component: MentalFeedbackAppComponent},
   {
@@ -33,7 +35,7 @@ const routes: Routes = [
   { path: 'flowcollect-dashboard', component: MentalDashboardComponent},
   { path: 'flowcollect-business-admin', component: BusinessAdminComponent},
 
-  { path: '**', redirectTo: 'flowcollect/sign-in'},
+  //{ path: '**', redirectTo: 'flowcollect/sign-in'},
   { path: 'flowcollect', component: BusinessLandingpageComponent},
   { path: 'flowcollect/:view', component: BusinessLandingpageComponent},
 ];

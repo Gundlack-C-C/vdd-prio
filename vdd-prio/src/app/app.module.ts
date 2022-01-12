@@ -22,6 +22,7 @@ import { BusinessAdminModule } from './business-admin/business-admin.module';
 import { SectionAdminModule } from './section-admin/section-admin.module';
 import { AuthModule } from './auth/auth.module';
 import { ConnectedAppModule } from './connected-app/connected-app.module';
+import { PmHealthCheckModule } from './pm-health-check/pm-health-check.module';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { ConnectedAppModule } from './connected-app/connected-app.module';
     BusinessAdminModule,
     SectionAdminModule,
     AuthModule,
-    ConnectedAppModule
+    ConnectedAppModule,
+    PmHealthCheckModule
   ],
   declarations: [
     AppComponent,

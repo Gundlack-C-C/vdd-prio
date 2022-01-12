@@ -45,6 +45,13 @@
             "name": "Connected-App",
             "url": "http://localhost:4200/connected-app",
             "webRoot": "${workspaceFolder}/vdd-prio"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "PM-Health-Check",
+            "url": "http://localhost:4200/pm-health",
+            "webRoot": "${workspaceFolder}/vdd-prio"
         }
     ]
 }
