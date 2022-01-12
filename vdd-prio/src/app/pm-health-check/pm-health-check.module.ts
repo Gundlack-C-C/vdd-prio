@@ -11,6 +11,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { PmHealthAnalyticsComponent } from './pm-health-analytics/pm-health-analytics.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PmHealthWeightGraphComponent } from './pm-health-weight-graph/pm-health-weight-graph.component';
+import { PmHealthWeightGaugeComponent } from './pm-health-weight-gauge/pm-health-weight-gauge.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { PmHealthWeightGraphComponent } from './pm-health-weight-graph/pm-health
     PmHealthFormComponent,
     PmHealthAppComponent,
     PmHealthAnalyticsComponent,
-    PmHealthWeightGraphComponent
+    PmHealthWeightGraphComponent,
+    PmHealthWeightGaugeComponent
   ]
 })
 export class PmHealthCheckModule {

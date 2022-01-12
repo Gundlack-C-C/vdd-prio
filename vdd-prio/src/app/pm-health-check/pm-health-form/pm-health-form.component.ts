@@ -13,7 +13,7 @@ export const ProjectHealthForm: {[key:string]: {A: string, B: string, descriptio
   pmmethod: {A: 'methodisches Vorgehen', B: 'fehlendes methodisches Vorgehen', description: 'Das Porjektmanagement ist methodisch (btw. folgt etablierten Standards)!'},
   stakeholdermgmt: {A: 'Mangelhaftes Stakeholdermanagement', B: 'Gutes Stakeholdermanagement', description: 'Alle Stakeholder sind im Projekt gut integriert, btw. gut über den Projektstand informiert!'},
   politiks: {A: 'Keine Polititk', B: 'Politik', description: 'Zwischen Projektbeteiligten gibt es keine Politischen Konflikte!'},
-  silos: {A: 'Keine Bereichsegoismen', B: 'Bereichsübergreifende Zusammenarbeit', description: 'Alle notwendigen Projektbereiche arbeiten zusammen - Es gibt keine Bereichsegoismen!'},
+  silos: {A: 'Bereichsübergreifende Zusammenarbeit', B: 'Bereichsegoismen vorhanden', description: 'Alle notwendigen Projektbereiche arbeiten zusammen - Es gibt keine Bereichsegoismen!'},
   internalconfilcts: {A: 'Keine Konflikte', B: 'Konflikte vorhanden', description: 'Im Projekt gibt es keine Konflikte (z.B. zwischen Projektbeteiligten)!'},
   komplexity: {A: 'Herausforderung Machbar', B: 'Komplexität zu Hoch', description: 'Die Komplexität des Projektes ist machbar!'}
 }

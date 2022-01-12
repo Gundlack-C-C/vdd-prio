@@ -1,0 +1,4 @@
+app-pm-health-weight-gauge > div {
+  height: 250px;
+  overflow-y: hidden;
+}

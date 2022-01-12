@@ -1,4 +1,8 @@
 export const HEALTH_WEIGHT_KEYS = [ 'knowhow', 'communication', 'goals', 'planning', 'pmexp', 'resources', 'pmmethod', 'stakeholdermgmt', 'komplexity', 'support' , 'conflict']
+
+export const HEALTH_WEIGHT_SUCCESS = [17.5, 17, 13.5, 9, 8.5, 8, 6.5, 5.5, 2.5, 7, 5]
+export const HEALTH_WEIGHT_FAIL = [10, 15, 12, 7.75, 6.5, 9, 8, 5.75, 5.75, 8.5, 11.75]
+
 export const HEALTH_WEIGHT = [
   ['Key', 'Erfolg', 'Misserfolg' ],
   ['Knowhow', 17.5, 10],
