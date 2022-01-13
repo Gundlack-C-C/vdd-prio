@@ -15,6 +15,7 @@ import { PmHealthWeightGaugeComponent } from './pm-health-weight-gauge/pm-health
 import { PmHealthRadarComponent } from './pm-health-radar/pm-health-radar.component';
 import { PmHealthFactorItemComponent } from './pm-health-factor-item/pm-health-factor-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PmHealthBarComponent } from './pm-health-bar/pm-health-bar.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PmHealthWeightGraphComponent,
     PmHealthWeightGaugeComponent,
     PmHealthRadarComponent,
-    PmHealthFactorItemComponent
+    PmHealthFactorItemComponent,
+    PmHealthBarComponent
   ]
 })
 export class PmHealthCheckModule {

@@ -1,9 +1,10 @@
 <div>
   <div class="row">
-    <div class="col-12">
-      <div>
-        <app-pm-health-radar [data]="value"></app-pm-health-radar>
-      </div>
+    <div class="col-sm-6 col-12">
+      <app-pm-health-radar [data]="value"></app-pm-health-radar>
+    </div>
+    <div class="col-sm-6 col-12">
+      <app-pm-health-bar [data]="DATA_SUCCESS_SORTED"></app-pm-health-bar>
     </div>
     <hr>
     <div class="col-sm-6 col-12">

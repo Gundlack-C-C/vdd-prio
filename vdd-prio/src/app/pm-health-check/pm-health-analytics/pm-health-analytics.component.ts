@@ -29,6 +29,12 @@ export class PmHealthAnalyticsComponent implements OnChanges {
     }).sort((a, b) => b[0] - a[0]).map((item)=> {return item[1]});
   }
 
+  get DATA_SUCCESS_SORTED() {
+    return [this.data_raw[0] , ...this.data_raw.slice(1, this.data_raw.length).sort((a, b) => {
+      return a[1] - b[1]
+    })];
+  }
+
   get IMPROVE_IDX(): number[] {
     return this.idx_improve;
   }
