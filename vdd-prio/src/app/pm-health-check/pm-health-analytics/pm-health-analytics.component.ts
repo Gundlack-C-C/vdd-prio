@@ -25,6 +25,12 @@ export class PmHealthAnalyticsComponent implements OnChanges {
     return this.data_score[1]
   };
 
+  get value(): number[] {
+     return HEALTH_WEIGHT_KEYS.map((key, i) => {
+      return this.data[key][3];
+     });
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.data_raw = [];
     this.data_raw.push(HEALTH_WEIGHT[0]);
@@ -32,7 +38,7 @@ export class PmHealthAnalyticsComponent implements OnChanges {
       const val: number= this.data[key][3];
       console.log(this.data[key])
       this.data_raw.push([
-        HEALTH_WEIGHT[i][0],
+        HEALTH_WEIGHT[i+1][0],
         val*HEALTH_WEIGHT_SUCCESS[i],
         (6-val)*HEALTH_WEIGHT_FAIL[i]
       ])

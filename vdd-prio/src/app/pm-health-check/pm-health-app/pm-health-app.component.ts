@@ -8,7 +8,7 @@ import { PmHealthFormComponent } from '../pm-health-form/pm-health-form.componen
   encapsulation: ViewEncapsulation.None
 })
 export class PmHealthAppComponent implements OnInit {
-  page: number = 1
+  page: number = 3
   pages: number[] = [1, 2, 3];
   formLabal: any[] = ['Key', 'Erfolg', 'Misserfolg']
   formData: {[key: string]: any[]} = {

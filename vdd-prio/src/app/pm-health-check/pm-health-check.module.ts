@@ -12,6 +12,7 @@ import { PmHealthAnalyticsComponent } from './pm-health-analytics/pm-health-anal
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PmHealthWeightGraphComponent } from './pm-health-weight-graph/pm-health-weight-graph.component';
 import { PmHealthWeightGaugeComponent } from './pm-health-weight-gauge/pm-health-weight-gauge.component';
+import { PmHealthRadarComponent } from './pm-health-radar/pm-health-radar.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { PmHealthWeightGaugeComponent } from './pm-health-weight-gauge/pm-health
     PmHealthAppComponent,
     PmHealthAnalyticsComponent,
     PmHealthWeightGraphComponent,
-    PmHealthWeightGaugeComponent
+    PmHealthWeightGaugeComponent,
+    PmHealthRadarComponent
   ]
 })
 export class PmHealthCheckModule {
