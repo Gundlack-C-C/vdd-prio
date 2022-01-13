@@ -13,6 +13,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { PmHealthWeightGraphComponent } from './pm-health-weight-graph/pm-health-weight-graph.component';
 import { PmHealthWeightGaugeComponent } from './pm-health-weight-gauge/pm-health-weight-gauge.component';
 import { PmHealthRadarComponent } from './pm-health-radar/pm-health-radar.component';
+import { PmHealthFactorItemComponent } from './pm-health-factor-item/pm-health-factor-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { PmHealthRadarComponent } from './pm-health-radar/pm-health-radar.compon
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    NgxEchartsModule
+    NgxEchartsModule,
+    NgbModule
   ],
   declarations: [
     PmHealthCheckComponent,
@@ -29,7 +32,8 @@ import { PmHealthRadarComponent } from './pm-health-radar/pm-health-radar.compon
     PmHealthAnalyticsComponent,
     PmHealthWeightGraphComponent,
     PmHealthWeightGaugeComponent,
-    PmHealthRadarComponent
+    PmHealthRadarComponent,
+    PmHealthFactorItemComponent
   ]
 })
 export class PmHealthCheckModule {

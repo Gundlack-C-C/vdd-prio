@@ -5,19 +5,38 @@
         <app-pm-health-radar [data]="value"></app-pm-health-radar>
       </div>
     </div>
-    <div class="col-sm-6 col-12 text-center">
+    <hr>
+    <div class="col-sm-6 col-12">
       <div>
         <app-pm-health-weight-gauge [value]="SUM_SUCCESS" [color]="'success'"></app-pm-health-weight-gauge>
       </div>
-      <h2 class="text-success">Erfolg</h2>
-      <div class="small">{{SUM_SUCCESS}} of {{range[0]}}</div>
+      <div class="text-center">
+        <h2 class="text-success m-0">Erfolg</h2>
+        <div class="small">{{SUM_SUCCESS}} of {{range[0]}}</div>
+      </div>
+      <hr>
+      <div>
+        <h2 class="text-center text-success">Erfolg steigern</h2>
+        <div *ngFor="let idx of IMPROVE_IDX | slice:0:3" class="card mb-2 p-2">
+          <app-pm-health-factor-item [idx]="idx" [score]="getScore(idx)"></app-pm-health-factor-item>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-6 col-12 text-center">
+    <div class="col-sm-6 col-12">
       <div>
         <app-pm-health-weight-gauge [value]="SUM_FAIL" [color]="'danger'"></app-pm-health-weight-gauge>
       </div>
-      <h2 class="text-warning">Misserfolg</h2>
-      <div class="small">{{SUM_FAIL}} of {{range[1]}}</div>
+      <div class="text-center">
+        <h2 class="text-warning m-0">Misserfolg</h2>
+        <div class="small">{{SUM_FAIL}} of {{range[1]}}</div>
+      </div>
+      <hr>
+      <div>
+        <h2 class="text-center text-warning">Risiken verringern</h2>
+        <div *ngFor="let idx of AVOID_IDX | slice:0:3" class="card mb-2 p-2">
+          <app-pm-health-factor-item [idx]="idx" [score]="getScore(idx)"></app-pm-health-factor-item>
+        </div>
+      </div>
     </div>
   </div>
 </div>
