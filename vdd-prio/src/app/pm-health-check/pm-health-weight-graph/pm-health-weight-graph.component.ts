@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HEALTH_WEIGHT} from '../pm-health-model';
+import {HEALTH_WEIGHT, HEALTH_WEIGHT_DESCRIPTION, HEALTH_WEIGHT_SUCCESS, HEALTH_WEIGHT_FAIL} from '../pm-health-model';
 
 
 function options_barchart_stacked(keys: string[], data: {erfolg: number[], misserfolg: number[]}) {
@@ -10,7 +10,7 @@ function options_barchart_stacked(keys: string[], data: {erfolg: number[], misse
       stack: 'total',
       label: {
         show: true,
-        fontSize: 8,
+        fontSize: 9,
         formatter: function(d: {data: number}) {
           return `${d.data} %`
         }
@@ -18,22 +18,42 @@ function options_barchart_stacked(keys: string[], data: {erfolg: number[], misse
       emphasis: {
         focus: 'series'
       },
-      data: [data.misserfolg[i], data.erfolg[i]]
+      data: [data.misserfolg[i], data.erfolg[i]],
+      tooltip: {
+        formatter: function(params: any, ticket: string) {
+          const idx = params.seriesIndex;
+          let lines = [];
+          lines.push(`<b>${params.seriesName}</b>`)
+          lines.push(`<small><b>Kritieren</b>: ${HEALTH_WEIGHT_DESCRIPTION[idx+1][1]} </small>`);
+          lines.push(`<small><b>Erfolgsfaktor</b>: ${HEALTH_WEIGHT_SUCCESS[idx]} %</small>`);
+          lines.push(`<small><b>Risikofaktor</b>: ${HEALTH_WEIGHT_FAIL[idx]} %</small>`);
+
+          return lines.join('<br>')
+        }
+      }
     }
   });
   return {
     tooltip: {
-      trigger: 'axis',
+      trigger: 'item',
       axisPointer: {
         // Use axis to trigger tooltip
         type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
       }
     },
-    legend: {},
+    color: ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#f5f5f5','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'],
+    legend: {
+      left: '90%',
+      bottom: '12%',
+      textStyle: {
+        fontSize: 8
+      }
+    },
     grid: {
       left: '3%',
-      right: '4%',
-      bottom: '3%',
+      right: '10%',
+      bottom: '1%',
+      top: '1%',
       containLabel: true
     },
     xAxis: {
@@ -44,7 +64,7 @@ function options_barchart_stacked(keys: string[], data: {erfolg: number[], misse
     },
     yAxis: {
       type: 'category',
-      data: ['Misserfolg', 'Erfolg'],
+      data: ['Risiko', 'Erfolg'],
       axisLabel: {
         fontSize: 20,
         color: function(value: any, index: number) {
