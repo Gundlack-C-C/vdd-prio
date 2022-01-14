@@ -70,7 +70,6 @@ export class PmHealthAnalyticsComponent implements OnChanges {
     this.data_raw.push(HEALTH_WEIGHT[0]);
     HEALTH_WEIGHT_KEYS.forEach((key, i)=>{
       const val: number= this.data[key][3];
-      console.log(this.data[key])
       this.data_raw.push([
         HEALTH_WEIGHT[i+1][0],
         val*HEALTH_WEIGHT_SUCCESS[i],

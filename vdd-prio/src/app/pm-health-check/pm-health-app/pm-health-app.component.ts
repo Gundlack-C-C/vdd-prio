@@ -33,7 +33,6 @@ export class PmHealthAppComponent implements OnInit {
 
   set Page(value: number) {
     if(value == 3) {
-      console.log(this.form.VALUE);
       const data: {[key: string]: number} = this.form.VALUE;
       this.formData['knowhow'] = ['KnowHow', 'Qualifizierte Mitarbeiter', 'Mangel an qualifizierten Mitarbeitern', data['knowhow']];
       this.formData['communication'] = ['Kommunikation', 'Gute Kommunikation', 'Schlechte Kommunikation', data['communication']];
@@ -54,9 +53,6 @@ export class PmHealthAppComponent implements OnInit {
       const conflict_data = [data['politiks'], data['silos'], data['internalconfilcts']]
       const conflict = Math.max(...conflict_data)
       this.formData['conflict'] = ['Konflikte', 'Keine Politik, Bereichsegoismen oder interne Kompetenzstreitigkeiten', 'Politik, Bereichsegoismen oder interne Kompetenzsstreitigkeiten', conflict];
-
-
-      console.log(this.formData);
     }
     this.page = value
     window.scroll(0,0)

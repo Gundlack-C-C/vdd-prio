@@ -45,7 +45,6 @@ export class PmHealthFormComponent implements OnInit {
 
   onSubmit(): void {
     const status = this.VALUE
-    console.log(status)
   }
 
 }
