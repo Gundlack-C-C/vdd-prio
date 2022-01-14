@@ -59,6 +59,7 @@ export class PmHealthAppComponent implements OnInit {
       console.log(this.formData);
     }
     this.page = value
+    window.scroll(0,0)
   }
 
   get Page(): number {
