@@ -30,6 +30,14 @@ export class PmHealthFactorItemComponent implements OnChanges {
     this.max_success = this.weight_success * 5;
   }
 
+  get SCORE_SUCCESS(): number {
+    return this.weight_success * this.score;
+  }
+
+  get SCORE_FAIL(): number {
+    return this.weight_fail * (6-this.score)
+  }
+
   getScoreLabel(val: number): string{
     const labels: {[key: string]: string} = {
       "1": "Unzureichend",

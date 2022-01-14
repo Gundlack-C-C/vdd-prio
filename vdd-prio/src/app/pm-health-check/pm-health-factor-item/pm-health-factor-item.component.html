@@ -14,28 +14,32 @@
   </div>
   <div class="card-body">
     <div class="mb-2">
-      <div><span class="badge badge-success mr-2">{{ weight_success / 100| percent}}</span><b>Erfolgsfaktor</b></div>
-      <span>{{factor_success}}</span>
+      <div class="container-fluid p-0">
+        <div class="col-12 p-0"><b>Kriterium für Erfolg:</b></div>
+        <div class="col-12 p-0"><span>{{factor_success}}</span></div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <div><span class="badge badge-success mr-2">{{weight_success}} %</span><b>Erfolgsfaktor</b></div>
       <div class="d-flex flex-row">
         <div class="d-flex mr-auto">
           <div class="small">
-            <b>Bewertung</b>&nbsp;{{score*weight_success}} von {{max_success}}
+            <b>Bewertung</b>&nbsp;{{SCORE_SUCCESS}} von {{max_success}}
           </div>
         </div>
         <div class="d-flex">
-          <div class="small"><b class="mr-2">Potential</b>&nbsp;{{max_success - score*weight_success}}</div>
+          <div class="small"><b class="mr-2">Potential</b>&nbsp;{{max_success -SCORE_SUCCESS}}</div>
         </div>
       </div>
     </div>
     <div>
-      <div><span class="badge badge-warning mr-2">{{ weight_fail / 100| percent}}</span><b>Risikofaktor</b></div>
-      <span>{{factor_fail}}</span>
+      <div><span class="badge badge-warning mr-2">{{weight_fail}} %</span><b>Risikofaktor</b></div>
       <div class="d-flex flex-row">
         <div class="d-flex mr-auto">
-          <div class="small"><b>Bewertung</b>&nbsp;{{score*weight_fail}} von {{max_fail}}</div>
+          <div class="small"><b>Bewertung</b>&nbsp;{{SCORE_FAIL}} von {{max_fail}}</div>
         </div>
         <div class="d-flex">
-          <div class="small"><b class="mr-2">Potential</b>&nbsp;{{score*weight_fail - max_fail}}</div>
+          <div class="small"><b class="mr-2">Potential</b>&nbsp;{{SCORE_FAIL - max_fail}}</div>
         </div>
       </div>
     </div>
