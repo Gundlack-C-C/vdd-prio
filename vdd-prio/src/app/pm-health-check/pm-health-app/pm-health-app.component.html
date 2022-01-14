@@ -62,7 +62,7 @@
       <app-pm-health-analytics [data]="formData"></app-pm-health-analytics>
     </div>
   </div>
-  <div class="card-footer form-row">
+  <div class="card-footer">
     <button *ngIf="Page==PageMin" class="btn btn-info col-6 col-md-12" (click)="Page=Page+1">Start<fa-icon class="mr-2 float-right" [icon]= "['far', 'compass']"></fa-icon></button>
     <div *ngIf="Page>PageMin && Page < PageMax" class="btn-group col-12">
       <button class="btn btn-info" (click)="Page=Page-1">Zurück</button>
