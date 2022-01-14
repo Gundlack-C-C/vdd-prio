@@ -1,3 +1,9 @@
 app-pm-health-factor-item .card-body {
   height: 180px;
 }
+
+div.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
